@@ -1,12 +1,14 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Resources/Tiles/ground_tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://Resources/Penguin.png" type="Texture" id=2]
-[ext_resource path="res://Characters/Player/SideDetect.gd" type="Script" id=3]
-[ext_resource path="res://Characters/Player/Player.gd" type="Script" id=4]
+[ext_resource path="res://NonStatic/SideDetect.tscn" type="PackedScene" id=3]
+[ext_resource path="res://NonStatic/Characters/Player/Player.gd" type="Script" id=4]
+[ext_resource path="res://Misc/ColorPolygon.gd" type="Script" id=5]
+[ext_resource path="res://NonStatic/Cube/Cube.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 35, 35 )
+extents = Vector2( 35, 30 )
 
 [node name="Node2D" type="Node2D"]
 
@@ -14,35 +16,34 @@ extents = Vector2( 35, 35 )
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 80, 70 )
 format = 1
-tile_data = PoolIntArray( 131070, 0, 0, 131071, 0, 1, 65536, 0, 1, 65537, 0, 1, 65538, 0, 1, 65539, 0, 1, 65540, 0, 1, 196607, 0, 1, 131072, 0, 1, 131073, 0, 1, 131074, 0, 1, 131075, 0, 1, 131076, 0, 1, 131077, 0, 1, 131078, 0, 65538, 131079, 0, 2, 196608, 0, 1, 196609, 0, 1, 196610, 0, 1, 196611, 0, 1, 196612, 0, 1, 196613, 0, 1, 196614, 0, 196610, 262144, 0, 1, 262145, 0, 1, 262146, 0, 1, 262147, 0, 1, 262148, 0, 1, 262149, 0, 196610, 262152, 0, 196611, 327681, 0, 1, 327682, 0, 1, 327683, 0, 1, 327684, 0, 1, 393218, 0, 131075 )
+tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 65536, 0, 1, 65537, 0, 1, 65538, 0, 1, 65539, 0, 1, 65540, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 0, 0, 65546, 0, 0, 65547, 0, 0, 65548, 0, 0, 131072, 0, 1, 131073, 0, 1, 131074, 0, 1, 131075, 0, 1, 131076, 0, 1, 131077, 0, 1, 131078, 0, 65538, 131079, 0, 2, 131080, 0, 0, 131081, 0, 0, 131082, 0, 0, 131083, 0, 0, 131084, 0, 0, 196608, 0, 1, 196609, 0, 1, 196610, 0, 1, 196611, 0, 1, 196612, 0, 1, 196613, 0, 1, 196614, 0, 196610, 196615, 0, 0, 196616, 0, 0, 196617, 0, 0, 196618, 0, 0, 196619, 0, 0, 196620, 0, 0, 262144, 0, 1, 262145, 0, 1, 262146, 0, 1, 262147, 0, 1, 262148, 0, 1, 262149, 0, 196610, 262150, 0, 0, 262151, 0, 0, 262152, 0, 196611, 262153, 0, 0, 262154, 0, 0, 262155, 0, 0, 262156, 0, 0, 327680, 0, 0, 327681, 0, 1, 327682, 0, 1, 327683, 0, 1, 327684, 0, 1, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 0, 327692, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 0, 0, 393228, 0, 0, 458752, 0, 0, 458753, 0, 0, 458754, 0, 0, 458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 0, 0, 458762, 0, 0, 458763, 0, 0, 458764, 0, 0, 524288, 0, 0, 524289, 0, 0, 524290, 0, 0, 524291, 0, 0, 524292, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 524298, 0, 0, 524299, 0, 0, 524300, 0, 0 )
 
 [node name="Player" type="KinematicBody2D" parent="."]
-position = Vector2( 120, 105 )
 collision_layer = 2
 script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2( 40, 33 )
 shape = SubResource( 1 )
 
-[node name="SideDetect" type="Node2D" parent="Player"]
-script = ExtResource( 3 )
-
-[node name="Right" type="RayCast2D" parent="Player/SideDetect"]
-enabled = true
-cast_to = Vector2( 70, 0 )
-
-[node name="Down" type="RayCast2D" parent="Player/SideDetect"]
-enabled = true
-cast_to = Vector2( 0, 70 )
-
-[node name="Left" type="RayCast2D" parent="Player/SideDetect"]
-enabled = true
-cast_to = Vector2( -70, 0 )
-
-[node name="Up" type="RayCast2D" parent="Player/SideDetect"]
-enabled = true
-cast_to = Vector2( 0, -70 )
+[node name="SideDetect" parent="Player" instance=ExtResource( 3 )]
+position = Vector2( 40, 33 )
 
 [node name="Penguin" type="Sprite" parent="Player"]
-position = Vector2( 12.59, -1.705 )
+position = Vector2( 50, 31 )
+z_index = 3
 texture = ExtResource( 2 )
+
+[node name="TempLevelGeom" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TempLevelGeom"]
+polygon = PoolVector2Array( 322.658, 66.4035, 325.833, 344.992, 394.091, 344.992, 392.504, 273.559, 474.255, 273.559, 475.842, 213.238, 394.091, 214.032, 394.091, 132.281, 475.842, 133.074, 476.636, 3.70115, 163.124, 6.08225, 166.299, 137.837, 234.557, 137.043, 232.97, 64.8161 )
+
+[node name="Polygon2D" type="Polygon2D" parent="TempLevelGeom/CollisionPolygon2D"]
+script = ExtResource( 5 )
+
+[node name="Cube2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 80, 280 )
+
+[node name="Cube" parent="." instance=ExtResource( 6 )]
+position = Vector2( 160, 280 )

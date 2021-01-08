@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://NonStatic/SideDetect.tscn" type="PackedScene" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 37.5846, 32.5 )
+
+[node name="Cube" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 2147483648
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 2.5
+margin_top = 2.5
+margin_right = 77.5
+margin_bottom = 67.5
+color = Color( 0.254902, 0.843137, 1, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 40.589, 35.5 )
+shape = SubResource( 1 )
+
+[node name="SideDetect" parent="." instance=ExtResource( 1 )]
+position = Vector2( 40.5, 35.5 )

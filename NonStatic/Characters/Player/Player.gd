@@ -10,10 +10,17 @@ func _ready():
 
 func _physics_process(delta):
 	if is_moving:
-		position = lerp(position, grid_position*grid_size, 0.3)
+		var move_delta = lerp(position, grid_position*grid_size, 0.3) - position
+		
+		position += move_delta
+			
 		if position.distance_to(grid_position*grid_size) < 1:
 			is_moving = false
 			position = grid_position*grid_size
+			
+		for i in range(len($SideDetect.pushing)):
+			var cube = $SideDetect.pushing[i]
+			cube.position = position + (move_delta.normalized() * grid_size)*(i+1)
 
 func _process(delta):
 	handle_movement()
