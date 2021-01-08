@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/snow_tile.png-81f9774bfafad09d5556b4de23cd1315.stex"
+path="res://.import/Penguin.png-e1c7158995f78f3ec0ee59b901c3ee0c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Tiles/snow_tile.png"
-dest_files=[ "res://.import/snow_tile.png-81f9774bfafad09d5556b4de23cd1315.stex" ]
+source_file="res://Resources/Penguin.png"
+dest_files=[ "res://.import/Penguin.png-e1c7158995f78f3ec0ee59b901c3ee0c.stex" ]
 
 [params]
 
