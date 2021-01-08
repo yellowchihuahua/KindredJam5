@@ -12,4 +12,5 @@ func on_set_warmth(val):
 	target_value = val
 	
 func _process(delta):
+	print(value)
 	value = lerp(value, target_value, fill_rate)

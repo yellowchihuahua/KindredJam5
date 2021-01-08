@@ -1,38 +1,39 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Resources/Tiles/ground_tiles.tres" type="TileSet" id=1]
-[ext_resource path="res://Resources/Penguin.png" type="Texture" id=2]
-[ext_resource path="res://LevelElements/SideDetect.tscn" type="PackedScene" id=3]
-[ext_resource path="res://LevelElements/Characters/Player/Player.gd" type="Script" id=4]
+[ext_resource path="res://LevelElements/Characters/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Misc/ColorPolygon.gd" type="Script" id=5]
 [ext_resource path="res://LevelElements/Cube/Cube.tscn" type="PackedScene" id=6]
 [ext_resource path="res://LevelElements/LevelManager.gd" type="Script" id=7]
 [ext_resource path="res://LevelElements/UI/WarmthBar.gd" type="Script" id=8]
 [ext_resource path="res://LevelElements/UI/Hud.gd" type="Script" id=9]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 35, 30 )
-
-[sub_resource type="InputEventAction" id=4]
+[sub_resource type="InputEventAction" id=1]
 action = "restart"
 
-[sub_resource type="ShortCut" id=5]
-shortcut = SubResource( 4 )
-
-[sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0.878431, 0.345098, 0, 1 )
+[sub_resource type="ShortCut" id=2]
+shortcut = SubResource( 1 )
 
 [sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.878431, 0.345098, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0, 0.803922, 1, 1 )
 
-[sub_resource type="InputEventAction" id=7]
+[sub_resource type="InputEventAction" id=5]
 action = "ui_accept"
 
-[sub_resource type="ShortCut" id=8]
-shortcut = SubResource( 7 )
+[sub_resource type="ShortCut" id=6]
+shortcut = SubResource( 5 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 30.0668, 28.9808 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 34.0511, 30.3035 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 100, 80 )
 
 [node name="LevelRoot" type="Node2D"]
 script = ExtResource( 7 )
@@ -43,22 +44,7 @@ cell_size = Vector2( 80, 70 )
 format = 1
 tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 65536, 0, 1, 65537, 0, 1, 65538, 0, 1, 65539, 0, 1, 65540, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 0, 0, 65546, 0, 0, 65547, 0, 0, 65548, 0, 0, 131072, 0, 1, 131073, 0, 1, 131074, 0, 1, 131075, 0, 1, 131076, 0, 1, 131077, 0, 1, 131078, 0, 65538, 131079, 0, 2, 131080, 0, 0, 131081, 0, 0, 131082, 0, 0, 131083, 0, 0, 131084, 0, 0, 196608, 0, 1, 196609, 0, 1, 196610, 0, 1, 196611, 0, 1, 196612, 0, 1, 196613, 0, 1, 196614, 0, 196610, 196615, 0, 0, 196616, 0, 0, 196617, 0, 0, 196618, 0, 0, 196619, 0, 0, 196620, 0, 0, 262144, 0, 1, 262145, 0, 1, 262146, 0, 1, 262147, 0, 1, 262148, 0, 1, 262149, 0, 196610, 262150, 0, 0, 262151, 0, 0, 262152, 0, 196611, 262153, 0, 0, 262154, 0, 0, 262155, 0, 0, 262156, 0, 0, 327680, 0, 0, 327681, 0, 1, 327682, 0, 1, 327683, 0, 1, 327684, 0, 1, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 0, 327692, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 0, 0, 393228, 0, 0, 458752, 0, 0, 458753, 0, 0, 458754, 0, 0, 458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 0, 0, 458762, 0, 0, 458763, 0, 0, 458764, 0, 0, 524288, 0, 0, 524289, 0, 0, 524290, 0, 0, 524291, 0, 0, 524292, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 524298, 0, 0, 524299, 0, 0, 524300, 0, 0 )
 
-[node name="Player" type="KinematicBody2D" parent="."]
-position = Vector2( 320, 420 )
-collision_layer = 2
-script = ExtResource( 4 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2( 40, 33 )
-shape = SubResource( 1 )
-
-[node name="SideDetect" parent="Player" instance=ExtResource( 3 )]
-position = Vector2( 40, 33 )
-
-[node name="Penguin" type="Sprite" parent="Player"]
-position = Vector2( 50, 29.5017 )
-z_index = 3
-texture = ExtResource( 2 )
+[node name="Player" parent="." instance=ExtResource( 2 )]
 
 [node name="TempLevelGeom" type="StaticBody2D" parent="."]
 
@@ -86,7 +72,9 @@ __meta__ = {
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Hud"]
 anchor_right = 1.0
+margin_left = 50.0
 margin_top = 10.0
+margin_right = -50.0
 margin_bottom = 40.0
 custom_constants/separation = 19
 alignment = 2
@@ -95,19 +83,19 @@ __meta__ = {
 }
 
 [node name="RestartButton" type="Button" parent="Hud/HBoxContainer"]
-margin_left = 748.0
-margin_right = 805.0
+margin_left = 648.0
+margin_right = 705.0
 margin_bottom = 30.0
-shortcut = SubResource( 5 )
+shortcut = SubResource( 2 )
 text = "Restart"
 
 [node name="WarmthBar" type="ProgressBar" parent="Hud/HBoxContainer"]
-margin_left = 824.0
-margin_right = 1024.0
+margin_left = 724.0
+margin_right = 924.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 200, 30 )
-custom_styles/fg = SubResource( 2 )
-custom_styles/bg = SubResource( 3 )
+custom_styles/fg = SubResource( 3 )
+custom_styles/bg = SubResource( 4 )
 percent_visible = false
 script = ExtResource( 8 )
 __meta__ = {
@@ -156,7 +144,7 @@ margin_top = 265.0
 margin_right = 547.0
 margin_bottom = 335.0
 rect_min_size = Vector2( 70, 70 )
-shortcut = SubResource( 8 )
+shortcut = SubResource( 6 )
 text = "Next"
 
 [node name="Exit" type="Area2D" parent="."]
@@ -166,7 +154,7 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit"]
 position = Vector2( 41.8488, 33.9028 )
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 
 [node name="ColorRect" type="ColorRect" parent="Exit"]
 margin_left = 11.0
@@ -174,6 +162,33 @@ margin_top = 6.0
 margin_right = 74.0
 margin_bottom = 62.0
 color = Color( 0.0784314, 1, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CampFire" type="Node2D" parent="."]
+position = Vector2( 640, 420 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="CampFire"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CampFire/StaticBody2D"]
+position = Vector2( 40, 35 )
+shape = SubResource( 9 )
+
+[node name="Area2D" type="Area2D" parent="CampFire"]
+position = Vector2( 40, 35 )
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CampFire/Area2D"]
+shape = SubResource( 8 )
+
+[node name="ColorRect" type="ColorRect" parent="CampFire"]
+margin_left = 17.6389
+margin_top = 13.8591
+margin_right = 57.6389
+margin_bottom = 53.8591
+color = Color( 1, 0.470588, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

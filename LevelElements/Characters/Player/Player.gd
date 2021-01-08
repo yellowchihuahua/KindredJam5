@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
-signal moved
+signal moved ()
+signal set_warming(is_warming)
 
 var is_moving = false
 var grid_position:Vector2
@@ -8,6 +9,8 @@ var grid_position:Vector2
 export var grid_size = Vector2(80, 70)
 
 var can_move = true
+
+var heat_sources = 0
 
 func _ready():
 	connect_signals()
@@ -60,3 +63,13 @@ func on_out_of_warmth():
 	
 func on_level_finished():
 	can_move = false
+
+func _on_WarmthCollector_area_entered(area):
+	heat_sources += 1
+	if heat_sources == 1:
+		emit_signal("set_warming", true)
+
+func _on_WarmthCollector_area_exited(area):
+	heat_sources -= 1
+	if heat_sources == 0:
+		emit_signal("set_warming", false)

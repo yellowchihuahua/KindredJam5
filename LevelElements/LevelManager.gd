@@ -4,7 +4,9 @@ signal warmth_set(w)
 signal out_of_warmth
 signal level_finished
 
-var warmth = 100
+export var max_warmth = 100
+var warmth = max_warmth
+var is_warming = false
 export var player_move_cost = -10
 
 func _ready():
@@ -14,6 +16,7 @@ func _ready():
 
 func connect_signals():
 	var _out = $Player.connect("moved", self, "player_moved")
+	_out = $Player.connect("set_warming", self, "set_player_warming")
 
 func change_warmth(delta):
 	warmth += delta
@@ -21,9 +24,18 @@ func change_warmth(delta):
 	
 	if warmth <= 0:
 		emit_signal("out_of_warmth")
+	
+func set_warmth(val):
+	change_warmth(val - warmth)
 
 func player_moved():
-	change_warmth(player_move_cost)
+	if not is_warming:
+		change_warmth(player_move_cost)
+
+func set_player_warming(is_warming):
+	self.is_warming = is_warming
+	if is_warming:
+		set_warmth(max_warmth)
 
 
 func _on_Exit_body_entered(_body):
