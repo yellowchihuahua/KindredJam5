@@ -8,18 +8,18 @@ extents = Vector2( 100, 80 )
 
 [node name="CampFire" type="Node2D"]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Fire" type="StaticBody2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fire"]
 position = Vector2( 40, 35 )
 shape = SubResource( 1 )
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="WarmthZone" type="Area2D" parent="."]
 position = Vector2( 40, 35 )
 collision_layer = 8
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WarmthZone"]
 shape = SubResource( 2 )
 
 [node name="ColorRect" type="ColorRect" parent="."]

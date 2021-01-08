@@ -17,7 +17,6 @@ func set_sides_enable(val):
 func can_move(direction):
 	set_sides_enable(true)
 	var pushing = [get_parent()]
-	var out = []
 	
 	var cast = get_cast(direction)
 	var colliders = cast.get_overlapping_bodies()
@@ -58,7 +57,3 @@ func get_cast(direction:Vector2):
 		return $Down
 	
 	printerr("ERROR: no raycast for ", direction, ". Ensure direction is a unit, grid vector.")
-
-
-func _on_Up_body_entered(body):
-	print(body.name)

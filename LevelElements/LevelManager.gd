@@ -9,14 +9,16 @@ var warmth = max_warmth
 var is_warming = false
 export var player_move_cost = -10
 
+onready var player = $"PlayingField/Player"
+
 func _ready():
 	connect_signals()
 	
 	emit_signal("warmth_set", warmth)
 
 func connect_signals():
-	var _out = $Player.connect("moved", self, "player_moved")
-	_out = $Player.connect("set_warming", self, "set_player_warming")
+	var _out = player.connect("moved", self, "player_moved")
+	_out = player.connect("set_warming", self, "set_player_warming")
 
 func change_warmth(delta):
 	warmth += delta
