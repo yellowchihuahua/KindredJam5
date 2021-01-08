@@ -19,7 +19,7 @@ margin_left = 2.5
 margin_top = 2.5
 margin_right = 77.5
 margin_bottom = 67.5
-color = Color( 0.254902, 0.843137, 1, 1 )
+color = Color( 0.309804, 0.670588, 0.956863, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -38,3 +38,15 @@ collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WaterCollider"]
 shape = SubResource( 2 )
+
+[node name="PlayerCollider" type="Area2D" parent="."]
+monitoring = false
+monitorable = false
+collision_layer = 0
+collision_mask = 2147483650
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCollider"]
+position = Vector2( 40, 35 )
+shape = SubResource( 2 )
+[connection signal="body_entered" from="WaterCollider" to="." method="_on_WaterCollider_body_entered"]
+[connection signal="body_exited" from="PlayerCollider" to="." method="_on_PlayerCollider_body_exited"]
