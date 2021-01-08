@@ -3,17 +3,17 @@ extends Control
 onready var warmth_bar = $"HBoxContainer/WarmthBar"
 
 func _ready():
-	Global.get_level_root().connect("warmth_set", self, "set_warmth")
-	Global.get_level_root().connect("out_of_warmth", self, "out_of_warmth")
+	Global.get_level_root().connect("out_of_warmth", self, "on_out_of_warmth")
+	Global.get_level_root().connect("level_finished", self, "on_level_finished")
 	
 	$LooseLevel.visible = false
+	$LevelFinished.visible = false
 
-
-func set_warmth(warmth):
-	warmth_bar.value = warmth
-
-func out_of_warmth():
+func on_out_of_warmth():
 	$LooseLevel.visible = true
+	
+func on_level_finished():
+	$LevelFinished.visible = true
 
 
 func _on_RestartButton_pressed():

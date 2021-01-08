@@ -17,8 +17,9 @@ func _ready():
 
 func connect_signals():
 	Global.get_level_root().connect("out_of_warmth", self, "on_out_of_warmth")
+	Global.get_level_root().connect("level_finished", self, "on_level_finished")
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if is_moving:
 		var move_delta = lerp(position, grid_position*grid_size, 0.3) - position
 		
@@ -33,7 +34,7 @@ func _physics_process(delta):
 			cube.position = position + (move_delta.normalized() * grid_size)*(i+1)
 
 	
-func _process(delta):
+func _process(_delta):
 	if can_move:
 		get_input()
 	
@@ -55,4 +56,7 @@ func try_move(direction:Vector2):
 
 
 func on_out_of_warmth():
+	can_move = false
+	
+func on_level_finished():
 	can_move = false
