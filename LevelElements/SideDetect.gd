@@ -1,39 +1,50 @@
 extends Node2D
 
-var pushing
+# does water prevent from moving
+export var water_stop = false
 
 func _ready():
 	for side in [$Right, $Down, $Left, $Up]:
-		side.add_exception(get_parent())
+		var mask = side.get_collision_mask()
+		if water_stop:
+			side.set_collision_mask(mask|(Global.water_bit*Global.water_bit)) # set water bit to true
 
-func can_move(direction):
-	pushing = []
-	var cast = get_cast(direction)
-	
-	var collider = cast.get_collider()
-	if collider == null:
-		return true
+func set_sides_enable(val):
+	for side in [$Right, $Down, $Left, $Up]:
+		side.monitoring = val
 		
-	if not collider.get_collision_layer_bit(2): # is not pushable
-		return false
-		
-	pushing = collider.get_node("SideDetect").can_push(direction)
-	if not pushing[-1].get_collision_layer_bit(2): # chain unpushable
-		return false
-	
-	return true
-	
 # array of objects in direction (terminates with first unpushable or empty square)
-func can_push(direction):
+func can_move(direction):
+	set_sides_enable(true)
+	var pushing = [get_parent()]
+	var out = []
+	
 	var cast = get_cast(direction)
-	var collider = cast.get_collider()
-	if collider == null:
-		return [get_parent()]
+	var colliders = cast.get_overlapping_bodies()
+	if len(colliders) == 0:
+		return pushing
 	
-	if not collider.get_collision_layer_bit(2): # is not pushable
-		return [get_parent(), collider]
+	var is_wall = false
+	var push_thing = null
+	var is_water = false
+	var is_sunken = false
 	
-	return [self.get_parent()] + collider.get_node("SideDetect").can_push(direction)
+	for c in colliders:
+		is_wall = is_wall or c.get_collision_layer_bit(Global.level_bit)
+		if c.get_collision_layer_bit(Global.pushable_bit):
+			push_thing = c
+		is_water = is_water or c.get_collision_layer_bit(Global.water_bit)
+		is_sunken = is_sunken or c.get_collision_layer_bit(Global.sunken_bit)
+	
+	if is_wall:
+		return []
+	if is_water and not is_sunken and water_stop:
+		return []
+	
+	if push_thing:
+		pushing += push_thing.get_node("SideDetect").can_move(direction)
+	
+	return pushing
 	
 # returns the raycast aligned with a direction
 func get_cast(direction:Vector2):
@@ -47,3 +58,7 @@ func get_cast(direction:Vector2):
 		return $Down
 	
 	printerr("ERROR: no raycast for ", direction, ". Ensure direction is a unit, grid vector.")
+
+
+func _on_Up_body_entered(body):
+	print(body.name)

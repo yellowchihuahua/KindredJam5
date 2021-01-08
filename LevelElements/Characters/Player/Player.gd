@@ -4,11 +4,12 @@ signal moved ()
 signal set_warming(is_warming)
 
 var is_moving = false
+var can_move = true
+var pushing = []
 var grid_position:Vector2
 
 export var grid_size = Vector2(80, 70)
 
-var can_move = true
 
 var heat_sources = 0
 
@@ -24,17 +25,21 @@ func connect_signals():
 
 func _physics_process(_delta):
 	if is_moving:
-		var move_delta = lerp(position, grid_position*grid_size, 0.3) - position
+		var move_delta = lerp(position, grid_position*grid_size, 0.001) - position
 		
-		position += move_delta
+		for i in range(len(pushing)):
+			var cube = pushing[i]
+			if position.distance_to(grid_position * grid_size) < 1:
+				
+				cube.position = grid_position * grid_size + i*move_delta.normalized()*grid_size
+				is_moving = false
+				cube.get_node("SideDetect").position = Vector2(40,35)
+			else:
+				var side_pos = cube.get_node("SideDetect").global_position
+				cube.position = position + (move_delta.normalized() * grid_size)*(i+1)
+				cube.get_node("SideDetect").global_position = side_pos
 			
-		if position.distance_to(grid_position*grid_size) < 1:
-			is_moving = false
-			position = grid_position*grid_size
-			
-		for i in range(len($SideDetect.pushing)):
-			var cube = $SideDetect.pushing[i]
-			cube.position = position + (move_delta.normalized() * grid_size)*(i+1)
+		
 
 	
 func _process(_delta):
@@ -52,7 +57,8 @@ func get_input():
 		try_move(Vector2.DOWN)
 
 func try_move(direction:Vector2):
-	if $SideDetect.can_move(direction):
+	pushing = $SideDetect.can_move(direction)
+	if len(pushing) > 0:
 		is_moving = true
 		grid_position += direction
 		emit_signal("moved")
@@ -64,12 +70,12 @@ func on_out_of_warmth():
 func on_level_finished():
 	can_move = false
 
-func _on_WarmthCollector_area_entered(area):
+func _on_WarmthCollector_area_entered(_area):
 	heat_sources += 1
 	if heat_sources == 1:
 		emit_signal("set_warming", true)
 
-func _on_WarmthCollector_area_exited(area):
+func _on_WarmthCollector_area_exited(_area):
 	heat_sources -= 1
 	if heat_sources == 0:
 		emit_signal("set_warming", false)

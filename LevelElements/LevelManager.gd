@@ -32,9 +32,9 @@ func player_moved():
 	if not is_warming:
 		change_warmth(player_move_cost)
 
-func set_player_warming(is_warming):
-	self.is_warming = is_warming
-	if is_warming:
+func set_player_warming(warming):
+	self.is_warming = warming
+	if warming:
 		set_warmth(max_warmth)
 
 
