@@ -18,3 +18,7 @@ func on_level_finished():
 
 func _on_RestartButton_pressed():
 	Global.restart_level()
+
+
+func _on_NextLevelButton_pressed():
+	Global.load_next_level()

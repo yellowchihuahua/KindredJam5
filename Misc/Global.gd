@@ -24,6 +24,7 @@ func start_level(num):
 	load_next_level()
 	
 func load_next_level():
+	print('next')
 	current_level += 1
 	if current_level >= len(level_paths):
 		var _out = get_tree().change_scene(menu_path)
