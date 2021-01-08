@@ -1,12 +1,22 @@
 extends KinematicBody2D
 
+signal moved
+
 var is_moving = false
 var grid_position:Vector2
 
 export var grid_size = Vector2(80, 70)
 
+var can_move = true
+
 func _ready():
+	connect_signals()
+	
 	grid_position = position/grid_size
+	
+
+func connect_signals():
+	Global.get_level_root().connect("out_of_warmth", self, "on_out_of_warmth")
 
 func _physics_process(delta):
 	if is_moving:
@@ -22,10 +32,12 @@ func _physics_process(delta):
 			var cube = $SideDetect.pushing[i]
 			cube.position = position + (move_delta.normalized() * grid_size)*(i+1)
 
-func _process(delta):
-	handle_movement()
 	
-func handle_movement():
+func _process(delta):
+	if can_move:
+		get_input()
+	
+func get_input():
 	if Input.is_action_just_pressed("move_left") and not is_moving:
 		try_move(Vector2.LEFT)
 	if Input.is_action_just_pressed("move_right") and not is_moving:
@@ -39,3 +51,8 @@ func try_move(direction:Vector2):
 	if $SideDetect.can_move(direction):
 		is_moving = true
 		grid_position += direction
+		emit_signal("moved")
+
+
+func on_out_of_warmth():
+	can_move = false
