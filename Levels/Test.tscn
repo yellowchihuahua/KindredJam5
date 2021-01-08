@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Resources/Tiles/ground_tiles.tres" type="TileSet" id=1]
+[ext_resource path="res://Resources/Penguin.png" type="Texture" id=2]
+[ext_resource path="res://Characters/Player/SideDetect.gd" type="Script" id=3]
+[ext_resource path="res://Characters/Player/Player.gd" type="Script" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 35, 35 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 80, 70 )
+format = 1
+tile_data = PoolIntArray( 131070, 0, 0, 131071, 0, 1, 65536, 0, 1, 65537, 0, 1, 65538, 0, 1, 65539, 0, 1, 65540, 0, 1, 196607, 0, 1, 131072, 0, 1, 131073, 0, 1, 131074, 0, 1, 131075, 0, 1, 131076, 0, 1, 131077, 0, 1, 131078, 0, 65538, 131079, 0, 2, 196608, 0, 1, 196609, 0, 1, 196610, 0, 1, 196611, 0, 1, 196612, 0, 1, 196613, 0, 1, 196614, 0, 196610, 262144, 0, 1, 262145, 0, 1, 262146, 0, 1, 262147, 0, 1, 262148, 0, 1, 262149, 0, 196610, 262152, 0, 196611, 327681, 0, 1, 327682, 0, 1, 327683, 0, 1, 327684, 0, 1, 393218, 0, 131075 )
+
+[node name="Player" type="KinematicBody2D" parent="."]
+position = Vector2( 120, 105 )
+collision_layer = 2
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource( 1 )
+
+[node name="SideDetect" type="Node2D" parent="Player"]
+script = ExtResource( 3 )
+
+[node name="Right" type="RayCast2D" parent="Player/SideDetect"]
+enabled = true
+cast_to = Vector2( 70, 0 )
+
+[node name="Down" type="RayCast2D" parent="Player/SideDetect"]
+enabled = true
+cast_to = Vector2( 0, 70 )
+
+[node name="Left" type="RayCast2D" parent="Player/SideDetect"]
+enabled = true
+cast_to = Vector2( -70, 0 )
+
+[node name="Up" type="RayCast2D" parent="Player/SideDetect"]
+enabled = true
+cast_to = Vector2( 0, -70 )
+
+[node name="Penguin" type="Sprite" parent="Player"]
+position = Vector2( 12.59, -1.705 )
+texture = ExtResource( 2 )
