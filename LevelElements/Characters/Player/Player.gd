@@ -7,6 +7,10 @@ var is_moving = false
 var move_primed:Vector2
 var move_prime_expire = 0.2
 var move_prime_time = move_prime_expire+1
+
+var hold_time = 0
+var hold_delay = 0.4
+
 var can_move = true
 var pushing = []
 var grid_position:Vector2
@@ -46,19 +50,20 @@ func _physics_process(_delta):
 func _process(delta):
 	get_input()
 	move_prime_time += delta
+	hold_time += delta
 	if not is_moving and move_prime_time < move_prime_expire and can_move:
 		try_move(move_primed)
 
 
 func get_input():
 	var dir = Vector2.ZERO
-	if Input.is_action_just_pressed("move_left"):
+	if Input.is_action_just_pressed("move_left") or (Input.is_action_pressed("move_left") and hold_time > hold_delay):
 		dir = Vector2.LEFT
-	if Input.is_action_just_pressed("move_right"):
+	if Input.is_action_just_pressed("move_right") or (Input.is_action_pressed("move_right") and hold_time > hold_delay):
 		dir = Vector2.RIGHT
-	if Input.is_action_just_pressed("move_up"):
+	if Input.is_action_just_pressed("move_up") or (Input.is_action_pressed("move_up") and hold_time > hold_delay):
 		dir = Vector2.UP
-	if Input.is_action_just_pressed("move_down"):
+	if Input.is_action_just_pressed("move_down") or (Input.is_action_pressed("move_down") and hold_time > hold_delay):
 		dir = Vector2.DOWN
 		
 	if dir != Vector2.ZERO:
