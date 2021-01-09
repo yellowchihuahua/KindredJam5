@@ -8,6 +8,7 @@ func _ready():
 	
 	$LooseLevel.visible = false
 	$LevelFinished.visible = false
+	
 
 func on_out_of_warmth():
 	$LooseLevel.visible = true
