@@ -1,6 +1,5 @@
 extends Control
 
-onready var warmth_bar = $"HBoxContainer/WarmthBar"
 
 func _ready():
 	Global.get_level_root().connect("out_of_warmth", self, "on_out_of_warmth")
