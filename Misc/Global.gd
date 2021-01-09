@@ -21,6 +21,7 @@ var warmth_bit = 3
 var water_bit = 4
 var sunken_bit = 5
 var interactable_bit = 6
+var slick_bit = 7
 
 func get_level_root():
 	return get_tree().root.get_node("LevelRoot")

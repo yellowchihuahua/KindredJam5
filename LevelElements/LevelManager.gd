@@ -68,6 +68,9 @@ func set_player_warming(warming):
 	if warming:
 		set_warmth(max_warmth)
 		
+func on_player_in_water():
+	set_warmth(0)
+		
 func on_switch_set(switch_num, enabled):
 	switches[switch_num] = enabled
 	emit_signal("switch_set", switch_num, enabled)
