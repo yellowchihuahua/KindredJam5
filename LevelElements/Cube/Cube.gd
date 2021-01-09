@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends KinematicBody2D
 
 var sink = false
 
@@ -8,7 +8,6 @@ func _ready():
 	if fragile:
 		$ColorRect.color = Color.cyan
 		$PlayerCollider.monitoring = true
-
 func try_sink():
 	var water_colliders = $WaterCollider.get_overlapping_bodies()
 	

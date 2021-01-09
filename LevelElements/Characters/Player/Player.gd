@@ -37,10 +37,10 @@ func connect_signals():
 func _physics_process(_delta):
 	if is_moving:
 		var move_delta = lerp(position, grid_position*grid_size, 0.004) - position
+		var do_settle = position.distance_to(grid_position * grid_size) < 1
 		for i in range(len(pushing)):
 			var cube = pushing[i]
-			if position.distance_to(grid_position * grid_size) < 1:
-				
+			if do_settle:
 				cube.position = grid_position * grid_size + i*move_delta.normalized()*grid_size
 				is_moving = false
 				move_finish_time = 0
