@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Resources/Tiles/ground_tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://LevelElements/Characters/Player/Player.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://LevelElements/Cube/Cube.tscn" type="PackedScene" id=8]
 [ext_resource path="res://LevelElements/Interactable/Door.tscn" type="PackedScene" id=9]
 [ext_resource path="res://LevelElements/Interactable/Switch.tscn" type="PackedScene" id=10]
+[ext_resource path="res://LevelElements/Warmth/Blizzard.tscn" type="PackedScene" id=11]
 
 [node name="LevelRoot" type="Node2D"]
 script = ExtResource( 7 )
@@ -57,6 +58,18 @@ position = Vector2( 400, 210 )
 position = Vector2( 320, 210 )
 
 [node name="Warmth" type="Node2D" parent="PlayingField"]
+
+[node name="Blizzard" parent="PlayingField/Warmth" instance=ExtResource( 11 )]
+position = Vector2( 560, 490 )
+
+[node name="Blizzard4" parent="PlayingField/Warmth" instance=ExtResource( 11 )]
+position = Vector2( 560, 420 )
+
+[node name="Blizzard2" parent="PlayingField/Warmth" instance=ExtResource( 11 )]
+position = Vector2( 640, 490 )
+
+[node name="Blizzard3" parent="PlayingField/Warmth" instance=ExtResource( 11 )]
+position = Vector2( 640, 420 )
 
 [node name="Switch" parent="PlayingField" instance=ExtResource( 10 )]
 position = Vector2( 320, 350 )

@@ -10,6 +10,8 @@ func _ready():
 
 func on_set_warmth(val):
 	target_value = val
+	if value > val:
+		get_parent().add_trauma(1)
 	
 func _process(_delta):
 	value = lerp(value, target_value, fill_rate)

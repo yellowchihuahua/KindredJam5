@@ -16,6 +16,10 @@ var switches = {}
 
 var level_finished = false
 
+var blizzards = 0
+var blizzard_chill = -2
+var chill_time = 0
+var chill_delay = 0.5
 
 ############# SETUP
 func _ready():
@@ -30,10 +34,20 @@ func connect_signals():
 
 ############## GAME PLAY
 
+func _process(delta):
+	chill_time += delta
+	if blizzards > 0 and chill_time > chill_delay and not level_finished and warmth > 0:
+		change_warmth(blizzard_chill)
+		chill_time = 0
+		check_frozen()
+		
+		
 
-func change_warmth(delta):
+func change_warmth(delta, check_frozen=false):
 	warmth += delta
 	emit_signal("warmth_set", warmth)
+	
+	
 	
 func check_frozen():
 	if warmth <= 0 and not level_finished:
@@ -57,6 +71,13 @@ func set_player_warming(warming):
 func on_switch_set(switch_num, enabled):
 	switches[switch_num] = enabled
 	emit_signal("switch_set", switch_num, enabled)
+	
+	
+func player_in_blizzard(val):
+	if val:
+		blizzards += 1
+	else:
+		blizzards -= 1
 	
 
 ################ LEVEL CONTROLS

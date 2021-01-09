@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://LevelElements/UI/Hud.gd" type="Script" id=1]
 [ext_resource path="res://LevelElements/UI/WarmthBar.gd" type="Script" id=2]
+[ext_resource path="res://Misc/Shake.tscn" type="PackedScene" id=3]
 
 [sub_resource type="InputEventAction" id=1]
 action = "restart"
@@ -44,16 +45,22 @@ __meta__ = {
 }
 
 [node name="RestartButton" type="Button" parent="HBoxContainer"]
-margin_left = 1672.0
-margin_right = 1729.0
+margin_left = 1622.0
+margin_right = 1679.0
 margin_bottom = 30.0
 shortcut = SubResource( 2 )
 text = "Restart"
 
-[node name="WarmthBar" type="ProgressBar" parent="HBoxContainer"]
-margin_left = 1748.0
+[node name="Shake" parent="HBoxContainer" instance=ExtResource( 3 )]
+margin_left = 1698.0
 margin_right = 1948.0
 margin_bottom = 30.0
+rect_min_size = Vector2( 250, 0 )
+decay = 3.0
+max_offset = Vector2( 0.02, 0.01 )
+max_roll = 0.2
+
+[node name="WarmthBar" type="ProgressBar" parent="HBoxContainer/Shake"]
 rect_min_size = Vector2( 200, 30 )
 custom_styles/fg = SubResource( 3 )
 custom_styles/bg = SubResource( 4 )
