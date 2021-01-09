@@ -40,6 +40,14 @@ collision_mask = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WaterCollider"]
 shape = SubResource( 2 )
 
+[node name="SlickCollider" type="Area2D" parent="."]
+position = Vector2( 40, 35 )
+collision_layer = 0
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SlickCollider"]
+shape = SubResource( 2 )
+
 [node name="PlayerCollider" type="Area2D" parent="."]
 monitoring = false
 monitorable = false
@@ -54,4 +62,6 @@ shape = SubResource( 2 )
 stream = ExtResource( 3 )
 volume_db = -80.0
 [connection signal="body_entered" from="WaterCollider" to="." method="_on_WaterCollider_body_entered"]
+[connection signal="body_entered" from="SlickCollider" to="." method="_on_SlickCollider_body_entered"]
+[connection signal="body_exited" from="SlickCollider" to="." method="_on_SlickCollider_body_exited"]
 [connection signal="body_exited" from="PlayerCollider" to="." method="_on_PlayerCollider_body_exited"]

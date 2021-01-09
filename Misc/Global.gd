@@ -23,6 +23,8 @@ var sunken_bit = 5
 var interactable_bit = 6
 var slick_bit = 7
 
+var grid_size = Vector2(80, 70)
+
 func get_level_root():
 	return get_tree().root.get_node("LevelRoot")
 

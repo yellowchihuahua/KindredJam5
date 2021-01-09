@@ -6,22 +6,13 @@
 [ext_resource path="res://Resources/Penguin.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 9.88239, 9.79074 )
+extents = Vector2( 21.0186, 17.8088 )
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 320, 420 )
 z_index = 99
 collision_layer = 2
 script = ExtResource( 1 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 40, 33 )
-shape = SubResource( 1 )
-
-[node name="SideDetect" parent="." instance=ExtResource( 3 )]
-position = Vector2( 40, 33 )
-water_stop = true
-interact = true
 
 [node name="Penguin" type="Sprite" parent="."]
 position = Vector2( 40.5662, 27.9923 )
@@ -85,6 +76,15 @@ texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 159, 14, 33, 26 )
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 40, 33 )
+shape = SubResource( 1 )
+
+[node name="SideDetect" parent="." instance=ExtResource( 3 )]
+position = Vector2( 40, 33 )
+water_stop = true
+interact = true
+
 [node name="WarmthCollector" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 8
@@ -98,6 +98,14 @@ collision_layer = 0
 collision_mask = 128
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="SlickDetector"]
+position = Vector2( 40, 33 )
+shape = SubResource( 1 )
+
+[node name="SunkDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="SunkDetector"]
 position = Vector2( 40, 33 )
 shape = SubResource( 1 )
 
@@ -115,4 +123,7 @@ stream = ExtResource( 2 )
 [connection signal="area_exited" from="WarmthCollector" to="." method="_on_WarmthCollector_area_exited"]
 [connection signal="body_entered" from="SlickDetector" to="." method="_on_SlickDetector_body_entered"]
 [connection signal="body_exited" from="SlickDetector" to="." method="_on_SlickDetector_body_exited"]
+[connection signal="body_entered" from="SunkDetector" to="." method="_on_SunkDetector_body_entered"]
+[connection signal="body_exited" from="SunkDetector" to="." method="_on_SunkDetector_body_exited"]
 [connection signal="body_entered" from="WaterDetector" to="." method="_on_WaterDetector_body_entered"]
+[connection signal="body_exited" from="WaterDetector" to="." method="_on_WaterDetector_body_exited"]

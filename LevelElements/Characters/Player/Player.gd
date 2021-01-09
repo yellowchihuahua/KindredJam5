@@ -25,6 +25,9 @@ export var grid_size = Vector2(80, 70)
 
 var is_sliding = false
 
+var on_sunk = false
+var on_water = false
+
 var heat_sources = 0
 
 func _ready():
@@ -35,28 +38,41 @@ func _ready():
 func connect_signals():
 	Global.get_level_root().connect("out_of_warmth", self, "on_out_of_warmth")
 	Global.get_level_root().connect("level_finished", self, "on_level_finished")
-	connect("in_water", Global.get_level_root(), "on_player_in_water")
+	var _out = connect("in_water", Global.get_level_root(), "on_player_in_water")
 
 
 func _physics_process(_delta):
 	if is_moving:
-		
-		var move_delta = lerp(position, grid_position*grid_size, 0.004) - position
+		var move_delta = (grid_position*Global.grid_size - position).normalized()*8#lerp(position, grid_position*grid_size, 0.2) - position
 		if is_sliding:
-			move_delta = move_delta.normalized()*0.2
-		var do_settle = position.distance_to(grid_position * grid_size) < 1
+			move_delta = move_delta.normalized()*10
+		var do_settle = position.distance_to(grid_position * grid_size) < max(move_delta.length(), 0.2)
+		
+		var offset = Global.grid_size*last_move
+		
+		position += move_delta
+		if do_settle:
+			position = grid_position*grid_size
 		for i in range(len(pushing)):
 			var cube = pushing[i]
 			if do_settle:
-				cube.position = grid_position * grid_size + i*move_delta.normalized()*grid_size
 				stop_moving()
+				if cube.has_method("stopped_push"):
+					cube.stopped_push(last_move)
 			else:
-				cube.position = position + (move_delta * grid_size) + move_delta.normalized()*i * grid_size
+				cube.position = position + offset*i
 
 func stop_moving():
 	is_moving = false
 	move_finish_time = 0
 	emit_signal("done_moving")
+	
+	try_drown()
+	
+func try_drown():
+	if on_water and not on_sunk:
+		emit_signal("in_water")
+		$WaterSplash.play()
 	
 func _process(delta):
 	get_input()
@@ -88,10 +104,17 @@ func get_input():
 		move_primed = dir
 		move_prime_time = 0
 
+func clear_pushing():
+	for i in range(1, len(pushing)):
+		var block = pushing[i]
+		block.stopped_push(last_move)
+		
+	pushing = []
+
 func try_move(direction:Vector2, slide_move=false):
 	move_prime_time = move_prime_expire +1
 	move_primed = Vector2.ZERO
-	
+	clear_pushing()
 	pushing = $SideDetect.can_move(direction)
 	if len(pushing) > 0:
 		is_moving = true
@@ -99,6 +122,10 @@ func try_move(direction:Vector2, slide_move=false):
 		if not slide_move:
 			emit_signal("moved")
 		last_move = direction
+		
+		for i in range(1, len(pushing)):
+			pushing[i].claim_push()
+		
 	elif is_moving:
 		stop_moving()
 		
@@ -120,14 +147,22 @@ func _on_WarmthCollector_area_exited(_area):
 		emit_signal("set_warming", false)
 
 
-func _on_SlickDetector_body_entered(body):
+func _on_SlickDetector_body_entered(_body):
 	is_sliding = true
 	$SideDetect.water_stop = false
-func _on_SlickDetector_body_exited(body):
+func _on_SlickDetector_body_exited(_body):
 	is_sliding = false
 	$SideDetect.water_stop = true
 
 
-func _on_WaterDetector_body_entered(body):
-	$WaterSplash.play()
-	emit_signal("in_water")
+func _on_WaterDetector_body_entered(_body):
+	on_water = true
+func _on_WaterDetector_body_exited(body):
+	on_water = false
+
+func _on_SunkDetector_body_exited(_body):
+	on_sunk = false
+func _on_SunkDetector_body_entered(_body):
+	on_sunk = true
+
+
