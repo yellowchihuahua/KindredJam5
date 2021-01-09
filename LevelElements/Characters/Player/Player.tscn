@@ -20,6 +20,7 @@ shape = SubResource( 1 )
 [node name="SideDetect" parent="." instance=ExtResource( 3 )]
 position = Vector2( 40, 33 )
 water_stop = true
+interact = true
 
 [node name="Penguin" type="Sprite" parent="."]
 position = Vector2( 50, 29.5017 )

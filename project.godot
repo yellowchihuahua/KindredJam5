@@ -99,6 +99,7 @@ restart={
 2d_physics/layer_4="Warmth"
 2d_physics/layer_5="Water"
 2d_physics/layer_6="Sunken"
+2d_physics/layer_7="Interactable"
 
 [rendering]
 

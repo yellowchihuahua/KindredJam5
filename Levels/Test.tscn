@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Resources/Tiles/ground_tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://LevelElements/Characters/Player/Player.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://LevelElements/LevelManager.gd" type="Script" id=7]
 [ext_resource path="res://LevelElements/Cube/Cube.tscn" type="PackedScene" id=8]
 [ext_resource path="res://LevelElements/Interactable/Door.tscn" type="PackedScene" id=9]
+[ext_resource path="res://LevelElements/Interactable/Switch.tscn" type="PackedScene" id=10]
 
 [node name="LevelRoot" type="Node2D"]
 script = ExtResource( 7 )
@@ -57,12 +58,20 @@ position = Vector2( 320, 210 )
 
 [node name="Warmth" type="Node2D" parent="PlayingField"]
 
+[node name="Switch" parent="PlayingField" instance=ExtResource( 10 )]
+position = Vector2( 320, 350 )
+switch_num = 1
+
 [node name="Button" parent="PlayingField" instance=ExtResource( 6 )]
 position = Vector2( 560, 210 )
 switch_num = 0
 
 [node name="Door" parent="PlayingField" instance=ExtResource( 9 )]
 switches = PoolIntArray( 0 )
+
+[node name="Door2" parent="PlayingField" instance=ExtResource( 9 )]
+position = Vector2( 400, 280 )
+switches = PoolIntArray( 1 )
 
 [node name="Hud" parent="." instance=ExtResource( 4 )]
 [connection signal="body_entered" from="PlayingField/Exit" to="." method="_on_Exit_body_entered"]

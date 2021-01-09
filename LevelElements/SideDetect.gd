@@ -2,6 +2,7 @@ extends Node2D
 
 # does water prevent from moving
 export var water_stop = false
+export var interact = false
 
 func _ready():
 	for side in [$Right, $Down, $Left, $Up]:
@@ -34,6 +35,9 @@ func can_move(direction):
 			push_thing = c
 		is_water = is_water or c.get_collision_layer_bit(Global.water_bit)
 		is_sunken = is_sunken or c.get_collision_layer_bit(Global.sunken_bit)
+		
+		if interact and c.get_collision_layer_bit(Global.interactable_bit):
+			c.interact()
 	
 	if is_wall:
 		return []
