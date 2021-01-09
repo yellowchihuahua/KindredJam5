@@ -45,7 +45,11 @@ func can_move(direction):
 		return []
 	
 	if push_thing:
-		pushing += push_thing.get_node("SideDetect").can_move(direction)
+		var pushed_pushing = push_thing.get_node("SideDetect").can_move(direction)
+		if len(pushed_pushing) > 0:
+			pushing += pushed_pushing
+		else: # push_thing blocked
+			return []
 	
 	return pushing
 	
