@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
-signal moved ()
+signal moved
+signal done_moving
 signal set_warming(is_warming)
 
 var is_moving = false
@@ -44,11 +45,9 @@ func _physics_process(_delta):
 				cube.position = grid_position * grid_size + i*move_delta.normalized()*grid_size
 				is_moving = false
 				move_finish_time = 0
-				#cube.get_node("SideDetect").position = Vector2(40,35)
+				emit_signal("done_moving")
 			else:
-				#var side_pos = cube.get_node("SideDetect").global_position
 				cube.position = position + (move_delta * grid_size) + move_delta.normalized()*i * grid_size
-				#cube.get_node("SideDetect").global_position = side_pos
 
 
 func _process(delta):
