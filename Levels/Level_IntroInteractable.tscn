@@ -1,0 +1,68 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Resources/Tiles/ground_tiles.tres" type="TileSet" id=1]
+[ext_resource path="res://LevelElements/Characters/Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://LevelElements/Exit.tscn" type="PackedScene" id=3]
+[ext_resource path="res://LevelElements/UI/Hud.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Misc/ColorPolygon.gd" type="Script" id=5]
+[ext_resource path="res://LevelElements/Interactable/Button.tscn" type="PackedScene" id=6]
+[ext_resource path="res://LevelElements/LevelManager.gd" type="Script" id=7]
+[ext_resource path="res://LevelElements/Interactable/Switch.tscn" type="PackedScene" id=8]
+[ext_resource path="res://LevelElements/Cube/Cube.tscn" type="PackedScene" id=9]
+[ext_resource path="res://LevelElements/Warmth/CampFire.tscn" type="PackedScene" id=10]
+[ext_resource path="res://LevelElements/Interactable/Door.tscn" type="PackedScene" id=11]
+
+[node name="LevelRoot" type="Node2D"]
+script = ExtResource( 7 )
+
+[node name="PlayingField" type="Node2D" parent="."]
+
+[node name="TileMap" type="TileMap" parent="PlayingField"]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 80, 70 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 65536, 0, 1, 65537, 0, 1, 65538, 0, 1, 65539, 0, 1, 65540, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 0, 0, 65546, 0, 0, 65547, 0, 0, 65548, 0, 0, 131072, 0, 1, 131073, 0, 1, 131074, 0, 1, 131075, 0, 1, 131076, 0, 1, 131077, 0, 1, 131078, 0, 65538, 131079, 0, 2, 131080, 0, 0, 131081, 0, 0, 131082, 0, 0, 131083, 0, 0, 131084, 0, 0, 196608, 0, 1, 196609, 0, 1, 196610, 0, 1, 196611, 0, 1, 196612, 0, 1, 196613, 0, 1, 196614, 0, 196610, 196615, 0, 0, 196616, 0, 0, 196617, 0, 0, 196618, 0, 0, 196619, 0, 0, 196620, 0, 0, 262144, 0, 1, 262145, 0, 1, 262146, 0, 1, 262147, 0, 1, 262148, 0, 1, 262149, 0, 196610, 262150, 0, 0, 262151, 0, 0, 262152, 0, 196611, 262153, 0, 0, 262154, 0, 0, 262155, 0, 0, 262156, 0, 0, 327680, 0, 0, 327681, 0, 1, 327682, 0, 1, 327683, 0, 1, 327684, 0, 1, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 0, 327692, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 0, 0, 393228, 0, 0, 458752, 0, 0, 458753, 0, 0, 458754, 0, 0, 458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 0, 0, 458762, 0, 0, 458763, 0, 0, 458764, 0, 0, 524288, 0, 0, 524289, 0, 0, 524290, 0, 0, 524291, 0, 0, 524292, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 524298, 0, 0, 524299, 0, 0, 524300, 0, 0 )
+
+[node name="Player" parent="PlayingField" instance=ExtResource( 2 )]
+position = Vector2( 240, 280 )
+
+[node name="TempLevelGeom" type="StaticBody2D" parent="PlayingField"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayingField/TempLevelGeom"]
+polygon = PoolVector2Array( 1040, 630, 1040, 350, 1040, 210, 1040, 0, 0, 0, 0, 210, 400, 210, 400, 280, 480, 280, 480, 210, 640, 210, 640, 280, 720, 280, 720, 210, 880, 210, 880, 420, 720, 420, 720, 350, 640, 350, 640, 490, 560, 490, 560, 420, 480, 420, 480, 350, 400, 350, 400, 560, 320, 560, 320, 420, 0, 420, 0, 630 )
+
+[node name="Polygon2D" type="Polygon2D" parent="PlayingField/TempLevelGeom/CollisionPolygon2D"]
+script = ExtResource( 5 )
+
+[node name="Exit" parent="PlayingField" instance=ExtResource( 3 )]
+
+[node name="Cubes" type="Node2D" parent="PlayingField"]
+
+[node name="Cube" parent="PlayingField/Cubes" instance=ExtResource( 9 )]
+position = Vector2( 320, 420 )
+
+[node name="Warmth" type="Node2D" parent="PlayingField"]
+
+[node name="CampFire" parent="PlayingField/Warmth" instance=ExtResource( 10 )]
+position = Vector2( 160, 280 )
+
+[node name="Interactable" type="Node2D" parent="PlayingField"]
+
+[node name="Button" parent="PlayingField/Interactable" instance=ExtResource( 6 )]
+position = Vector2( 320, 490 )
+switch_num = 0
+
+[node name="Switch" parent="PlayingField/Interactable" instance=ExtResource( 8 )]
+position = Vector2( 560, 420 )
+switch_num = 1
+
+[node name="Door" parent="PlayingField/Interactable" instance=ExtResource( 11 )]
+position = Vector2( 400, 280 )
+switches = PoolIntArray( 0 )
+
+[node name="Door2" parent="PlayingField/Interactable" instance=ExtResource( 11 )]
+position = Vector2( 640, 280 )
+switches = PoolIntArray( 1 )
+
+[node name="Hud" parent="." instance=ExtResource( 4 )]
+[connection signal="body_entered" from="PlayingField/Exit" to="." method="_on_Exit_body_entered"]

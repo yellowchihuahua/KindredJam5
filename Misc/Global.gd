@@ -7,7 +7,8 @@ var level_image_root = "res://Resources/LevelSelectImages/"
 export var level_paths = ["Level_IntroExit",
 						"Level_IntroFire",
 						"Level_IntroBlocks",
-						"Level_IntroBlocksFragile"]
+						"Level_IntroBlocksFragile",
+						"Level_IntroInteractable"]
 
 var menu_path = "res://Levels/Menu.tscn"
 var current_level = 0
