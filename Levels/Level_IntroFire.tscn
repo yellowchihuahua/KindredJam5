@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Resources/Tiles/ground_tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://LevelElements/Characters/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://LevelElements/Exit.tscn" type="PackedScene" id=3]
 [ext_resource path="res://LevelElements/UI/Hud.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Misc/ColorPolygon.gd" type="Script" id=5]
 [ext_resource path="res://LevelElements/Warmth/CampFire.tscn" type="PackedScene" id=6]
 [ext_resource path="res://LevelElements/LevelManager.gd" type="Script" id=7]
 
@@ -21,23 +20,6 @@ tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 
 
 [node name="Player" parent="PlayingField" instance=ExtResource( 2 )]
 position = Vector2( 80, 280 )
-
-[node name="TempLevelGeom" type="StaticBody2D" parent="PlayingField"]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayingField/TempLevelGeom"]
-
-[node name="Polygon2D" type="Polygon2D" parent="PlayingField/TempLevelGeom/CollisionPolygon2D"]
-script = ExtResource( 5 )
-
-[node name="TempWaterGeom" type="StaticBody2D" parent="PlayingField"]
-collision_layer = 16
-collision_mask = 0
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayingField/TempWaterGeom"]
-
-[node name="Polygon2D" type="Polygon2D" parent="PlayingField/TempWaterGeom/CollisionPolygon2D"]
-color = Color( 0, 0.345098, 0.533333, 1 )
-script = ExtResource( 5 )
 
 [node name="Exit" parent="PlayingField" instance=ExtResource( 3 )]
 position = Vector2( 880, 70 )

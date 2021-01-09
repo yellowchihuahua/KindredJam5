@@ -8,6 +8,7 @@ func _ready():
 	image_swapper.get_node("CurrentImage").texture = load(Global.get_level_image(0))
 
 func show_level(num):
+	print("showing ", num)
 	num = num % len(Global.level_paths)
 	image_swapper.swap_image(load(Global.get_level_image(num)), 1 if level_shown < num else -1)
 	level_shown = num

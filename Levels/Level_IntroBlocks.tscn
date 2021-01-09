@@ -22,13 +22,6 @@ tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 
 [node name="Player" parent="PlayingField" instance=ExtResource( 2 )]
 position = Vector2( 320, 350 )
 
-[node name="TempLevelGeom" type="StaticBody2D" parent="PlayingField"]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayingField/TempLevelGeom"]
-
-[node name="Polygon2D" type="Polygon2D" parent="PlayingField/TempLevelGeom/CollisionPolygon2D"]
-script = ExtResource( 5 )
-
 [node name="TempWaterGeom" type="StaticBody2D" parent="PlayingField"]
 collision_layer = 16
 collision_mask = 0

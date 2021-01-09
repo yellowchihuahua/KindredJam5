@@ -9,7 +9,7 @@ var move_prime_expire = 0.2
 var move_prime_time = move_prime_expire+1
 
 var move_finish_time = 0
-var move_cooldown = 0.1
+var move_cooldown = 0.01
 
 var hold_time = 0
 var hold_delay = 0.4
@@ -44,11 +44,11 @@ func _physics_process(_delta):
 				cube.position = grid_position * grid_size + i*move_delta.normalized()*grid_size
 				is_moving = false
 				move_finish_time = 0
-				cube.get_node("SideDetect").position = Vector2(40,35)
+				#cube.get_node("SideDetect").position = Vector2(40,35)
 			else:
-				var side_pos = cube.get_node("SideDetect").global_position
+				#var side_pos = cube.get_node("SideDetect").global_position
 				cube.position = position + (move_delta * grid_size) + move_delta.normalized()*i * grid_size
-				cube.get_node("SideDetect").global_position = side_pos
+				#cube.get_node("SideDetect").global_position = side_pos
 
 
 func _process(delta):

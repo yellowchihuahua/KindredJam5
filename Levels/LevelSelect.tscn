@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://MenuElements/LevelSelector.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -10,6 +10,12 @@ action = "ui_cancel"
 
 [sub_resource type="ShortCut" id=6]
 shortcut = SubResource( 5 )
+
+[sub_resource type="InputEventAction" id=7]
+action = "ui_left"
+
+[sub_resource type="ShortCut" id=8]
+shortcut = SubResource( 7 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "swap_left"
@@ -215,6 +221,12 @@ tracks/7/keys = {
 "values": [ true, false ]
 }
 
+[sub_resource type="InputEventAction" id=9]
+action = "ui_right"
+
+[sub_resource type="ShortCut" id=10]
+shortcut = SubResource( 9 )
+
 [sub_resource type="InputEventAction" id=3]
 action = "ui_accept"
 
@@ -269,6 +281,9 @@ margin_top = 50.0
 margin_right = 30.0
 margin_bottom = 250.0
 rect_min_size = Vector2( 30, 200 )
+focus_mode = 0
+enabled_focus_mode = 0
+shortcut = SubResource( 8 )
 text = "<"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -342,6 +357,9 @@ margin_top = 50.0
 margin_right = 30.0
 margin_bottom = 250.0
 rect_min_size = Vector2( 30, 200 )
+focus_mode = 0
+enabled_focus_mode = 0
+shortcut = SubResource( 10 )
 text = ">"
 __meta__ = {
 "_edit_use_anchors_": false
