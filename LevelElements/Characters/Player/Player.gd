@@ -8,6 +8,9 @@ var move_primed:Vector2
 var move_prime_expire = 0.2
 var move_prime_time = move_prime_expire+1
 
+var move_finish_time = 0
+var move_cooldown = 0.1
+
 var hold_time = 0
 var hold_delay = 0.4
 
@@ -33,25 +36,27 @@ func connect_signals():
 
 func _physics_process(_delta):
 	if is_moving:
-		var move_delta = lerp(position, grid_position*grid_size, 0.003) - position
+		var move_delta = lerp(position, grid_position*grid_size, 0.004) - position
 		for i in range(len(pushing)):
 			var cube = pushing[i]
 			if position.distance_to(grid_position * grid_size) < 1:
 				
 				cube.position = grid_position * grid_size + i*move_delta.normalized()*grid_size
 				is_moving = false
+				move_finish_time = 0
 				cube.get_node("SideDetect").position = Vector2(40,35)
 			else:
 				var side_pos = cube.get_node("SideDetect").global_position
-				cube.position = position + (move_delta * grid_size)*(i+1)
+				cube.position = position + (move_delta * grid_size) + move_delta.normalized()*i * grid_size
 				cube.get_node("SideDetect").global_position = side_pos
 
 
 func _process(delta):
 	get_input()
+	move_finish_time += delta
 	move_prime_time += delta
 	hold_time += delta
-	if not is_moving and move_prime_time < move_prime_expire and can_move:
+	if not is_moving and move_prime_time < move_prime_expire and can_move and move_finish_time > move_cooldown:
 		try_move(move_primed)
 
 
@@ -67,6 +72,7 @@ func get_input():
 		dir = Vector2.DOWN
 		
 	if dir != Vector2.ZERO:
+		hold_time = 0
 		move_primed = dir
 		move_prime_time = 0
 

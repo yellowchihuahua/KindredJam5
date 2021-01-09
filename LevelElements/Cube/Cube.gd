@@ -24,6 +24,7 @@ func try_sink():
 	if on_water and not on_sunk:
 		set_collision_layer_bit(Global.pushable_bit, false)
 		set_collision_layer_bit(Global.sunken_bit, true)
+		$WaterSplash.play()
 		
 
 
