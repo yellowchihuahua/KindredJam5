@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://LevelElements/Characters/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Resources/sfx/WaterSplash2.wav" type="AudioStream" id=2]
@@ -8,68 +8,213 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 21.0186, 17.8088 )
 
+[sub_resource type="Animation" id=2]
+resource_name = "Idle"
+loop = true
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/path = NodePath("Penguin/FlipperLeft:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -36.523, -30.5356 ), Vector2( -36.523, -26.5356 ), Vector2( -36.523, -30.5356 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Penguin/FlipperRight:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 36.523, -39.5167 ), Vector2( 36.523, -33.5167 ), Vector2( 36.523, -39.5167 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Penguin/Body:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.05, 0.95 ), Vector2( 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Penguin/FlipperRight:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 5.0, 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Penguin/FlipperLeft:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -5.0, 0.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Penguin/FootLeft:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -15.0614, 61.1761 ), Vector2( -17.0614, 59.1761 ), Vector2( -15.0614, 61.1761 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Penguin/FootRight:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 29.1508, 55.5293 ), Vector2( 31.1508, 53.5293 ), Vector2( 29.1508, 55.5293 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Penguin/EyeLeft:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Penguin/EyeRight:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Penguin/BeakTop:rotation_degrees")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -5.0, 0.0 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Penguin/BeakBottom:rotation_degrees")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 5.0, 0.0 ]
+}
+
 [node name="Player" type="KinematicBody2D"]
+position = Vector2( 320, 420 )
 z_index = 99
 collision_layer = 2
 script = ExtResource( 1 )
 
 [node name="Penguin" type="Sprite" parent="."]
-position = Vector2( 36.2202, 8.31498 )
+position = Vector2( 40.5662, 27.9923 )
 scale = Vector2( 0.5, 0.5 )
 z_index = 3
 
 [node name="Body" type="Sprite" parent="Penguin"]
+scale = Vector2( 1.03692, 0.963076 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 3, 75, 87, 122 )
 
-[node name="FlipperLeft" type="Sprite" parent="Penguin/Body"]
-position = Vector2( -36.523, -30.5356 )
+[node name="FlipperLeft" type="Sprite" parent="Penguin"]
+position = Vector2( -36.523, -27.5817 )
+rotation = -0.0644448
 z_index = 1
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 98, 63, 40, 71 )
 
-[node name="FlipperRight" type="Sprite" parent="Penguin/Body"]
-position = Vector2( 36.523, -39.5167 )
+[node name="FlipperRight" type="Sprite" parent="Penguin"]
+position = Vector2( 36.523, -35.0858 )
+rotation = 0.0644448
 z_index = -2
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 151, 117, 38, 72 )
 
-[node name="EyeLeft" type="Sprite" parent="Penguin/Body"]
-position = Vector2( -3.59338, -33.3673 )
+[node name="EyeLeft" type="Sprite" parent="Penguin"]
+position = Vector2( -4.92041, -33.3673 )
+scale = Vector2( 1.07385, 1.07385 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 15, 5, 16, 15 )
 
-[node name="EyeRight" type="Sprite" parent="Penguin/Body"]
-position = Vector2( 29.6642, -39.9524 )
+[node name="EyeRight" type="Sprite" parent="Penguin"]
+position = Vector2( 30.9912, -39.9524 )
+scale = Vector2( 1.07385, 1.07385 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 15, 5, 16, 15 )
 
-[node name="BeakTop" type="Sprite" parent="Penguin/Body"]
+[node name="BeakTop" type="Sprite" parent="Penguin"]
 position = Vector2( 34.9554, -26.0922 )
+rotation = -0.0644448
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 14, 34, 33, 18 )
 
-[node name="BeakBottom" type="Sprite" parent="Penguin/Body"]
+[node name="BeakBottom" type="Sprite" parent="Penguin"]
 position = Vector2( 35.4687, -17.3654 )
+rotation = 0.0644448
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 71, 36, 31, 11 )
 
-[node name="FootLeft" type="Sprite" parent="Penguin/Body"]
-position = Vector2( -7.29651, 61.1761 )
+[node name="FootLeft" type="Sprite" parent="Penguin"]
+position = Vector2( -16.5384, 59.6991 )
 z_index = -1
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 118, 10, 33, 25 )
 
-[node name="FootRight" type="Sprite" parent="Penguin/Body"]
-position = Vector2( 29.1508, 55.5293 )
+[node name="FootRight" type="Sprite" parent="Penguin"]
+position = Vector2( 30.6278, 54.0523 )
 z_index = -1
 texture = ExtResource( 4 )
 region_enabled = true
@@ -118,6 +263,9 @@ shape = SubResource( 1 )
 
 [node name="WaterSplash" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Idle = SubResource( 2 )
 [connection signal="area_entered" from="WarmthCollector" to="." method="_on_WarmthCollector_area_entered"]
 [connection signal="area_exited" from="WarmthCollector" to="." method="_on_WarmthCollector_area_exited"]
 [connection signal="body_entered" from="SlickDetector" to="." method="_on_SlickDetector_body_entered"]
