@@ -28,7 +28,7 @@ __meta__ = {
 }
 
 [node name="PlayButton" type="Button" parent="VBoxContainer"]
-margin_right = 544.0
+margin_right = 155.0
 margin_bottom = 74.0
 rect_min_size = Vector2( 150, 30 )
 custom_fonts/font = ExtResource( 2 )
@@ -37,7 +37,7 @@ text = "Play"
 
 [node name="LevelSelect" type="Button" parent="VBoxContainer"]
 margin_top = 112.0
-margin_right = 544.0
+margin_right = 155.0
 margin_bottom = 186.0
 rect_min_size = Vector2( 80, 30 )
 custom_fonts/font = ExtResource( 2 )
