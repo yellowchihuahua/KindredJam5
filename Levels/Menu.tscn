@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://LevelElements/MenuManager.gd" type="Script" id=1]
+[ext_resource path="res://Resources/Font/MediumSizeFont.tres" type="DynamicFont" id=2]
 
 [sub_resource type="InputEventAction" id=1]
 action = "ui_accept"
@@ -21,22 +22,25 @@ margin_left = 67.2717
 margin_top = 176.588
 margin_right = 147.272
 margin_bottom = 216.588
+custom_constants/separation = 38
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="PlayButton" type="Button" parent="VBoxContainer"]
-margin_right = 82.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 80, 30 )
+margin_right = 544.0
+margin_bottom = 74.0
+rect_min_size = Vector2( 150, 30 )
+custom_fonts/font = ExtResource( 2 )
 shortcut = SubResource( 2 )
 text = "Play"
 
 [node name="LevelSelect" type="Button" parent="VBoxContainer"]
-margin_top = 34.0
-margin_right = 82.0
-margin_bottom = 64.0
+margin_top = 112.0
+margin_right = 544.0
+margin_bottom = 186.0
 rect_min_size = Vector2( 80, 30 )
+custom_fonts/font = ExtResource( 2 )
 text = "Selet Level"
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="VBoxContainer/LevelSelect" to="." method="_on_LevelSelect_pressed"]

@@ -65,3 +65,4 @@ func get_cast(direction:Vector2):
 		return $Down
 	
 	printerr("ERROR: no raycast for ", direction, ". Ensure direction is a unit, grid vector.")
+
