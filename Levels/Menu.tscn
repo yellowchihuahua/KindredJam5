@@ -41,5 +41,4 @@ margin_left = 402.0
 margin_top = 146.0
 margin_right = 813.0
 margin_bottom = 305.0
-[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]

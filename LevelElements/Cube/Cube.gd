@@ -68,6 +68,7 @@ func try_sink():
 		do_sink()
 		
 func do_sink(play_audio=true):
+	$AnimationPlayer.play("Sink")
 	set_collision_layer_bit(Global.pushable_bit, false)
 	set_collision_layer_bit(Global.sunken_bit, true)
 	z_index -= 1
