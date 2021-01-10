@@ -58,7 +58,7 @@ func try_sink():
 	var on_water = false
 	var on_sunk = false
 	for i in range(len(water_colliders)):
-		var body:CollisionObject2D = water_colliders[i]
+		var body = water_colliders[i]
 		if body == self:
 			continue
 		if body.get_collision_layer_bit(Global.water_bit):
