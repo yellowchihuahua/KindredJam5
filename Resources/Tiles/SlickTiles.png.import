@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/TempWaterTiles.png-148d8f65faa3dd14a9462c826a4d84a2.stex"
+path="res://.import/SlickTiles.png-a7ce062a6b61355e18c38c5f53667f08.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Tiles/TempWaterTiles.png"
-dest_files=[ "res://.import/TempWaterTiles.png-148d8f65faa3dd14a9462c826a4d84a2.stex" ]
+source_file="res://Resources/Tiles/SlickTiles.png"
+dest_files=[ "res://.import/SlickTiles.png-a7ce062a6b61355e18c38c5f53667f08.stex" ]
 
 [params]
 
