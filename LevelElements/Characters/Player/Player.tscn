@@ -1,9 +1,17 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://LevelElements/Characters/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Resources/sfx/WaterSplash2.wav" type="AudioStream" id=2]
 [ext_resource path="res://LevelElements/SideDetect.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Resources/Penguin.png" type="Texture" id=4]
+[ext_resource path="res://Resources/Objects/FireParticle.png" type="Texture" id=5]
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.968, 0.625 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0, 0.882591, 1 )
+colors = PoolColorArray( 0.980469, 0.329708, 0.155742, 1, 0.605469, 0.409668, 0.349729, 0.290196, 0.945098, 0.917647, 0.909804, 0 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 21.0186, 17.8088 )
@@ -151,28 +159,44 @@ z_index = 99
 collision_layer = 2
 script = ExtResource( 1 )
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2( 36.8598, -36.4053 )
+amount = 50
+texture = ExtResource( 5 )
+emission_shape = 1
+emission_sphere_radius = 15.0
+gravity = Vector2( 0, -80 )
+orbit_velocity = 0.5
+orbit_velocity_random = 0.84
+scale_amount = 2.0
+scale_amount_random = 0.08
+scale_amount_curve = SubResource( 4 )
+color_ramp = SubResource( 3 )
+hue_variation = 0.15
+hue_variation_random = 0.59
+
 [node name="Penguin" type="Sprite" parent="."]
 position = Vector2( 40.5662, 27.9923 )
 scale = Vector2( 0.5, 0.5 )
 z_index = 3
 
 [node name="Body" type="Sprite" parent="Penguin"]
-scale = Vector2( 1.03692, 0.963076 )
+scale = Vector2( 1.03241, 0.967589 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 3, 75, 87, 122 )
 
 [node name="FlipperLeft" type="Sprite" parent="Penguin"]
-position = Vector2( -36.523, -27.5817 )
-rotation = -0.0644448
+position = Vector2( -36.523, -27.9427 )
+rotation = -0.0565682
 z_index = 1
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 98, 63, 40, 71 )
 
 [node name="FlipperRight" type="Sprite" parent="Penguin"]
-position = Vector2( 36.523, -35.0858 )
-rotation = 0.0644448
+position = Vector2( 36.523, -35.6274 )
+rotation = 0.0565682
 z_index = -2
 texture = ExtResource( 4 )
 region_enabled = true
@@ -180,41 +204,41 @@ region_rect = Rect2( 151, 117, 38, 72 )
 
 [node name="EyeLeft" type="Sprite" parent="Penguin"]
 position = Vector2( -4.92041, -33.3673 )
-scale = Vector2( 1.07385, 1.07385 )
+scale = Vector2( 1.06482, 1.06482 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 15, 5, 16, 15 )
 
 [node name="EyeRight" type="Sprite" parent="Penguin"]
 position = Vector2( 30.9912, -39.9524 )
-scale = Vector2( 1.07385, 1.07385 )
+scale = Vector2( 1.06482, 1.06482 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 15, 5, 16, 15 )
 
 [node name="BeakTop" type="Sprite" parent="Penguin"]
 position = Vector2( 34.9554, -26.0922 )
-rotation = -0.0644448
+rotation = -0.0565682
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 14, 34, 33, 18 )
 
 [node name="BeakBottom" type="Sprite" parent="Penguin"]
 position = Vector2( 35.4687, -17.3654 )
-rotation = 0.0644448
+rotation = 0.0565682
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 71, 36, 31, 11 )
 
 [node name="FootLeft" type="Sprite" parent="Penguin"]
-position = Vector2( -16.5384, 59.6991 )
+position = Vector2( -16.3578, 59.8797 )
 z_index = -1
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 118, 10, 33, 25 )
 
 [node name="FootRight" type="Sprite" parent="Penguin"]
-position = Vector2( 30.6278, 54.0523 )
+position = Vector2( 30.4472, 54.2329 )
 z_index = -1
 texture = ExtResource( 4 )
 region_enabled = true
