@@ -269,22 +269,6 @@ collision_mask = 128
 position = Vector2( 40, 33 )
 shape = SubResource( 1 )
 
-[node name="SunkDetector" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 32
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="SunkDetector"]
-position = Vector2( 40, 33 )
-shape = SubResource( 1 )
-
-[node name="WaterDetector" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 16
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="WaterDetector"]
-position = Vector2( 40, 33 )
-shape = SubResource( 1 )
-
 [node name="WaterSplash" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
 
@@ -294,7 +278,3 @@ anims/Idle = SubResource( 2 )
 [connection signal="area_exited" from="WarmthCollector" to="." method="_on_WarmthCollector_area_exited"]
 [connection signal="body_entered" from="SlickDetector" to="." method="_on_SlickDetector_body_entered"]
 [connection signal="body_exited" from="SlickDetector" to="." method="_on_SlickDetector_body_exited"]
-[connection signal="body_entered" from="SunkDetector" to="." method="_on_SunkDetector_body_entered"]
-[connection signal="body_exited" from="SunkDetector" to="." method="_on_SunkDetector_body_exited"]
-[connection signal="body_entered" from="WaterDetector" to="." method="_on_WaterDetector_body_entered"]
-[connection signal="body_exited" from="WaterDetector" to="." method="_on_WaterDetector_body_exited"]

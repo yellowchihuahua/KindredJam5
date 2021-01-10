@@ -53,6 +53,14 @@ func can_move(direction):
 	
 	return pushing
 	
+func is_colliding(dir:Vector2, bit:int):
+	var cast = get_cast(dir)
+	for b in cast.get_overlapping_bodies():
+		if b.get_collision_layer_bit(bit):
+			return true
+	
+	return false
+	
 # returns the raycast aligned with a direction
 func get_cast(direction:Vector2):
 	if direction == Vector2.LEFT:
@@ -63,6 +71,8 @@ func get_cast(direction:Vector2):
 		return $Up
 	if direction == Vector2.DOWN:
 		return $Down
+	if direction == Vector2.ZERO:
+		return $Center
 	
 	printerr("ERROR: no raycast for ", direction, ". Ensure direction is a unit, grid vector.")
 

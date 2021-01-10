@@ -1,6 +1,5 @@
 extends KinematicBody2D
 
-var is_sliding
 var is_pushed = false
 
 var last_direction:Vector2
@@ -13,19 +12,19 @@ export var fragile = false
 func _ready():
 	try_sink()
 	if fragile:
-		$ColorRect.color = Color.cyan
 		$PlayerCollider.monitoring = true
 		
-func _physics_process(delta):
+func _physics_process(_delta):
 	if direction != Vector2.ZERO and not is_pushed:
 		var move_delta = (grid_position - position/Global.grid_size).normalized()*4
 		var settle = (grid_position - position/Global.grid_size).length() < 0.1
 		position += move_delta
 		var offset = Global.grid_size*direction
+		var sliding = is_sliding()
 		for i in range(1, len(pushing)):
 			var block = pushing[i]
 			if settle:
-				if not is_sliding:
+				if not sliding:
 					block.position = grid_position*Global.grid_size + i*Global.grid_size*direction
 					
 				block.try_sink()
@@ -39,7 +38,7 @@ func _physics_process(delta):
 		if settle:
 			snap_to_grid()
 			clear_push()
-			if is_sliding:
+			if is_sliding():
 				try_move(last_direction)
 
 func clear_push():
@@ -72,8 +71,6 @@ func do_sink(play_audio=true):
 	set_collision_layer_bit(Global.pushable_bit, false)
 	set_collision_layer_bit(Global.sunken_bit, true)
 	z_index -= 1
-	$ColorRect.color /= 2
-	$ColorRect.color += Color.blue/2
 	if play_audio:
 		$WaterSplash.play()
 
@@ -88,7 +85,7 @@ func stopped_push(push_direction):
 	snap_to_grid()
 	
 	is_pushed = false
-	if is_sliding:
+	if is_sliding():
 		try_move(push_direction)
 		
 func claim_push():
@@ -96,7 +93,7 @@ func claim_push():
 		
 func try_move(push_direction):
 	last_direction = push_direction
-	if direction == Vector2.ZERO or is_sliding:	
+	if direction == Vector2.ZERO or is_sliding():	
 		pushing = $SideDetect.can_move(push_direction)
 		if len(pushing) > 0:
 			direction = push_direction
@@ -105,19 +102,15 @@ func try_move(push_direction):
 			for i in range(1, len(pushing)):
 				pushing[i].claim_push()
 
+func is_sliding():
+	return $SideDetect.is_colliding(Vector2.ZERO, Global.slick_bit)
 
 func _on_PlayerCollider_body_exited(_body):
 	queue_free()
 
-func _on_SlickCollider_body_exited(body):
-	is_sliding = false
-func _on_SlickCollider_body_entered(body):
-	is_sliding = true
-
 func _on_InitialDetector_body_entered(body):
 	if body.get_collision_layer_bit(Global.water_bit):
 		do_sink(false)
-
 
 func destroy_initialDetector():
 	$InitialDetector.queue_free()

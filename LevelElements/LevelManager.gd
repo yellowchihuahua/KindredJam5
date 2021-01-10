@@ -44,7 +44,7 @@ func _process(delta):
 		
 		
 
-func change_warmth(delta, check_frozen=false):
+func change_warmth(delta):
 	warmth += delta
 	emit_signal("warmth_set", warmth)
 	
@@ -71,7 +71,6 @@ func set_player_warming(warming):
 		
 func on_player_in_water():
 	set_warmth(0)
-	check_frozen()
 		
 func on_switch_set(switch_num, enabled):
 	switches[switch_num] = enabled

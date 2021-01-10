@@ -23,8 +23,8 @@ var grid_position:Vector2
 
 var is_sliding = false
 
-var on_sunk = false
-var on_water = false
+#var on_sunk = false
+#var on_water = false
 
 var heat_sources = 0
 
@@ -158,16 +158,5 @@ func _on_SlickDetector_body_entered(_body):
 func _on_SlickDetector_body_exited(_body):
 	is_sliding = false
 	$SideDetect.water_stop = true
-
-
-func _on_WaterDetector_body_entered(_body):
-	on_water = true
-func _on_WaterDetector_body_exited(_body):
-	on_water = false
-
-func _on_SunkDetector_body_exited(_body):
-	on_sunk = false
-func _on_SunkDetector_body_entered(_body):
-	on_sunk = true
 
 
