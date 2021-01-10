@@ -54,3 +54,6 @@ func load_level_select():
 	
 func load_menu():
 	var _out = get_tree().change_scene(menu_path)
+	
+func play_ui_click():
+	$UIClick.play()

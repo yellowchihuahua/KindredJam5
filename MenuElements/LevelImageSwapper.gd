@@ -15,6 +15,7 @@ func swap_image(img, direction):
 
 
 func play_level():
+	Global.play_ui_click()
 	Global.start_level(level_shown)
 
 func show_level(num):
@@ -23,7 +24,9 @@ func show_level(num):
 	level_shown = num
 
 func _on_RightButton_pressed():
+	Global.play_ui_click()
 	show_level(level_shown + 1)
 
 func _on_LeftButton_pressed():
+	Global.play_ui_click()
 	show_level(level_shown - 1)

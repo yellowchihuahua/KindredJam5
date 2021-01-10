@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Resources/Tiles/ground_tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://LevelElements/Characters/Player/Player.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://LevelElements/Cube/Cube.tscn" type="PackedScene" id=6]
 [ext_resource path="res://LevelElements/LevelManager.gd" type="Script" id=7]
 [ext_resource path="res://LevelElements/Warmth/CampFire.tscn" type="PackedScene" id=8]
+[ext_resource path="res://LevelElements/Tiles/FragileGround.tscn" type="PackedScene" id=9]
 
 [node name="LevelRoot" type="Node2D"]
 script = ExtResource( 7 )
@@ -31,32 +32,25 @@ position = Vector2( 880, 490 )
 
 [node name="Cubes" type="Node2D" parent="PlayingField"]
 
-[node name="Cube" parent="PlayingField/Cubes" instance=ExtResource( 6 )]
-position = Vector2( 400, 280 )
-fragile = true
-
-[node name="Cube2" parent="PlayingField/Cubes" instance=ExtResource( 6 )]
-position = Vector2( 560, 350 )
-fragile = true
-
-[node name="Cube3" parent="PlayingField/Cubes" instance=ExtResource( 6 )]
-position = Vector2( 480, 280 )
-fragile = true
-
 [node name="Cube4" parent="PlayingField/Cubes" instance=ExtResource( 6 )]
 position = Vector2( 480, 350 )
 
 [node name="Cube5" parent="PlayingField/Cubes" instance=ExtResource( 6 )]
 position = Vector2( 480, 420 )
 
-[node name="Cube6" parent="PlayingField/Cubes" instance=ExtResource( 6 )]
-position = Vector2( 480, 280 )
-fragile = true
-
 [node name="Warmth" type="Node2D" parent="PlayingField"]
 
 [node name="CampFire" parent="PlayingField/Warmth" instance=ExtResource( 8 )]
 position = Vector2( 480, 490 )
+
+[node name="FragileGround" parent="PlayingField" instance=ExtResource( 9 )]
+position = Vector2( 400, 280 )
+
+[node name="FragileGround2" parent="PlayingField" instance=ExtResource( 9 )]
+position = Vector2( 480, 280 )
+
+[node name="FragileGround3" parent="PlayingField" instance=ExtResource( 9 )]
+position = Vector2( 560, 350 )
 
 [node name="Hud" parent="." instance=ExtResource( 4 )]
 [connection signal="body_entered" from="PlayingField/Exit" to="." method="_on_Exit_body_entered"]

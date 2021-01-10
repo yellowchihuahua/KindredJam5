@@ -17,8 +17,10 @@ func on_level_finished():
 
 
 func _on_RestartButton_pressed():
+	Global.play_ui_click()
 	Global.restart_level()
 
 
 func _on_NextLevelButton_pressed():
+	Global.play_ui_click()
 	Global.load_next_level()

@@ -21,5 +21,7 @@ func interact():
 		
 	is_on = not is_on
 	
+	$AudioStreamPlayer.play()
+	
 	emit_signal("set_switch", switch_num, is_on)
 	
