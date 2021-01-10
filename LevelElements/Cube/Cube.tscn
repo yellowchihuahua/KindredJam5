@@ -7,7 +7,8 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 37.5846, 32.5 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=2]
+radius = 16.0
 
 [node name="Cube" type="KinematicBody2D"]
 z_index = 3
@@ -32,34 +33,12 @@ shape = SubResource( 1 )
 [node name="SideDetect" parent="." instance=ExtResource( 1 )]
 position = Vector2( 40.5, 35.5 )
 
-[node name="WaterCollider" type="Area2D" parent="."]
-position = Vector2( 40, 35 )
-collision_layer = 0
-collision_mask = 16
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterCollider"]
-shape = SubResource( 2 )
-
-[node name="SlickCollider" type="Area2D" parent="."]
-position = Vector2( 40, 35 )
-collision_layer = 0
-collision_mask = 128
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SlickCollider"]
-shape = SubResource( 2 )
+[node name="WaterSplash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
 
 [node name="PlayerCollider" type="Area2D" parent="."]
-monitoring = false
-monitorable = false
-collision_layer = 0
-collision_mask = 2147483650
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCollider"]
 position = Vector2( 40, 35 )
 shape = SubResource( 2 )
-
-[node name="WaterSplash" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
-[connection signal="body_entered" from="SlickCollider" to="." method="_on_SlickCollider_body_entered"]
-[connection signal="body_exited" from="SlickCollider" to="." method="_on_SlickCollider_body_exited"]
 [connection signal="body_exited" from="PlayerCollider" to="." method="_on_PlayerCollider_body_exited"]

@@ -23,10 +23,17 @@ func _physics_process(delta):
 		var offset = Global.grid_size*direction
 		for i in range(1, len(pushing)):
 			var block = pushing[i]
-			if settle and not is_sliding:
-				block.position = grid_position*Global.grid_size + i*Global.grid_size*direction
+			if settle:
+				if not is_sliding:
+					block.position = grid_position*Global.grid_size + i*Global.grid_size*direction
+					
+				block.try_sink()
+				if block.get_collision_layer_bit(Global.sunken_bit):
+					pushing.remove(i)
+					
 			else:
 				block.position = position + i*offset
+		
 				
 		if settle:
 			snap_to_grid()
@@ -43,7 +50,7 @@ func clear_push():
 
 func try_sink():
 	
-	var water_colliders = $WaterCollider.get_overlapping_bodies()
+	var water_colliders = $"SideDetect/Center".get_overlapping_bodies()
 	
 	var on_water = false
 	var on_sunk = false
@@ -53,15 +60,17 @@ func try_sink():
 			on_water = true
 		if body.get_collision_layer_bit(Global.sunken_bit):
 			on_sunk = true
+			
 	
 	if on_water and not on_sunk:
 		set_collision_layer_bit(Global.pushable_bit, false)
 		set_collision_layer_bit(Global.sunken_bit, true)
 		$WaterSplash.play()
+		z_index -= 1
+		$ColorRect.color = Color.whitesmoke
 
 func snap_to_grid():
 	if grid_position != position/Global.grid_size:
-		print("snap")
 		grid_position = position/Global.grid_size
 		grid_position = grid_position.round()
 		position = grid_position*Global.grid_size
@@ -99,3 +108,4 @@ func _on_SlickCollider_body_exited(body):
 	is_sliding = false
 func _on_SlickCollider_body_entered(body):
 	is_sliding = true
+
