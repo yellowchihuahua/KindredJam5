@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://LevelElements/Tiles/SlickTiles.tscn" type="PackedScene" id=1]
 [ext_resource path="res://LevelElements/Characters/Player/Player.tscn" type="PackedScene" id=2]
@@ -14,6 +14,16 @@
 [ext_resource path="res://LevelElements/Warmth/CampFire.tscn" type="PackedScene" id=12]
 [ext_resource path="res://LevelElements/Tiles/WaterTiles.tscn" type="PackedScene" id=13]
 [ext_resource path="res://LevelElements/Tiles/GroundTiles.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Resources/Objects/FragileTopRtop.png" type="Texture" id=15]
+[ext_resource path="res://Resources/Objects/FragileTopLtop.png" type="Texture" id=16]
+[ext_resource path="res://Resources/Objects/FragileBotR.png" type="Texture" id=17]
+[ext_resource path="res://Resources/Objects/FragileTopLbot.png" type="Texture" id=18]
+[ext_resource path="res://Resources/Objects/FragileBotL.png" type="Texture" id=19]
+[ext_resource path="res://Resources/Objects/FragileTopRbot.png" type="Texture" id=20]
+[ext_resource path="res://LevelElements/Tiles/FragileGround.gd" type="Script" id=21]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 28 )
 
 [node name="LevelRoot" type="Node2D"]
 script = ExtResource( 7 )
@@ -21,8 +31,10 @@ script = ExtResource( 7 )
 [node name="PlayingField" type="Node2D" parent="."]
 
 [node name="GroundTiles" parent="PlayingField" instance=ExtResource( 14 )]
+tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 65536, 0, 1, 65538, 0, 1, 65539, 0, 1, 65540, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 0, 0, 65546, 0, 0, 65547, 0, 0, 65548, 0, 0, 131072, 0, 1, 131075, 0, 1, 131076, 0, 1, 131077, 0, 1, 131078, 0, 65538, 131079, 0, 2, 131080, 0, 0, 131081, 0, 0, 131082, 0, 0, 131083, 0, 0, 131084, 0, 0, 196608, 0, 1, 196610, 0, 1, 196611, 0, 1, 196612, 0, 1, 196613, 0, 1, 196614, 0, 196610, 196615, 0, 0, 196616, 0, 0, 196617, 0, 0, 196618, 0, 0, 196619, 0, 0, 196620, 0, 0, 262144, 0, 1, 262146, 0, 1, 262147, 0, 1, 262148, 0, 1, 262149, 0, 196610, 262150, 0, 0, 262151, 0, 0, 262152, 0, 196611, 262153, 0, 0, 262154, 0, 0, 262155, 0, 0, 262156, 0, 0, 327680, 0, 0, 327681, 0, 1, 327682, 0, 1, 327683, 0, 1, 327684, 0, 1, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 0, 327692, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 0, 0, 393228, 0, 0, 458752, 0, 0, 458753, 0, 0, 458754, 0, 0, 458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 0, 0, 458762, 0, 0, 458763, 0, 0, 458764, 0, 0, 524288, 0, 0, 524289, 0, 0, 524290, 0, 0, 524291, 0, 0, 524292, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 524298, 0, 0, 524299, 0, 0, 524300, 0, 0 )
 
 [node name="WaterTiles" parent="PlayingField" instance=ExtResource( 13 )]
+z_index = -1
 tile_data = PoolIntArray( 131073, 0, 0, 131074, 0, 2, 196609, 0, 65539, 262145, 0, 0 )
 
 [node name="SlickTiles" parent="PlayingField" instance=ExtResource( 1 )]
@@ -89,4 +101,56 @@ position = Vector2( 400, 280 )
 switches = PoolIntArray( 1 )
 
 [node name="Hud" parent="." instance=ExtResource( 4 )]
+
+[node name="FragileGround" type="KinematicBody2D" parent="."]
+position = Vector2( 80, 280 )
+collision_layer = 32
+collision_mask = 0
+script = ExtResource( 21 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FragileGround"]
+position = Vector2( 40, 35 )
+shape = SubResource( 1 )
+
+[node name="Node2D" type="Node2D" parent="FragileGround"]
+
+[node name="Top" type="Node2D" parent="FragileGround/Node2D"]
+
+[node name="TopLTop" type="Sprite" parent="FragileGround/Node2D/Top"]
+position = Vector2( 40, 49 )
+texture = ExtResource( 16 )
+
+[node name="TopRTop" type="Sprite" parent="FragileGround/Node2D/Top"]
+position = Vector2( 40, 49 )
+texture = ExtResource( 15 )
+
+[node name="BotLTop" type="Sprite" parent="FragileGround/Node2D/Top"]
+position = Vector2( 40, 49 )
+z_index = -1
+texture = ExtResource( 19 )
+
+[node name="BotRTop" type="Sprite" parent="FragileGround/Node2D/Top"]
+position = Vector2( 40, 49 )
+z_index = -1
+texture = ExtResource( 17 )
+
+[node name="Bot" type="Node2D" parent="FragileGround/Node2D"]
+z_index = -2
+
+[node name="TopLBot" type="Sprite" parent="FragileGround/Node2D/Bot"]
+position = Vector2( 40, 49 )
+texture = ExtResource( 18 )
+
+[node name="TopRBot" type="Sprite" parent="FragileGround/Node2D/Bot"]
+position = Vector2( 40, 49 )
+texture = ExtResource( 20 )
+
+[node name="PlayerDetector" type="Area2D" parent="FragileGround"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="FragileGround/PlayerDetector"]
+position = Vector2( 40, 35 )
+shape = SubResource( 1 )
 [connection signal="body_entered" from="PlayingField/Exit" to="." method="_on_Exit_body_entered"]
+[connection signal="body_exited" from="FragileGround/PlayerDetector" to="FragileGround" method="_on_PlayerDetector_body_exited"]
