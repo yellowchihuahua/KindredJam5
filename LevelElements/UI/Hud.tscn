@@ -49,7 +49,7 @@ __meta__ = {
 [node name="RestartButton" type="Button" parent="HBoxContainer"]
 margin_left = 1599.0
 margin_right = 1679.0
-margin_bottom = 35.0
+margin_bottom = 48.0
 rect_min_size = Vector2( 80, 35 )
 custom_fonts/font = ExtResource( 5 )
 shortcut = SubResource( 2 )
@@ -58,7 +58,7 @@ text = "restart"
 [node name="Shake" parent="HBoxContainer" instance=ExtResource( 3 )]
 margin_left = 1698.0
 margin_right = 1948.0
-margin_bottom = 35.0
+margin_bottom = 48.0
 rect_min_size = Vector2( 250, 0 )
 decay = 3.0
 max_offset = Vector2( 0.02, 0.01 )
@@ -68,6 +68,7 @@ max_roll = 0.2
 rect_min_size = Vector2( 200, 30 )
 custom_styles/fg = SubResource( 3 )
 custom_styles/bg = SubResource( 4 )
+max_value = 10.0
 percent_visible = false
 script = ExtResource( 2 )
 __meta__ = {

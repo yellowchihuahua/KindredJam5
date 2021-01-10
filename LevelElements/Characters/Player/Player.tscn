@@ -149,23 +149,23 @@ tracks/10/keys = {
 [sub_resource type="AnimationNodeAnimation" id=3]
 animation = "Idle"
 
-[sub_resource type="AnimationNodeAnimation" id=9]
+[sub_resource type="AnimationNodeAnimation" id=4]
 animation = "Idle"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=10]
+[sub_resource type="AnimationNodeStateMachineTransition" id=5]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=11]
+[sub_resource type="AnimationNodeStateMachineTransition" id=6]
 
-[sub_resource type="AnimationNodeStateMachine" id=4]
+[sub_resource type="AnimationNodeStateMachine" id=7]
 states/Idle/node = SubResource( 3 )
 states/Idle/position = Vector2( 548, 140 )
-states/Walk/node = SubResource( 9 )
+states/Walk/node = SubResource( 4 )
 states/Walk/position = Vector2( 548, -25 )
-transitions = [ "Idle", "Walk", SubResource( 10 ), "Walk", "Idle", SubResource( 11 ) ]
+transitions = [ "Idle", "Walk", SubResource( 5 ), "Walk", "Idle", SubResource( 6 ) ]
 start_node = "Idle"
 graph_offset = Vector2( 36, -67 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=5]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=8]
 
 [node name="Player" type="KinematicBody2D"]
 z_index = 99
@@ -174,6 +174,7 @@ script = ExtResource( 1 )
 
 [node name="Fire" parent="." instance=ExtResource( 5 )]
 position = Vector2( 41.7654, -29.2356 )
+show_text = true
 
 [node name="Penguin" type="Sprite" parent="."]
 position = Vector2( 40.5662, 27.9923 )
@@ -181,22 +182,22 @@ scale = Vector2( 0.5, 0.5 )
 z_index = 3
 
 [node name="Body" type="Sprite" parent="Penguin"]
-scale = Vector2( 1.03221, 0.967791 )
+scale = Vector2( 1.0193, 0.980696 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 3, 75, 87, 122 )
 
 [node name="FlipperLeft" type="Sprite" parent="Penguin"]
-position = Vector2( -36.523, -27.9589 )
-rotation = -0.0562157
+position = Vector2( -36.523, -28.9913 )
+rotation = -0.0336924
 z_index = 1
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 98, 63, 40, 71 )
 
 [node name="FlipperRight" type="Sprite" parent="Penguin"]
-position = Vector2( 36.523, -35.6516 )
-rotation = 0.0562157
+position = Vector2( 36.523, -37.2002 )
+rotation = 0.0336924
 z_index = -2
 texture = ExtResource( 4 )
 region_enabled = true
@@ -204,41 +205,41 @@ region_rect = Rect2( 151, 117, 38, 72 )
 
 [node name="EyeLeft" type="Sprite" parent="Penguin"]
 position = Vector2( -4.92041, -33.3673 )
-scale = Vector2( 1.06442, 1.06442 )
+scale = Vector2( 1.03861, 1.03861 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 15, 5, 16, 15 )
 
 [node name="EyeRight" type="Sprite" parent="Penguin"]
 position = Vector2( 30.9912, -39.9524 )
-scale = Vector2( 1.06442, 1.06442 )
+scale = Vector2( 1.03861, 1.03861 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 15, 5, 16, 15 )
 
 [node name="BeakTop" type="Sprite" parent="Penguin"]
 position = Vector2( 34.9554, -26.0922 )
-rotation = -0.0562157
+rotation = -0.0336924
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 14, 34, 33, 18 )
 
 [node name="BeakBottom" type="Sprite" parent="Penguin"]
 position = Vector2( 35.4687, -17.3654 )
-rotation = 0.0562157
+rotation = 0.0336924
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 71, 36, 31, 11 )
 
 [node name="FootLeft" type="Sprite" parent="Penguin"]
-position = Vector2( -16.3498, 59.8877 )
+position = Vector2( -15.8336, 60.4039 )
 z_index = -1
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 118, 10, 33, 25 )
 
 [node name="FootRight" type="Sprite" parent="Penguin"]
-position = Vector2( 30.4392, 54.2409 )
+position = Vector2( 29.923, 54.7571 )
 z_index = -1
 texture = ExtResource( 4 )
 region_enabled = true
@@ -276,10 +277,10 @@ stream = ExtResource( 2 )
 anims/Idle = SubResource( 2 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 4 )
+tree_root = SubResource( 7 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 5 )
+parameters/playback = SubResource( 8 )
 [connection signal="area_entered" from="WarmthCollector" to="." method="_on_WarmthCollector_area_entered"]
 [connection signal="area_exited" from="WarmthCollector" to="." method="_on_WarmthCollector_area_exited"]
 [connection signal="body_entered" from="SlickDetector" to="." method="_on_SlickDetector_body_entered"]

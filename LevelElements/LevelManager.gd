@@ -5,10 +5,10 @@ signal out_of_warmth
 signal level_finished
 signal switch_set(switch_num, enabled)
 
-export var max_warmth = 100
+export var max_warmth = 9
 var warmth = max_warmth
 var is_warming = false
-export var player_move_cost = -10
+export var player_move_cost = -1
 
 onready var player = $"PlayingField/Player"
 
@@ -17,7 +17,7 @@ var switches = {}
 var level_finished = false
 
 var blizzards = 0
-var blizzard_chill = -2
+var blizzard_chill = -0.2
 var chill_time = 0
 var chill_delay = 0.5
 

@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Resources/Objects/FireParticle.png" type="Texture" id=1]
+[ext_resource path="res://Resources/Font/KaushanScript-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://LevelElements/Warmth/Fire.gd" type="Script" id=3]
 
 [sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.968, 0.625 ), 0.0, 0.0, 0, 0 ]
@@ -8,6 +10,10 @@ _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.968, 0.625 ), 0.0, 0.0, 0,
 [sub_resource type="Gradient" id=2]
 offsets = PoolRealArray( 0, 0.882591, 1 )
 colors = PoolColorArray( 1, 0.328125, 0, 1, 0.880859, 0.482006, 0.14628, 0.290196, 0.945098, 0.917647, 0.909804, 0 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 25
+font_data = ExtResource( 2 )
 
 [node name="Fire" type="CPUParticles2D"]
 amount = 70
@@ -25,3 +31,18 @@ scale_amount_curve = SubResource( 1 )
 color_ramp = SubResource( 2 )
 hue_variation = 0.1
 hue_variation_random = 0.59
+script = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = -23.5165
+margin_top = -30.6992
+margin_right = -1.51653
+margin_bottom = 28.3008
+rect_scale = Vector2( 1.5, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "9"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
