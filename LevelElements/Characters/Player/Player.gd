@@ -21,8 +21,6 @@ var can_move = true
 var pushing = []
 var grid_position:Vector2
 
-export var grid_size = Vector2(80, 70)
-
 var is_sliding = false
 
 var on_sunk = false
@@ -33,7 +31,7 @@ var heat_sources = 0
 func _ready():
 	connect_signals()
 	
-	grid_position = position/grid_size
+	grid_position = position/Global.grid_size
 
 func connect_signals():
 	Global.get_level_root().connect("out_of_warmth", self, "on_out_of_warmth")
@@ -45,14 +43,14 @@ func _physics_process(_delta):
 	if is_moving:
 		var move_delta = (grid_position*Global.grid_size - position).normalized()*8#lerp(position, grid_position*grid_size, 0.2) - position
 		if is_sliding:
-			move_delta = move_delta.normalized()*10
-		var do_settle = position.distance_to(grid_position * grid_size) < max(move_delta.length(), 0.2)
+			move_delta = move_delta.normalized()*8
+		var do_settle = position.distance_to(grid_position * Global.grid_size) < max(move_delta.length(), 0.2)
 		
 		var offset = Global.grid_size*last_move
 		
 		position += move_delta
 		if do_settle:
-			position = grid_position*grid_size
+			position = grid_position*Global.grid_size
 		for i in range(len(pushing)):
 			var cube = pushing[i]
 			if do_settle:
@@ -83,7 +81,7 @@ func _process(delta):
 		try_move(move_primed)
 		
 	# sliding move
-	var dist_to_target = (position/grid_size - grid_position).length()
+	var dist_to_target = (position/Global.grid_size - grid_position).length()
 	if is_sliding and dist_to_target < 0.1:
 		try_move(last_move, true)
 
@@ -123,8 +121,9 @@ func try_move(direction:Vector2, slide_move=false):
 			emit_signal("moved")
 		last_move = direction
 		
-		for i in range(1, len(pushing)):
-			pushing[i].claim_push()
+		if len(pushing) > 1:
+			for i in range(1, len(pushing)):
+				pushing[i].claim_push()
 		
 	elif is_moving:
 		stop_moving()
@@ -157,7 +156,7 @@ func _on_SlickDetector_body_exited(_body):
 
 func _on_WaterDetector_body_entered(_body):
 	on_water = true
-func _on_WaterDetector_body_exited(body):
+func _on_WaterDetector_body_exited(_body):
 	on_water = false
 
 func _on_SunkDetector_body_exited(_body):

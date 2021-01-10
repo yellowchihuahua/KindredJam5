@@ -26,6 +26,7 @@ func _ready():
 	connect_signals()
 	
 	emit_signal("warmth_set", warmth)
+	
 
 func connect_signals():
 	var _out = player.connect("moved", self, "player_moved")
@@ -81,6 +82,8 @@ func player_in_blizzard(val):
 		blizzards += 1
 	else:
 		blizzards -= 1
+	
+	
 	
 
 ################ LEVEL CONTROLS

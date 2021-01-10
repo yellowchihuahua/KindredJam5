@@ -17,7 +17,7 @@ func _ready():
 		
 func _physics_process(delta):
 	if direction != Vector2.ZERO and not is_pushed:
-		var move_delta = (grid_position - position/Global.grid_size).normalized()*5
+		var move_delta = (grid_position - position/Global.grid_size).normalized()*4
 		var settle = (grid_position - position/Global.grid_size).length() < 0.1
 		position += move_delta
 		var offset = Global.grid_size*direction
@@ -29,19 +29,19 @@ func _physics_process(delta):
 				block.position = position + i*offset
 				
 		if settle:
+			snap_to_grid()
 			clear_push()
 			if is_sliding:
 				try_move(last_direction)
 
 func clear_push():
-	for i in pushing:
-		i.stopped_push(last_direction)
+	for i in range(1, len(pushing)):
+		pushing[i].stopped_push(last_direction)
 	pushing = []
 	
 	direction = Vector2.ZERO
 
 func try_sink():
-	snap_to_grid()
 	
 	var water_colliders = $WaterCollider.get_overlapping_bodies()
 	
@@ -60,9 +60,12 @@ func try_sink():
 		$WaterSplash.play()
 
 func snap_to_grid():
-	grid_position = position/Global.grid_size
-	grid_position = grid_position.round()
-	position = grid_position*Global.grid_size
+	if grid_position != position/Global.grid_size:
+		print("snap")
+		grid_position = position/Global.grid_size
+		grid_position = grid_position.round()
+		position = grid_position*Global.grid_size
+		try_sink()
 
 func stopped_push(push_direction):
 	snap_to_grid()
@@ -90,8 +93,6 @@ func _on_PlayerCollider_body_exited(_body):
 	queue_free()
 
 
-func _on_WaterCollider_body_entered(_body):
-	try_sink()
 
 
 func _on_SlickCollider_body_exited(body):
