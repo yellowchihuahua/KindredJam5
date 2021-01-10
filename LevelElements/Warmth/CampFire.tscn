@@ -1,4 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://LevelElements/Warmth/Fire.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Resources/Objects/Campfire.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 34.0511, 30.3035 )
@@ -22,12 +25,10 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WarmthZone"]
 shape = SubResource( 2 )
 
-[node name="ColorRect" type="ColorRect" parent="."]
-margin_left = 17.6389
-margin_top = 13.8591
-margin_right = 57.6389
-margin_bottom = 53.8591
-color = Color( 1, 0.470588, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Campfire" type="Sprite" parent="."]
+position = Vector2( 40.0173, 49.1759 )
+texture = ExtResource( 2 )
+
+[node name="Fire2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 41.9401, 22.9207 )
+scale = Vector2( 1.2, 1.2 )
