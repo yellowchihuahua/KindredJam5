@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://LevelElements/Characters/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Resources/sfx/WaterSplash2.wav" type="AudioStream" id=2]
@@ -146,39 +146,24 @@ tracks/10/keys = {
 "values": [ 0.0, 5.0, 0.0 ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=6]
-animation = "Idle"
-
 [sub_resource type="AnimationNodeAnimation" id=3]
-animation = "Idle"
-
-[sub_resource type="AnimationNodeAnimation" id=7]
-animation = "Idle"
-
-[sub_resource type="AnimationNodeAnimation" id=8]
 animation = "Idle"
 
 [sub_resource type="AnimationNodeAnimation" id=9]
 animation = "Idle"
 
-[sub_resource type="AnimationNodeAnimation" id=10]
-animation = "Idle"
+[sub_resource type="AnimationNodeStateMachineTransition" id=10]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=11]
 
 [sub_resource type="AnimationNodeStateMachine" id=4]
-states/Freeze/node = SubResource( 6 )
-states/Freeze/position = Vector2( 688, -95 )
 states/Idle/node = SubResource( 3 )
-states/Idle/position = Vector2( 458, 28 )
-states/WalkDown/node = SubResource( 7 )
-states/WalkDown/position = Vector2( 458, 171 )
-states/WalkLeft/node = SubResource( 8 )
-states/WalkLeft/position = Vector2( 223, 28 )
-states/WalkRight/node = SubResource( 9 )
-states/WalkRight/position = Vector2( 688, 28 )
-states/WalkUp/node = SubResource( 10 )
-states/WalkUp/position = Vector2( 458, -95 )
+states/Idle/position = Vector2( 548, 140 )
+states/Walk/node = SubResource( 9 )
+states/Walk/position = Vector2( 548, -25 )
+transitions = [ "Idle", "Walk", SubResource( 10 ), "Walk", "Idle", SubResource( 11 ) ]
 start_node = "Idle"
-graph_offset = Vector2( 4, -131 )
+graph_offset = Vector2( 36, -67 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=5]
 
@@ -196,22 +181,22 @@ scale = Vector2( 0.5, 0.5 )
 z_index = 3
 
 [node name="Body" type="Sprite" parent="Penguin"]
-scale = Vector2( 1.0015, 0.998502 )
+scale = Vector2( 1.03221, 0.967791 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 3, 75, 87, 122 )
 
 [node name="FlipperLeft" type="Sprite" parent="Penguin"]
-position = Vector2( -36.523, -30.4158 )
-rotation = -0.00261401
+position = Vector2( -36.523, -27.9589 )
+rotation = -0.0562157
 z_index = 1
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 98, 63, 40, 71 )
 
 [node name="FlipperRight" type="Sprite" parent="Penguin"]
-position = Vector2( 36.523, -39.337 )
-rotation = 0.00261401
+position = Vector2( 36.523, -35.6516 )
+rotation = 0.0562157
 z_index = -2
 texture = ExtResource( 4 )
 region_enabled = true
@@ -219,41 +204,41 @@ region_rect = Rect2( 151, 117, 38, 72 )
 
 [node name="EyeLeft" type="Sprite" parent="Penguin"]
 position = Vector2( -4.92041, -33.3673 )
-scale = Vector2( 1.003, 1.003 )
+scale = Vector2( 1.06442, 1.06442 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 15, 5, 16, 15 )
 
 [node name="EyeRight" type="Sprite" parent="Penguin"]
 position = Vector2( 30.9912, -39.9524 )
-scale = Vector2( 1.003, 1.003 )
+scale = Vector2( 1.06442, 1.06442 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 15, 5, 16, 15 )
 
 [node name="BeakTop" type="Sprite" parent="Penguin"]
 position = Vector2( 34.9554, -26.0922 )
-rotation = -0.00261401
+rotation = -0.0562157
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 14, 34, 33, 18 )
 
 [node name="BeakBottom" type="Sprite" parent="Penguin"]
 position = Vector2( 35.4687, -17.3654 )
-rotation = 0.00261401
+rotation = 0.0562157
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 71, 36, 31, 11 )
 
 [node name="FootLeft" type="Sprite" parent="Penguin"]
-position = Vector2( -15.1213, 61.1162 )
+position = Vector2( -16.3498, 59.8877 )
 z_index = -1
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 118, 10, 33, 25 )
 
 [node name="FootRight" type="Sprite" parent="Penguin"]
-position = Vector2( 29.2107, 55.4694 )
+position = Vector2( 30.4392, 54.2409 )
 z_index = -1
 texture = ExtResource( 4 )
 region_enabled = true

@@ -12,7 +12,7 @@ var move_prime_expire = 0.2
 var move_prime_time = move_prime_expire+1
 
 var move_finish_time = 0
-var move_cooldown = 0.01
+var move_cooldown = 0.1
 
 var hold_time = 0
 var hold_delay = 0.4
@@ -23,10 +23,10 @@ var grid_position:Vector2
 
 var is_sliding = false
 
-#var on_sunk = false
-#var on_water = false
 
 var heat_sources = 0
+
+onready var anim = $AnimationTree.get("parameters/playback")
 
 func _ready():
 	connect_signals()
@@ -41,7 +41,8 @@ func connect_signals():
 
 func _physics_process(_delta):
 	if is_moving:
-		var move_delta = (grid_position*Global.grid_size - position).normalized()*8#lerp(position, grid_position*grid_size, 0.2) - position
+		var direction = (grid_position*Global.grid_size - position).normalized()
+		var move_delta = direction*8
 		if is_sliding:
 			move_delta = move_delta.normalized()*8
 		var do_settle = position.distance_to(grid_position * Global.grid_size) < max(move_delta.length(), 0.2)
@@ -58,7 +59,10 @@ func _physics_process(_delta):
 				if cube.has_method("stopped_push"):
 					cube.stopped_push(last_move)
 			else:
-				cube.position = position + offset*i
+				
+				var new_position = position + offset*i
+				
+				cube.position = new_position
 
 func stop_moving():
 	is_moving = false
@@ -66,6 +70,8 @@ func stop_moving():
 	emit_signal("done_moving")
 	
 	try_drown()
+	
+	update_anim()
 	
 func try_drown():
 	var bodies = $"SideDetect/Center".get_overlapping_bodies()
@@ -77,6 +83,8 @@ func try_drown():
 	if on_water and not on_sunk:
 		emit_signal("in_water")
 		$WaterSplash.play()
+		
+	update_anim()
 	
 func _process(delta):
 	get_input()
@@ -103,10 +111,13 @@ func get_input():
 	if Input.is_action_just_pressed("move_down") or (Input.is_action_pressed("move_down") and hold_time > hold_delay):
 		dir = Vector2.DOWN
 		
+		
 	if dir != Vector2.ZERO:
 		hold_time = 0
 		move_primed = dir
 		move_prime_time = 0
+		
+	update_anim()
 
 func clear_pushing():
 	for i in range(1, len(pushing)):
@@ -134,6 +145,17 @@ func try_move(direction:Vector2, slide_move=false):
 	elif is_moving:
 		stop_moving()
 		
+		
+func update_anim():
+	if is_moving:
+		anim.travel("Walk")
+	else:
+		anim.travel("Idle")
+	
+	if last_move.x < 0:
+		$Penguin.scale.x = abs($Penguin.scale.x) * -1
+	elif last_move.x > 0:
+		$Penguin.scale.x = abs($Penguin.scale.x)
 
 func on_out_of_warmth():
 	can_move = false

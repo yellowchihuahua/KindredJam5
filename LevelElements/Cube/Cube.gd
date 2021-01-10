@@ -82,7 +82,8 @@ func snap_to_grid():
 		grid_position = position/Global.grid_size
 		grid_position = grid_position.round()
 		position = grid_position*Global.grid_size
-		try_sink()
+	
+	try_sink()
 
 func stopped_push(push_direction):
 	snap_to_grid()
