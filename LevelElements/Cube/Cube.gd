@@ -9,7 +9,10 @@ var pushing = []
 
 export var fragile = false
 
+onready var anim = $AnimationTree.get("parameters/playback")
+
 func _ready():
+	anim.start("Stand")
 	try_sink()
 	if fragile:
 		$PlayerCollider.monitoring = true
@@ -65,9 +68,9 @@ func try_sink():
 	
 	if on_water and not on_sunk:
 		do_sink()
-		
+
 func do_sink(play_audio=true):
-	$AnimationPlayer.play("Sink")
+	anim.travel("Sink")
 	set_collision_layer_bit(Global.pushable_bit, false)
 	set_collision_layer_bit(Global.sunken_bit, true)
 	z_index -= 1

@@ -33,6 +33,7 @@ margin_right = 150.0
 margin_bottom = 74.0
 rect_min_size = Vector2( 150, 30 )
 custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 shortcut = SubResource( 2 )
 text = "play"
 
