@@ -68,6 +68,12 @@ func stop_moving():
 	try_drown()
 	
 func try_drown():
+	var bodies = $"SideDetect/Center".get_overlapping_bodies()
+	var on_water = false
+	var on_sunk = false
+	for i in bodies:
+		on_water = on_water or i.get_collision_layer_bit(Global.water_bit)
+		on_sunk = on_sunk or i.get_collision_layer_bit(Global.sunken_bit)
 	if on_water and not on_sunk:
 		emit_signal("in_water")
 		$WaterSplash.play()

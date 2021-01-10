@@ -67,7 +67,8 @@ func try_sink():
 		set_collision_layer_bit(Global.sunken_bit, true)
 		$WaterSplash.play()
 		z_index -= 1
-		$ColorRect.color = Color.whitesmoke
+		$ColorRect.color /= 2
+		$ColorRect.color += Color.blue/2
 
 func snap_to_grid():
 	if grid_position != position/Global.grid_size:

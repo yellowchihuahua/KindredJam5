@@ -33,7 +33,6 @@ func can_move(direction):
 		is_wall = is_wall or c.get_collision_layer_bit(Global.level_bit)
 		if c.get_collision_layer_bit(Global.pushable_bit):
 			push_thing = c
-			print(push_thing.name)
 		is_water = is_water or c.get_collision_layer_bit(Global.water_bit)
 		is_sunken = is_sunken or c.get_collision_layer_bit(Global.sunken_bit)
 		
@@ -47,7 +46,6 @@ func can_move(direction):
 	
 	if push_thing:
 		var pushed_pushing = push_thing.get_node("SideDetect").can_move(direction)
-		print(push_thing.name)
 		if len(pushed_pushing) > 0:
 			pushing += pushed_pushing
 		else: # push_thing blocked

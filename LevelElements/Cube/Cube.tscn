@@ -21,7 +21,7 @@ margin_left = 2.5
 margin_top = 2.5
 margin_right = 77.5
 margin_bottom = 67.5
-color = Color( 0.309804, 0.670588, 0.956863, 1 )
+color = Color( 0.223529, 0.490196, 0.866667, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -37,6 +37,8 @@ position = Vector2( 40.5, 35.5 )
 stream = ExtResource( 3 )
 
 [node name="PlayerCollider" type="Area2D" parent="."]
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCollider"]
 position = Vector2( 40, 35 )
