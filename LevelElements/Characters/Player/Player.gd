@@ -87,6 +87,7 @@ func try_drown():
 	update_anim()
 	
 func _process(delta):
+	print($"FirePlayer/FirePlayer".volume_db)
 	get_input()
 	move_finish_time += delta
 	move_prime_time += delta
@@ -166,11 +167,13 @@ func on_level_finished():
 func _on_WarmthCollector_area_entered(_area):
 	heat_sources += 1
 	if heat_sources == 1:
+		$FirePlayer.play("FadeIn")
 		emit_signal("set_warming", true)
 
 func _on_WarmthCollector_area_exited(_area):
 	heat_sources -= 1
 	if heat_sources == 0:
+		$FirePlayer.play("FadeOut")
 		emit_signal("set_warming", false)
 
 
