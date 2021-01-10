@@ -14,10 +14,12 @@ func _ready():
 func _on_Button_body_entered(_body):
 	body_count += 1
 	if body_count == 1:
+		$ButtonPressed.play()
 		emit_signal("set_switch", switch_num, true)
 
 
 func _on_Button_body_exited(_body):
 	body_count -= 1
 	if body_count == 0:
+		$ButtonReleased.play()
 		emit_signal("set_switch", switch_num, false)
