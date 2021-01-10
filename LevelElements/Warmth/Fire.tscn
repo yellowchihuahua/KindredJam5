@@ -34,10 +34,10 @@ hue_variation_random = 0.59
 script = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = -23.5165
-margin_top = -30.6992
-margin_right = -1.51653
-margin_bottom = 28.3008
+margin_left = -20.2811
+margin_top = -29.7286
+margin_right = 1.71882
+margin_bottom = 29.2714
 rect_scale = Vector2( 1.5, 1 )
 custom_fonts/font = SubResource( 3 )
 text = "9"
