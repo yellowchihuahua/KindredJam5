@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/CubeSlide.wav-741346f17e9979a064b11560cf4772b4.sample"
+
+[deps]
+
+source_file="res://Resources/sfx/CubeSlide.wav"
+dest_files=[ "res://.import/CubeSlide.wav-741346f17e9979a064b11560cf4772b4.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

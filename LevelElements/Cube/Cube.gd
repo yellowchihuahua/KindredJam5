@@ -18,6 +18,7 @@ func _ready():
 		$PlayerCollider.monitoring = true
 		
 func _physics_process(_delta):
+	#print($"IceSlide/IceSlide/IceSlide".playing)
 	
 	if direction != Vector2.ZERO and not is_pushed:
 		var move_delta = (grid_position - position/Global.grid_size).normalized()*5
@@ -44,6 +45,8 @@ func _physics_process(_delta):
 			clear_push()
 			if is_sliding():
 				try_move(last_direction)
+			if not sliding:
+				$IceSlide.get("parameters/playback").travel("StopSlide")
 
 func clear_push():
 	for i in range(1, len(pushing)):
@@ -98,7 +101,8 @@ func claim_push():
 		
 func try_move(push_direction):
 	last_direction = push_direction
-	if direction == Vector2.ZERO or is_sliding():	
+	var sliding = is_sliding()
+	if direction == Vector2.ZERO or sliding:	
 		pushing = $SideDetect.can_move(push_direction)
 		if len(pushing) > 0:
 			direction = push_direction
@@ -106,6 +110,7 @@ func try_move(push_direction):
 			grid_position = grid_position.floor()
 			for i in range(1, len(pushing)):
 				pushing[i].claim_push()
+				
 
 func is_sliding():
 	return $SideDetect.is_colliding(Vector2.ZERO, Global.slick_bit)
@@ -119,3 +124,9 @@ func _on_InitialDetector_body_entered(body):
 
 func destroy_initialDetector():
 	$InitialDetector.queue_free()
+
+
+func _on_SlideDetect_body_entered(_body):
+	if not is_sliding():
+		$IceSlide.get("parameters/playback").travel("StartSlide")
+		

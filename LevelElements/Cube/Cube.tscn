@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://LevelElements/SideDetect.tscn" type="PackedScene" id=1]
 [ext_resource path="res://LevelElements/Cube/Cube.gd" type="Script" id=2]
 [ext_resource path="res://Resources/sfx/WaterSplash2.wav" type="AudioStream" id=3]
 [ext_resource path="res://Resources/Objects/IceCube.png" type="Texture" id=4]
+[ext_resource path="res://Resources/sfx/IceSlide.wav" type="AudioStream" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 37.5846, 32.5 )
@@ -122,6 +123,101 @@ start_node = "Stand"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=13]
 
+[sub_resource type="AnimationNodeAnimation" id=18]
+animation = "Blank"
+
+[sub_resource type="AnimationNodeAnimation" id=15]
+animation = "StartSlide"
+
+[sub_resource type="AnimationNodeAnimation" id=21]
+animation = "StopSlide"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachine" id=16]
+states/Blank/node = SubResource( 18 )
+states/Blank/position = Vector2( 152, 144 )
+states/StartSlide/node = SubResource( 15 )
+states/StartSlide/position = Vector2( 295, 47 )
+states/StopSlide/node = SubResource( 21 )
+states/StopSlide/position = Vector2( 472, 144 )
+transitions = [ "Blank", "StartSlide", SubResource( 19 ), "StartSlide", "StopSlide", SubResource( 22 ), "StopSlide", "Blank", SubResource( 23 ) ]
+start_node = "Blank"
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=17]
+
+[sub_resource type="Animation" id=20]
+resource_name = "Blank"
+
+[sub_resource type="Animation" id=14]
+resource_name = "StartSlide"
+tracks/0/type = "method"
+tracks/0/path = NodePath("IceSlide/IceSlide")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+
+[sub_resource type="Animation" id=24]
+resource_name = "StopSlide"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("IceSlide/IceSlide:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -30.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("IceSlide/IceSlide:pitch_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.8 ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("IceSlide/IceSlide")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.15 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "stop"
+} ]
+}
+
+[sub_resource type="CircleShape2D" id=25]
+radius = 32.0
+
 [node name="Cube" type="KinematicBody2D"]
 z_index = 3
 collision_layer = 4
@@ -144,9 +240,6 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 40.589, 35.5 )
 shape = SubResource( 1 )
-
-[node name="WaterSplash" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
 
 [node name="PlayerCollider" type="Area2D" parent="."]
 monitoring = false
@@ -186,6 +279,34 @@ tree_root = SubResource( 12 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 13 )
+
+[node name="WaterSplash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="Push" type="AudioStreamPlayer" parent="."]
+
+[node name="IceSlide" type="AnimationTree" parent="."]
+tree_root = SubResource( 16 )
+anim_player = NodePath("IceSlide")
+active = true
+parameters/playback = SubResource( 17 )
+
+[node name="IceSlide" type="AnimationPlayer" parent="IceSlide"]
+anims/Blank = SubResource( 20 )
+anims/StartSlide = SubResource( 14 )
+anims/StopSlide = SubResource( 24 )
+
+[node name="IceSlide" type="AudioStreamPlayer" parent="IceSlide/IceSlide"]
+stream = ExtResource( 5 )
+
+[node name="SlideDetect" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SlideDetect"]
+position = Vector2( 40, 35 )
+shape = SubResource( 25 )
 [connection signal="body_exited" from="PlayerCollider" to="." method="_on_PlayerCollider_body_exited"]
 [connection signal="body_entered" from="InitialDetector" to="." method="_on_InitialDetector_body_entered"]
 [connection signal="timeout" from="InitialDetector/Timer" to="." method="destroy_initialDetector"]
+[connection signal="body_entered" from="SlideDetect" to="." method="_on_SlideDetect_body_entered"]

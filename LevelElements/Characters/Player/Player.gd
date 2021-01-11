@@ -59,9 +59,7 @@ func _physics_process(_delta):
 				if cube.has_method("stopped_push"):
 					cube.stopped_push(last_move)
 			else:
-				
 				var new_position = position + offset*i
-				
 				cube.position = new_position
 
 func stop_moving():
@@ -138,7 +136,8 @@ func try_move(direction:Vector2, slide_move=false):
 			emit_signal("moved")
 		last_move = direction
 		
-		if len(pushing) > 1:
+		if len(pushing) > 1 and not slide_move:
+			$CubePush.play()
 			for i in range(1, len(pushing)):
 				pushing[i].claim_push()
 		
