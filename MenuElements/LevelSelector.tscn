@@ -5,7 +5,7 @@
 [ext_resource path="res://MenuElements/LevelImageSwapper.gd" type="Script" id=3]
 [ext_resource path="res://Resources/Font/SmallSizeFont.tres" type="DynamicFont" id=4]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=1]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("OldImage:rect_position")
@@ -68,7 +68,7 @@ tracks/4/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("OldImage:rect_position")
@@ -131,21 +131,21 @@ tracks/4/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="InputEventAction" id=5]
+[sub_resource type="InputEventAction" id=3]
 action = "ui_left"
+
+[sub_resource type="ShortCut" id=4]
+shortcut = SubResource( 3 )
+
+[sub_resource type="InputEventAction" id=5]
+action = "ui_right"
 
 [sub_resource type="ShortCut" id=6]
 shortcut = SubResource( 5 )
 
-[sub_resource type="InputEventAction" id=7]
-action = "ui_right"
-
-[sub_resource type="ShortCut" id=8]
-shortcut = SubResource( 7 )
-
 [node name="LevelSelector" type="Control"]
 margin_right = 411.0
-margin_bottom = 149.0
+margin_bottom = 188.0
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -153,9 +153,10 @@ __meta__ = {
 
 [node name="LevelImage" type="Control" parent="."]
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.734
 margin_left = 50.0
 margin_right = -50.0
+margin_bottom = 0.00799561
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -190,8 +191,8 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="LevelImage"]
-anims/swap_left = SubResource( 3 )
-anims/swap_right = SubResource( 4 )
+anims/swap_left = SubResource( 1 )
+anims/swap_right = SubResource( 2 )
 
 [node name="PlayLevel" type="TextureButton" parent="LevelImage"]
 anchor_right = 1.0
@@ -203,14 +204,14 @@ __meta__ = {
 [node name="LeftButton" type="Button" parent="."]
 anchor_top = 0.5
 anchor_bottom = 0.5
-margin_top = -25.0
+margin_top = -52.0
 margin_right = 30.0
-margin_bottom = 25.0
+margin_bottom = -2.0
 rect_min_size = Vector2( 30, 50 )
 focus_mode = 0
 custom_fonts/font = ExtResource( 4 )
 enabled_focus_mode = 0
-shortcut = SubResource( 6 )
+shortcut = SubResource( 4 )
 text = "<"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -222,14 +223,30 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 margin_left = -30.0
-margin_top = -25.0
-margin_bottom = 25.0
+margin_top = -52.0
+margin_bottom = -2.0
 rect_min_size = Vector2( 30, 50 )
 focus_mode = 0
 custom_fonts/font = ExtResource( 4 )
 enabled_focus_mode = 0
-shortcut = SubResource( 8 )
+shortcut = SubResource( 6 )
 text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CollectedCount" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -37.5
+margin_top = -42.0
+margin_right = 37.5
+custom_fonts/font = ExtResource( 4 )
+text = "Collected "
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }

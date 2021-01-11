@@ -37,6 +37,14 @@ func get_level_name():
 	
 func get_collectable_id(num):
 	return get_level_name() + str(num)
+func get_collected_count(level):
+	var count = 0
+	for i in collected[level]:
+		if i:
+			count += 1
+	return count
+func get_collected_total(level):
+	return level_paths[level][1]
 
 func get_level_root():
 	return get_tree().root.get_node("LevelRoot")
