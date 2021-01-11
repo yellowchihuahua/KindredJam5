@@ -266,52 +266,52 @@ scale = Vector2( 0.5, 0.5 )
 z_index = 3
 
 [node name="Body" type="Sprite" parent="Penguin"]
-position = Vector2( 0, 0.909054 )
-scale = Vector2( 1.01515, 0.984849 )
+position = Vector2( 0, 5.59113 )
+scale = Vector2( 1.11182, 0.888177 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 3, 75, 87, 122 )
 
 [node name="FlipperLeft" type="Sprite" parent="Penguin"]
-position = Vector2( -37.7351, -31.1416 )
-rotation = -0.0264433
+position = Vector2( -38.7595, -24.9445 )
+rotation = -0.0487919
 z_index = 1
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 98, 63, 40, 71 )
 
 [node name="FlipperRight" type="Sprite" parent="Penguin"]
-position = Vector2( 37.7351, -38.9107 )
-rotation = 0.0264433
+position = Vector2( 38.7595, -32.8073 )
+rotation = 0.0487919
 z_index = -2
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 151, 117, 38, 72 )
 
 [node name="EyeLeft" type="Sprite" parent="Penguin"]
-position = Vector2( -4.92041, -31.5492 )
-scale = Vector2( 1.0303, 1.0303 )
+position = Vector2( -6.03864, -24.4215 )
+scale = Vector2( 1.05591, 1.05591 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 15, 5, 16, 15 )
 
 [node name="EyeRight" type="Sprite" parent="Penguin"]
-position = Vector2( 30.9912, -38.1343 )
-scale = Vector2( 1.0303, 1.0303 )
+position = Vector2( 30.9912, -32.1248 )
+scale = Vector2( 1.05591, 1.05591 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 15, 5, 16, 15 )
 
 [node name="BeakTop" type="Sprite" parent="Penguin"]
-position = Vector2( 34.9554, -24.2741 )
-rotation = -0.0264433
+position = Vector2( 34.9554, -18.2646 )
+rotation = -0.0487919
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 14, 34, 33, 18 )
 
 [node name="BeakBottom" type="Sprite" parent="Penguin"]
-position = Vector2( 35.4687, -13.5473 )
-rotation = 0.0264433
+position = Vector2( 35.4687, -6.41959 )
+rotation = 0.0487919
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 71, 36, 31, 11 )
@@ -364,6 +364,7 @@ anims/Idle = SubResource( 2 )
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 7 )
 anim_player = NodePath("../AnimationPlayer")
+active = true
 parameters/playback = SubResource( 8 )
 
 [node name="FirePlayer" type="AnimationPlayer" parent="."]
