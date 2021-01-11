@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://LevelElements/Tiles/FragileGround.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Objects/FragileTopRtop.png" type="Texture" id=2]
@@ -7,9 +7,42 @@
 [ext_resource path="res://Resources/Objects/FragileBotR.png" type="Texture" id=5]
 [ext_resource path="res://Resources/Objects/FragileTopRbot.png" type="Texture" id=6]
 [ext_resource path="res://Resources/Objects/FragileTopLbot.png" type="Texture" id=7]
+[ext_resource path="res://Resources/sfx/IceCracking.wav" type="AudioStream" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 28 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Crack"
+length = 0.8
+tracks/0/type = "audio"
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 8 )
+} ],
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 5, false ],
+"method": "set_collision_layer_bit"
+} ]
+}
 
 [node name="FragileGround" type="KinematicBody2D"]
 collision_layer = 32
@@ -60,4 +93,11 @@ collision_mask = 2
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="PlayerDetector"]
 position = Vector2( 40, 35 )
 shape = SubResource( 1 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Crack = SubResource( 2 )
 [connection signal="body_exited" from="PlayerDetector" to="." method="_on_PlayerDetector_body_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

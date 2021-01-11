@@ -159,7 +159,9 @@ func update_anim():
 		$Penguin.scale.x = abs($Penguin.scale.x)
 
 func on_out_of_warmth():
-	can_move = false
+	if can_move:
+		$Freeze.play()
+		can_move = false
 	
 func on_level_finished():
 	can_move = false

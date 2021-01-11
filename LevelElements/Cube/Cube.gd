@@ -18,7 +18,6 @@ func _ready():
 		$PlayerCollider.monitoring = true
 		
 func _physics_process(_delta):
-	#print($"IceSlide/IceSlide/IceSlide".playing)
 	
 	if direction != Vector2.ZERO and not is_pushed:
 		var move_delta = (grid_position - position/Global.grid_size).normalized()*5

@@ -84,10 +84,8 @@ func setup_collected_dict():
 		collected[i] = {}
 		for id in range(level_paths[i][1]):
 			var name = get_collectable_id(id)
-			print(name)
 			collected[i][name] = false
 			
-	print(collected)
 
 func on_collected_pickup(id):
 	if not collected[current_level].has(id):

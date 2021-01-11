@@ -7,6 +7,7 @@ export var fill_rate = 0.5
 
 func _ready():
 	Global.get_level_root().connect("warmth_set", self, "on_set_warmth")
+	max_value = Global.get_level_root().max_warmth
 
 func on_set_warmth(val):
 	target_value = val
