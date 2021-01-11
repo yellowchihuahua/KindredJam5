@@ -48,6 +48,12 @@ func _physics_process(_delta):
 			if not sliding:
 				$IceSlide.get("parameters/playback").travel("StopSlide")
 
+func lead_push():
+	if is_sliding():
+		$IceSlide.get("parameters/playback").travel("StartSlide")
+	else:
+		$CubePush.play()
+
 func clear_push():
 	for i in range(1, len(pushing)):
 		pushing[i].stopped_push(last_direction)
@@ -110,6 +116,8 @@ func try_move(push_direction):
 			grid_position = grid_position.floor()
 			for i in range(1, len(pushing)):
 				pushing[i].claim_push()
+		else:
+			$IceSlide.get("parameters/playback").travel("StopSlide")
 				
 
 func is_sliding():

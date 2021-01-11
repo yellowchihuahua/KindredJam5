@@ -28,7 +28,7 @@ tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 
 tile_data = PoolIntArray( 65537, 0, 3, 131073, 0, 0, 131074, 0, 2, 196609, 0, 65539, 262145, 0, 0 )
 
 [node name="SlickTiles" parent="PlayingField" instance=ExtResource( 1 )]
-tile_data = PoolIntArray( 65538, 0, 0, 65539, 0, 0, 131075, 0, 65539, 196610, 0, 0, 196611, 0, 0, 262146, 0, 131075, 327681, 0, 196611 )
+tile_data = PoolIntArray( 65538, 0, 0, 65539, 0, 0, 131075, 0, 65539, 196610, 0, 65536, 196611, 0, 0, 262146, 0, 196608, 262147, 0, 196610, 327681, 0, 196611 )
 
 [node name="Player" parent="PlayingField" instance=ExtResource( 2 )]
 position = Vector2( 240, 350 )
@@ -50,6 +50,9 @@ position = Vector2( 720, 280 )
 z_index = 10
 
 [node name="Cube" parent="PlayingField/Cubes" instance=ExtResource( 8 )]
+position = Vector2( 240, 210 )
+
+[node name="Cube2" parent="PlayingField/Cubes" instance=ExtResource( 8 )]
 position = Vector2( 160, 350 )
 
 [node name="Warmth" type="Node2D" parent="PlayingField"]

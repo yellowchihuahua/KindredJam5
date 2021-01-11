@@ -65,6 +65,7 @@ func _physics_process(_delta):
 func stop_moving():
 	is_moving = false
 	move_finish_time = 0
+	
 	emit_signal("done_moving")
 	
 	try_drown()
@@ -128,7 +129,7 @@ func try_move(direction:Vector2, slide_move=false):
 	move_prime_time = move_prime_expire +1
 	move_primed = Vector2.ZERO
 	clear_pushing()
-	pushing = $SideDetect.can_move(direction)
+	pushing = $SideDetect.can_move(direction, not is_moving)
 	if len(pushing) > 0:
 		is_moving = true
 		grid_position += direction
@@ -136,10 +137,11 @@ func try_move(direction:Vector2, slide_move=false):
 			emit_signal("moved")
 		last_move = direction
 		
-		if len(pushing) > 1 and not slide_move:
-			$CubePush.play()
-			for i in range(1, len(pushing)):
-				pushing[i].claim_push()
+		if len(pushing) > 1:
+			pushing[1].lead_push()
+			if not slide_move:
+				for i in range(1, len(pushing)):
+					pushing[i].claim_push()
 		
 	elif is_moving:
 		stop_moving()

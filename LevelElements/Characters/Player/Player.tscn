@@ -242,52 +242,52 @@ scale = Vector2( 0.5, 0.5 )
 z_index = 3
 
 [node name="Body" type="Sprite" parent="Penguin"]
-position = Vector2( 0, 0.149939 )
-scale = Vector2( 1.0025, 0.997501 )
+position = Vector2( 0, 0.104603 )
+scale = Vector2( 1.00174, 0.998257 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 3, 75, 87, 122 )
 
 [node name="FlipperLeft" type="Sprite" parent="Penguin"]
-position = Vector2( -36.523, -30.3357 )
-rotation = -0.00436172
+position = Vector2( -36.523, -30.3961 )
+rotation = -0.00304294
 z_index = 1
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 98, 63, 40, 71 )
 
 [node name="FlipperRight" type="Sprite" parent="Penguin"]
-position = Vector2( 36.523, -39.2168 )
-rotation = 0.00436172
+position = Vector2( 36.523, -39.3075 )
+rotation = 0.00304294
 z_index = -2
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 151, 117, 38, 72 )
 
 [node name="EyeLeft" type="Sprite" parent="Penguin"]
-position = Vector2( -4.92041, -33.2673 )
-scale = Vector2( 1.005, 1.005 )
+position = Vector2( -4.92041, -33.2976 )
+scale = Vector2( 1.00349, 1.00349 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 15, 5, 16, 15 )
 
 [node name="EyeRight" type="Sprite" parent="Penguin"]
-position = Vector2( 30.9912, -39.8524 )
-scale = Vector2( 1.005, 1.005 )
+position = Vector2( 30.9912, -39.8827 )
+scale = Vector2( 1.00349, 1.00349 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 15, 5, 16, 15 )
 
 [node name="BeakTop" type="Sprite" parent="Penguin"]
 position = Vector2( 34.9554, -26.0922 )
-rotation = -0.00436172
+rotation = -0.00304294
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 14, 34, 33, 18 )
 
 [node name="BeakBottom" type="Sprite" parent="Penguin"]
 position = Vector2( 35.4687, -17.3654 )
-rotation = 0.00436172
+rotation = 0.00304294
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 71, 36, 31, 11 )
