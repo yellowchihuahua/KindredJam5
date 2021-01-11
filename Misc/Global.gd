@@ -4,11 +4,13 @@ extends Node
 # [level_path, level_image]
 var level_path_root = "res://Levels/"
 var level_image_root = "res://Resources/LevelSelectImages/"
-export var level_paths = ["Level_IntroExit",
-						"Level_IntroFire",
-						"Level_IntroBlocks",
-						"Level_IntroBlocksFragile",
-						"Level_IntroInteractable"]
+
+# [path, # collectables
+export var level_paths = [["Level_IntroExit", 1],
+						["Level_IntroFire", 0],
+						["Level_IntroBlocks", 0],
+						["Level_IntroBlocksFragile", 0],
+						["Level_IntroInteractable", 0]]
 
 var menu_path = "res://Levels/Menu.tscn"
 var current_level = 0
@@ -25,6 +27,17 @@ var slick_bit = 7
 
 var grid_size = Vector2(80, 70)
 
+var collected = {}
+
+func _ready():
+	setup_collected_dict()
+
+func get_level_name():
+	return level_paths[current_level][0]
+	
+func get_collectable_id(num):
+	return get_level_name() + str(num)
+
 func get_level_root():
 	return get_tree().root.get_node("LevelRoot")
 
@@ -37,10 +50,10 @@ func start_level(num):
 	
 	
 func get_level_path(num):
-	return level_path_root + level_paths[num] + ".tscn"
+	return level_path_root + level_paths[num][0] + ".tscn"
 
 func get_level_image(num):
-	return level_image_root + level_paths[num] + ".PNG"
+	return level_image_root + level_paths[num][0] + ".PNG"
 	
 func load_next_level():
 	current_level += 1
@@ -57,3 +70,18 @@ func load_menu():
 	
 func play_ui_click():
 	$UIClick.play()
+
+func setup_collected_dict():
+	for i in range(len(level_paths)):
+		collected[i] = {}
+		for id in range(level_paths[i][1]):
+			var name = get_collectable_id(id)
+			print(name)
+			collected[i][name] = false
+			
+	print(collected)
+
+func on_collected_pickup(id):
+	if not collected[current_level].has(id):
+		printerr("Collected id ", id, " does not exist in Global. Check collected count in level_paths.")
+	collected[current_level][id] = true

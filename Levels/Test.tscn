@@ -90,8 +90,8 @@ switches = PoolIntArray( 0 )
 position = Vector2( 400, 280 )
 switches = PoolIntArray( 1 )
 
-[node name="Hud" parent="." instance=ExtResource( 4 )]
-
-[node name="FragileGround" parent="." instance=ExtResource( 15 )]
+[node name="FragileGround" parent="PlayingField" instance=ExtResource( 15 )]
 position = Vector2( 80, 280 )
+
+[node name="Hud" parent="." instance=ExtResource( 4 )]
 [connection signal="body_entered" from="PlayingField/Exit" to="." method="_on_Exit_body_entered"]

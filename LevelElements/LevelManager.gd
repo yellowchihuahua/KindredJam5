@@ -21,6 +21,7 @@ var blizzard_chill = -0.2
 var chill_time = 0
 var chill_delay = 0.5
 
+
 ############# SETUP
 func _ready():
 	connect_signals()

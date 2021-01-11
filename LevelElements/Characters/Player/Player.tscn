@@ -241,52 +241,52 @@ scale = Vector2( 0.5, 0.5 )
 z_index = 3
 
 [node name="Body" type="Sprite" parent="Penguin"]
-position = Vector2( 0, 2.08693 )
-scale = Vector2( 1.03478, 0.965218 )
+position = Vector2( 0, 1.71726 )
+scale = Vector2( 1.02862, 0.971379 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 3, 75, 87, 122 )
 
 [node name="FlipperLeft" type="Sprite" parent="Penguin"]
-position = Vector2( -36.523, -27.753 )
-rotation = -0.0607063
+position = Vector2( -36.523, -28.2459 )
+rotation = -0.049953
 z_index = 1
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 98, 63, 40, 71 )
 
 [node name="FlipperRight" type="Sprite" parent="Penguin"]
-position = Vector2( 36.523, -35.3428 )
-rotation = 0.0607063
+position = Vector2( 36.523, -36.0822 )
+rotation = 0.049953
 z_index = -2
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 151, 117, 38, 72 )
 
 [node name="EyeLeft" type="Sprite" parent="Penguin"]
-position = Vector2( -4.92041, -31.976 )
-scale = Vector2( 1.06956, 1.06956 )
+position = Vector2( -4.92041, -32.2225 )
+scale = Vector2( 1.05724, 1.05724 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 15, 5, 16, 15 )
 
 [node name="EyeRight" type="Sprite" parent="Penguin"]
-position = Vector2( 30.9912, -38.5611 )
-scale = Vector2( 1.06956, 1.06956 )
+position = Vector2( 30.9912, -38.8076 )
+scale = Vector2( 1.05724, 1.05724 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 15, 5, 16, 15 )
 
 [node name="BeakTop" type="Sprite" parent="Penguin"]
 position = Vector2( 34.9554, -26.0922 )
-rotation = -0.0607063
+rotation = -0.049953
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 14, 34, 33, 18 )
 
 [node name="BeakBottom" type="Sprite" parent="Penguin"]
 position = Vector2( 35.4687, -17.3654 )
-rotation = 0.0607063
+rotation = 0.049953
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 71, 36, 31, 11 )
@@ -350,7 +350,7 @@ anims/Start = SubResource( 11 )
 
 [node name="FirePlayer" type="AudioStreamPlayer" parent="FirePlayer"]
 stream = ExtResource( 6 )
-volume_db = 0.0570999
+volume_db = 0.183594
 autoplay = true
 [connection signal="area_entered" from="WarmthCollector" to="." method="_on_WarmthCollector_area_entered"]
 [connection signal="area_exited" from="WarmthCollector" to="." method="_on_WarmthCollector_area_exited"]

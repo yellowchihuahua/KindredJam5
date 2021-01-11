@@ -87,7 +87,6 @@ func try_drown():
 	update_anim()
 	
 func _process(delta):
-	print($"FirePlayer/FirePlayer".volume_db)
 	get_input()
 	move_finish_time += delta
 	move_prime_time += delta
