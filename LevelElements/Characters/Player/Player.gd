@@ -61,6 +61,9 @@ func _physics_process(_delta):
 			else:
 				var new_position = position + offset*i
 				cube.position = new_position
+				
+		if do_settle:
+			pushing = []
 
 func stop_moving():
 	is_moving = false

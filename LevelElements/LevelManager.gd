@@ -48,7 +48,6 @@ func _process(delta):
 func change_warmth(delta):
 	warmth += delta
 	
-	#check_frozen()
 	emit_signal("warmth_set", warmth)
 	
 	

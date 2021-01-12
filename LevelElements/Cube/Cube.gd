@@ -40,11 +40,11 @@ func _physics_process(_delta):
 		
 				
 		if settle:
-			snap_to_grid()
 			clear_push()
 			if is_sliding():
 				try_move(last_direction)
 			if not sliding:
+				snap_to_grid()
 				$IceSlide.get("parameters/playback").travel("StopSlide")
 
 func lead_push():
@@ -87,6 +87,7 @@ func do_sink(play_audio=true):
 		$WaterSplash.play()
 
 func snap_to_grid():
+	print("snap")
 	if grid_position != position/Global.grid_size:
 		grid_position = position/Global.grid_size
 		grid_position = grid_position.round()
