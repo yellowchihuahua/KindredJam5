@@ -1,66 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://LevelElements/Interactable/Door.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Objects/GateLowered.png" type="Texture" id=2]
-[ext_resource path="res://Resources/Objects/GateRaised.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Objects/GateRaisedFront.png" type="Texture" id=4]
+[ext_resource path="res://Resources/Objects/GateRaisedTop.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 28 )
-
-[sub_resource type="Animation" id=2]
-resource_name = "close"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("ColorRect:rect_size")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 10, 56 ), Vector2( 64, 56 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("ColorRect:rect_position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 7 ), Vector2( 8, 7 ) ]
-}
-
-[sub_resource type="Animation" id=3]
-length = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("ColorRect:rect_size")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 64, 56 ), Vector2( 10, 56 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("ColorRect:rect_position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.001, 0.1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 8, 7 ), Vector2( 8, 7 ), Vector2( 0, 7 ) ]
-}
 
 [node name="Door" type="Node2D"]
 script = ExtResource( 1 )
@@ -71,24 +17,18 @@ script = ExtResource( 1 )
 position = Vector2( 40, 35 )
 shape = SubResource( 1 )
 
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-margin_top = 7.0
-margin_right = 10.0
-margin_bottom = 63.0
-color = Color( 1, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/close = SubResource( 2 )
-anims/open = SubResource( 3 )
-
-[node name="DoorClosed" type="Sprite" parent="."]
-position = Vector2( 39.5, 18 )
-texture = ExtResource( 3 )
-
 [node name="DoorOpen" type="Sprite" parent="."]
+visible = false
 position = Vector2( 39.5, 18 )
 texture = ExtResource( 2 )
+
+[node name="DoorClosed" type="Node2D" parent="."]
+position = Vector2( 40, 18 )
+
+[node name="Top" type="Sprite" parent="DoorClosed"]
+z_index = 95
+z_as_relative = false
+texture = ExtResource( 5 )
+
+[node name="Front" type="Sprite" parent="DoorClosed"]
+texture = ExtResource( 4 )
