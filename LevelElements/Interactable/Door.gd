@@ -32,5 +32,11 @@ func set_open(open):
 	is_open = open
 	
 	$"StaticBody2D/CollisionShape2D".set_deferred("disabled", open)
+	if open:
+		$DoorOpen.visible = true;
+		$DoorClosed.visible = false;
+	else:
+		$DoorOpen.visible = false;
+		$DoorClosed.visible = true;
 	
-	$AnimationPlayer.play("open" if open else "close")
+	#$AnimationPlayer.play("open" if open else "close")
