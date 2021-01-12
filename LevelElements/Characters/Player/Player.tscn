@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://LevelElements/Characters/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Resources/sfx/WaterSplash2.wav" type="AudioStream" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://Resources/sfx/CubeSlide.wav" type="AudioStream" id=7]
 [ext_resource path="res://Resources/sfx/IceFreeze.wav" type="AudioStream" id=8]
 [ext_resource path="res://Resources/sfx/IceSlide2.wav" type="AudioStream" id=9]
+[ext_resource path="res://Resources/sfx/PenguinLong.wav" type="AudioStream" id=10]
+[ext_resource path="res://Resources/sfx/PenguinSad1.wav" type="AudioStream" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 21.0186, 17.8088 )
@@ -352,52 +354,52 @@ scale = Vector2( 0.5, 0.5 )
 z_index = 3
 
 [node name="Body" type="Sprite" parent="Penguin"]
-position = Vector2( 0, 0.543341 )
-scale = Vector2( 1.00906, 0.990944 )
+position = Vector2( 0, 0.635898 )
+scale = Vector2( 1.0106, 0.989402 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 3, 75, 87, 122 )
 
 [node name="FlipperLeft" type="Sprite" parent="Penguin"]
-position = Vector2( -37.2475, -30.8978 )
-rotation = -0.0158052
+position = Vector2( -37.3709, -30.9595 )
+rotation = -0.0184975
 z_index = 1
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 98, 63, 40, 71 )
 
 [node name="FlipperRight" type="Sprite" parent="Penguin"]
-position = Vector2( 37.2475, -39.1545 )
-rotation = 0.0158052
+position = Vector2( 37.3709, -39.0928 )
+rotation = 0.0184975
 z_index = -2
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 151, 117, 38, 72 )
 
 [node name="EyeLeft" type="Sprite" parent="Penguin"]
-position = Vector2( -4.92041, -32.2806 )
-scale = Vector2( 1.01811, 1.01811 )
+position = Vector2( -4.92041, -32.0955 )
+scale = Vector2( 1.0212, 1.0212 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 15, 5, 16, 15 )
 
 [node name="EyeRight" type="Sprite" parent="Penguin"]
-position = Vector2( 30.9912, -38.8657 )
-scale = Vector2( 1.01811, 1.01811 )
+position = Vector2( 30.9912, -38.6806 )
+scale = Vector2( 1.0212, 1.0212 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 15, 5, 16, 15 )
 
 [node name="BeakTop" type="Sprite" parent="Penguin"]
-position = Vector2( 34.9554, -25.0055 )
-rotation = -0.0158052
+position = Vector2( 34.9554, -24.8204 )
+rotation = -0.0184975
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 14, 34, 33, 18 )
 
 [node name="BeakBottom" type="Sprite" parent="Penguin"]
-position = Vector2( 35.4687, -14.2787 )
-rotation = 0.0158052
+position = Vector2( 35.4687, -14.0936 )
+rotation = 0.0184975
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 71, 36, 31, 11 )
@@ -476,6 +478,12 @@ anims/StopSlide = SubResource( 13 )
 
 [node name="SlideSFX" type="AudioStreamPlayer" parent="SlideSFX"]
 stream = ExtResource( 9 )
+
+[node name="PenguinExit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+
+[node name="PenguinSad" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
 [connection signal="area_entered" from="WarmthCollector" to="." method="_on_WarmthCollector_area_entered"]
 [connection signal="area_exited" from="WarmthCollector" to="." method="_on_WarmthCollector_area_exited"]
 [connection signal="body_entered" from="SlickDetector" to="." method="_on_SlickDetector_body_entered"]

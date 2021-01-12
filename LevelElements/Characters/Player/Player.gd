@@ -164,9 +164,11 @@ func update_anim():
 func on_out_of_warmth():
 	if can_move:
 		$Freeze.play()
+		$PenguinSad.play()
 		can_move = false
 	
 func on_level_finished():
+	$PenguinExit.play()
 	can_move = false
 
 func _on_WarmthCollector_area_entered(_area):

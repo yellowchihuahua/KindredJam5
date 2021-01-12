@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/PenguinLong.wav-69d9034de085bade058ccae9375328ec.sample"
+
+[deps]
+
+source_file="res://Resources/sfx/PenguinLong.wav"
+dest_files=[ "res://.import/PenguinLong.wav-69d9034de085bade058ccae9375328ec.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
