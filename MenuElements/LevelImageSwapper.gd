@@ -30,6 +30,7 @@ func show_level(num):
 	level_shown = new_level
 	
 	$CollectedCount.text = "Collected " + str(Global.get_collected_count(level_shown)) + "/" + str(Global.get_collected_total(level_shown))
+	$LevelNumber.text = "Level " + str(level_shown + 1)
 	
 
 func _on_RightButton_pressed():

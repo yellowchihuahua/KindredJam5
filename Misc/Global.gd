@@ -39,8 +39,9 @@ func get_collectable_id(num):
 	return get_level_name() + str(num)
 func get_collected_count(level):
 	var count = 0
+	print(collected)
 	for i in collected[level]:
-		if i:
+		if collected[level][i]:
 			count += 1
 	return count
 func get_collected_total(level):
@@ -53,6 +54,7 @@ func restart_level():
 	var _out = get_tree().reload_current_scene()
 	
 func start_level(num):
+	print(num)
 	current_level = num - 1
 	load_next_level()
 	

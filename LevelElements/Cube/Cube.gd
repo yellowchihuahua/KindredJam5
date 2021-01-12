@@ -87,7 +87,6 @@ func do_sink(play_audio=true):
 		$WaterSplash.play()
 
 func snap_to_grid():
-	print("snap")
 	if grid_position != position/Global.grid_size:
 		grid_position = position/Global.grid_size
 		grid_position = grid_position.round()

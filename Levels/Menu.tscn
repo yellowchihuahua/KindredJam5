@@ -38,8 +38,8 @@ shortcut = SubResource( 2 )
 text = "play"
 
 [node name="LevelSelector" parent="." instance=ExtResource( 3 )]
-margin_left = 402.0
-margin_top = 146.0
-margin_right = 813.0
-margin_bottom = 357.0
+margin_left = 335.203
+margin_top = 102.246
+margin_right = 830.203
+margin_bottom = 389.246
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
