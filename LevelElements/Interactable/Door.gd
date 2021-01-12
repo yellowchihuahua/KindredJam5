@@ -9,6 +9,8 @@ var is_open = false
 
 func _ready():
 	Global.get_level_root().connect("switch_set", self, "on_switch_set")
+	$DoorOpen.visible = false;
+	$DoorClosed.visible = true;
 	
 	for i in switches:
 		switch_dict[i] = false
