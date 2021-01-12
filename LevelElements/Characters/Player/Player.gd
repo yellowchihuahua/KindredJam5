@@ -66,6 +66,9 @@ func stop_moving():
 	is_moving = false
 	move_finish_time = 0
 	
+	if $SlideSFX.current_animation == "StartSlide":
+		$SlideSFX.play("StopSlide")
+	
 	emit_signal("done_moving")
 	
 	try_drown()
@@ -182,8 +185,11 @@ func _on_WarmthCollector_area_exited(_area):
 func _on_SlickDetector_body_entered(_body):
 	is_sliding = true
 	$SideDetect.water_stop = false
+	$SlideSFX.play("StartSlide")
+	
 func _on_SlickDetector_body_exited(_body):
 	is_sliding = false
 	$SideDetect.water_stop = true
+	$SlideSFX.play("StopSlide")
 
 

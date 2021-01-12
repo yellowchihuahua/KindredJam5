@@ -15,7 +15,7 @@ func set_sides_enable(val):
 		side.monitoring = val
 		
 # array of objects in direction (terminates with first unpushable or empty square)
-func can_move(direction, water_stop=self.water_stop):
+func can_move(direction, is_water_stop=self.water_stop):
 	set_sides_enable(true)
 	var pushing = [get_parent()]
 	
@@ -41,7 +41,7 @@ func can_move(direction, water_stop=self.water_stop):
 	
 	if is_wall:
 		return []
-	if is_water and not is_sunken and water_stop:
+	if is_water and not is_sunken and is_water_stop:
 		return []
 	
 	if push_thing:
