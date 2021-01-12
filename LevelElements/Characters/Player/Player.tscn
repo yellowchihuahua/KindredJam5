@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://LevelElements/Characters/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Resources/sfx/WaterSplash2.wav" type="AudioStream" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Resources/sfx/IceSlide2.wav" type="AudioStream" id=9]
 [ext_resource path="res://Resources/sfx/PenguinLong.wav" type="AudioStream" id=10]
 [ext_resource path="res://Resources/sfx/PenguinSad1.wav" type="AudioStream" id=11]
+[ext_resource path="res://Resources/sfx/wind woosh loop.wav" type="AudioStream" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 21.0186, 17.8088 )
@@ -255,6 +256,52 @@ tracks/0/keys = {
 "values": [ -80.0 ]
 }
 
+[sub_resource type="Animation" id=14]
+resource_name = "FadeIn"
+tracks/0/type = "value"
+tracks/0/path = NodePath("BlizzardPlayer/BlizzardSFX:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -10.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "FadeOut"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("BlizzardPlayer/BlizzardSFX:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( -0.1, 0.7, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -4.0, -80.0 ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "Start"
+tracks/0/type = "value"
+tracks/0/path = NodePath("BlizzardPlayer/BlizzardSFX:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -80.0 ]
+}
+
 [sub_resource type="Animation" id=12]
 resource_name = "StartSlide"
 tracks/0/type = "method"
@@ -354,52 +401,52 @@ scale = Vector2( 0.5, 0.5 )
 z_index = 3
 
 [node name="Body" type="Sprite" parent="Penguin"]
-position = Vector2( 0, 2.86129 )
-scale = Vector2( 1.05723, 0.942774 )
+position = Vector2( 0, 3.14216 )
+scale = Vector2( 1.06284, 0.937157 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 3, 75, 87, 122 )
 
 [node name="FlipperLeft" type="Sprite" parent="Penguin"]
-position = Vector2( -37.6675, -27.6743 )
-rotation = -0.0249694
+position = Vector2( -37.7799, -27.3934 )
+rotation = -0.0274205
 z_index = 1
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 98, 63, 40, 71 )
 
 [node name="FlipperRight" type="Sprite" parent="Penguin"]
-position = Vector2( 37.6675, -36.0832 )
-rotation = 0.0249694
+position = Vector2( 37.7799, -35.7461 )
+rotation = 0.0274205
 z_index = -2
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 151, 117, 38, 72 )
 
 [node name="EyeLeft" type="Sprite" parent="Penguin"]
-position = Vector2( -5.49267, -28.7892 )
-scale = Vector2( 1.02861, 1.02861 )
+position = Vector2( -5.54884, -28.3398 )
+scale = Vector2( 1.03142, 1.03142 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 15, 5, 16, 15 )
 
 [node name="EyeRight" type="Sprite" parent="Penguin"]
-position = Vector2( 30.9912, -35.9466 )
-scale = Vector2( 1.02861, 1.02861 )
+position = Vector2( 30.9912, -35.5534 )
+scale = Vector2( 1.03142, 1.03142 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 15, 5, 16, 15 )
 
 [node name="BeakTop" type="Sprite" parent="Penguin"]
-position = Vector2( 34.9554, -22.0864 )
-rotation = -0.0249694
+position = Vector2( 34.9554, -21.6932 )
+rotation = -0.0274205
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 14, 34, 33, 18 )
 
 [node name="BeakBottom" type="Sprite" parent="Penguin"]
-position = Vector2( 35.4687, -10.7873 )
-rotation = 0.0249694
+position = Vector2( 35.4687, -10.3379 )
+rotation = 0.0274205
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 71, 36, 31, 11 )
@@ -463,7 +510,18 @@ anims/Start = SubResource( 11 )
 
 [node name="FirePlayer" type="AudioStreamPlayer" parent="FirePlayer"]
 stream = ExtResource( 6 )
-volume_db = -10.0
+volume_db = -80.0
+autoplay = true
+
+[node name="BlizzardPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Start"
+anims/FadeIn = SubResource( 14 )
+anims/FadeOut = SubResource( 15 )
+anims/Start = SubResource( 16 )
+
+[node name="BlizzardSFX" type="AudioStreamPlayer" parent="BlizzardPlayer"]
+stream = ExtResource( 12 )
+volume_db = -80.0
 autoplay = true
 
 [node name="CubePush" type="AudioStreamPlayer" parent="."]
