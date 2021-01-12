@@ -4,6 +4,7 @@ signal warmth_set(w)
 signal out_of_warmth
 signal level_finished
 signal switch_set(switch_num, enabled)
+signal player_in_blizzard(val)
 
 export var max_warmth = 9
 var warmth = max_warmth
@@ -48,7 +49,6 @@ func _process(delta):
 func change_warmth(delta):
 	warmth += delta
 	
-	#check_frozen()
 	emit_signal("warmth_set", warmth)
 	
 	
@@ -84,8 +84,12 @@ func on_switch_set(switch_num, enabled):
 func player_in_blizzard(val):
 	if val:
 		blizzards += 1
+		if blizzards == 1:
+			emit_signal("player_in_blizzard", true)
 	else:
 		blizzards -= 1
+		if blizzards == 0:
+			emit_signal("player_in_blizzard", false)
 	
 	
 	

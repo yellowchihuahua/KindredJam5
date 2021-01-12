@@ -40,7 +40,7 @@ func get_collectable_id(num):
 func get_collected_count(level):
 	var count = 0
 	for i in collected[level]:
-		if i:
+		if collected[level][i]:
 			count += 1
 	return count
 func get_collected_total(level):

@@ -36,6 +36,8 @@ func _ready():
 func connect_signals():
 	Global.get_level_root().connect("out_of_warmth", self, "on_out_of_warmth")
 	Global.get_level_root().connect("level_finished", self, "on_level_finished")
+	Global.get_level_root().connect("player_in_blizzard", self, "on_blizzard")
+	
 	var _out = connect("in_water", Global.get_level_root(), "on_player_in_water")
 
 
@@ -61,6 +63,9 @@ func _physics_process(_delta):
 			else:
 				var new_position = position + offset*i
 				cube.position = new_position
+				
+		if do_settle:
+			pushing = []
 
 func stop_moving():
 	is_moving = false
@@ -194,4 +199,9 @@ func _on_SlickDetector_body_exited(_body):
 	$SideDetect.water_stop = true
 	$SlideSFX.play("StopSlide")
 
+func on_blizzard(val):
+	if val:
+		$BlizzardPlayer.play("FadeIn")
+	else:
+		$BlizzardPlayer.play("FadeOut")
 

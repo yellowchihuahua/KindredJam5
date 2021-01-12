@@ -40,11 +40,11 @@ func _physics_process(_delta):
 		
 				
 		if settle:
-			snap_to_grid()
 			clear_push()
 			if is_sliding():
 				try_move(last_direction)
 			if not sliding:
+				snap_to_grid()
 				$IceSlide.get("parameters/playback").travel("StopSlide")
 
 func lead_push():
