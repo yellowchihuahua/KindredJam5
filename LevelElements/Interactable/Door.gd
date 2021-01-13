@@ -18,6 +18,11 @@ func _ready():
 		
 	set_open(not_mode)
 	
+	
+	for i in [$DoorOpen, $DoorClosed]:
+		i.modulate = Global.interactable_colors[switches[0]]/2
+		i.modulate.a = 1
+	
 func on_switch_set(num, enabled):
 	if num in switches:
 		switch_dict[num] = enabled

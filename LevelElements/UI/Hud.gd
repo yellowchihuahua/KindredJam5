@@ -24,3 +24,7 @@ func _on_RestartButton_pressed():
 func _on_NextLevelButton_pressed():
 	Global.play_ui_click()
 	Global.load_next_level()
+
+
+func _on_MenuButton_pressed():
+	Global.load_menu()

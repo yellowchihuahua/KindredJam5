@@ -9,6 +9,11 @@ var body_count = 0
 func _ready():
 	var _out = connect("set_switch", Global.get_level_root(), "on_switch_set")
 	emit_signal("set_switch", switch_num, false)
+	
+	for i in [$ButtonRing, $ButtonPressedSprite, $ButtonSprite]:
+		i.modulate = Global.interactable_colors[switch_num]/2
+		i.modulate.a = 1
+		
 	$ButtonPressedSprite.visible = false;
 	$ButtonSprite.visible = true;
 

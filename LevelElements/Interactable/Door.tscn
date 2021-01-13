@@ -18,7 +18,6 @@ position = Vector2( 40, 35 )
 shape = SubResource( 1 )
 
 [node name="DoorOpen" type="Sprite" parent="."]
-visible = false
 position = Vector2( 39.5, 18 )
 texture = ExtResource( 2 )
 

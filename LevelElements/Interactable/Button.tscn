@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://LevelElements/Interactable/Button.gd" type="Script" id=1]
 [ext_resource path="res://Resources/sfx/Click2.wav" type="AudioStream" id=2]
-[ext_resource path="res://Resources/Objects/Button.png" type="Texture" id=3]
-[ext_resource path="res://Resources/Objects/ButtonPressed.png" type="Texture" id=4]
+[ext_resource path="res://Resources/Objects/Button/ButtonStatic.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Objects/Button/ButtonUpModulate.png" type="Texture" id=4]
+[ext_resource path="res://Resources/Objects/Button/ButtonDownModulate.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 35, 30 )
@@ -17,13 +18,17 @@ script = ExtResource( 1 )
 position = Vector2( 40, 35 )
 shape = SubResource( 1 )
 
-[node name="ButtonSprite" type="Sprite" parent="."]
-position = Vector2( 39, 52 )
+[node name="ButtonRing" type="Sprite" parent="."]
+position = Vector2( 40, 50 )
 texture = ExtResource( 3 )
 
-[node name="ButtonPressedSprite" type="Sprite" parent="."]
-position = Vector2( 39, 52 )
+[node name="ButtonSprite" type="Sprite" parent="."]
+position = Vector2( 40, 50 )
 texture = ExtResource( 4 )
+
+[node name="ButtonPressedSprite" type="Sprite" parent="."]
+position = Vector2( 40, 50 )
+texture = ExtResource( 5 )
 
 [node name="ButtonPressed" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )

@@ -79,7 +79,6 @@ switch_num = 0
 
 [node name="Door" parent="PlayingField" instance=ExtResource( 9 )]
 position = Vector2( 320, 70 )
-switches = PoolIntArray( 0 )
 
 [node name="Door2" parent="PlayingField" instance=ExtResource( 9 )]
 position = Vector2( 400, 280 )

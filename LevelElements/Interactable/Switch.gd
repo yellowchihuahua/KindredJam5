@@ -7,6 +7,11 @@ var is_on = false
 export var switch_num = -1
 
 func _ready():
+	
+	
+	$Node2D.modulate = Global.interactable_colors[switch_num]/2
+	$Node2D.modulate.a = 1
+	
 	var _out = connect("set_switch", Global.get_level_root(), "on_switch_set")
 	emit_signal("set_switch", switch_num, is_on)
 	

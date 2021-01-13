@@ -30,6 +30,8 @@ var grid_size = Vector2(80, 70)
 
 var collected = {}
 
+var interactable_colors = [Color(1,0,0),Color(1,0,1),Color(0,1,1),Color(1,0,0)]
+
 func _ready():
 	setup_collected_dict()
 
@@ -90,7 +92,6 @@ func setup_collected_dict():
 			
 
 func on_collected_pickup(id):
-	print(collected)
 	if not collected[current_level].has(id):
 		printerr("Collected id ", id, " does not exist in Global. Check collected count in level_paths.")
 	collected[current_level][id] = true

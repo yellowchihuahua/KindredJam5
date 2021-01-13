@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://LevelElements/UI/Hud.gd" type="Script" id=1]
 [ext_resource path="res://LevelElements/UI/WarmthBar.gd" type="Script" id=2]
@@ -6,10 +6,16 @@
 [ext_resource path="res://Resources/Font/MediumSizeFont.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Resources/Font/SmallSizeFont.tres" type="DynamicFont" id=5]
 
+[sub_resource type="InputEventAction" id=8]
+action = "menu"
+
+[sub_resource type="ShortCut" id=2]
+shortcut = SubResource( 8 )
+
 [sub_resource type="InputEventAction" id=1]
 action = "restart"
 
-[sub_resource type="ShortCut" id=2]
+[sub_resource type="ShortCut" id=7]
 shortcut = SubResource( 1 )
 
 [sub_resource type="StyleBoxFlat" id=3]
@@ -49,13 +55,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="MenuButton" type="Button" parent="Hud/HBoxContainer"]
+margin_left = 476.0
+margin_right = 556.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 80, 35 )
+custom_fonts/font = ExtResource( 5 )
+shortcut = SubResource( 2 )
+text = "menu"
+
 [node name="RestartButton" type="Button" parent="Hud/HBoxContainer"]
 margin_left = 575.0
 margin_right = 655.0
 margin_bottom = 48.0
 rect_min_size = Vector2( 80, 35 )
 custom_fonts/font = ExtResource( 5 )
-shortcut = SubResource( 2 )
+shortcut = SubResource( 7 )
 text = "restart"
 
 [node name="Shake" parent="Hud/HBoxContainer" instance=ExtResource( 3 )]
@@ -124,6 +139,7 @@ rect_min_size = Vector2( 70, 70 )
 custom_fonts/font = ExtResource( 4 )
 shortcut = SubResource( 6 )
 text = "next level"
+[connection signal="pressed" from="Hud/HBoxContainer/MenuButton" to="Hud" method="_on_MenuButton_pressed"]
 [connection signal="pressed" from="Hud/HBoxContainer/RestartButton" to="Hud" method="_on_RestartButton_pressed"]
 [connection signal="pressed" from="Hud/LooseLevel/CenterContainer/RestartButton" to="Hud" method="_on_RestartButton_pressed"]
 [connection signal="pressed" from="Hud/LevelFinished/CenterContainer/NextLevelButton" to="Hud" method="_on_NextLevelButton_pressed"]
