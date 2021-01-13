@@ -1,7 +1,8 @@
 extends Node2D
 
-export var switches:PoolIntArray
+export var switches:PoolIntArray = [0]
 export var or_mode = false
+export var not_mode = false
 var switch_dict = {}
 
 var is_open = false
@@ -14,6 +15,8 @@ func _ready():
 	
 	for i in switches:
 		switch_dict[i] = false
+		
+	set_open(not_mode)
 	
 func on_switch_set(num, enabled):
 	if num in switches:
@@ -26,7 +29,9 @@ func on_switch_set(num, enabled):
 				open = open or switch_dict[i]
 			else:
 				open = open and switch_dict[i]
-				
+		
+		if not_mode:
+			open = not open
 		if open != is_open:
 			set_open(open)
 		

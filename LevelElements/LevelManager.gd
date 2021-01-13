@@ -20,7 +20,7 @@ var level_finished = false
 var blizzards = 0
 var blizzard_chill = -0.2
 var chill_time = 0
-var chill_delay = 0.5
+var chill_delay = 1.5
 
 
 ############# SETUP
@@ -39,7 +39,7 @@ func connect_signals():
 
 func _process(delta):
 	chill_time += delta
-	if blizzards > 0 and chill_time > chill_delay and not level_finished and warmth > 0:
+	if blizzards > 0 and chill_time > chill_delay and not level_finished and warmth > 0 and not is_warming:
 		change_warmth(blizzard_chill)
 		chill_time = 0
 		check_frozen()

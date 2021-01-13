@@ -10,7 +10,8 @@ export var level_paths = [["Level_IntroExit", 1],
 						["Level_IntroFire", 0],
 						["Level_IntroBlocks", 0],
 						["Level_IntroBlocksFragile", 0],
-						["Level_IntroInteractable", 0]]
+						["Level_IntroInteractable", 0],
+						["Level_SlidingBoxes", 1]]
 
 var menu_path = "res://Levels/Menu.tscn"
 var current_level = 0
@@ -35,8 +36,9 @@ func _ready():
 func get_level_name():
 	return level_paths[current_level][0]
 	
-func get_collectable_id(num):
-	return get_level_name() + str(num)
+func get_collectable_id(num, level_num=current_level):
+	return level_paths[level_num][0] + str(num)
+	
 func get_collected_count(level):
 	var count = 0
 	for i in collected[level]:
@@ -83,11 +85,12 @@ func setup_collected_dict():
 	for i in range(len(level_paths)):
 		collected[i] = {}
 		for id in range(level_paths[i][1]):
-			var name = get_collectable_id(id)
+			var name = get_collectable_id(id, i)
 			collected[i][name] = false
 			
 
 func on_collected_pickup(id):
+	print(collected)
 	if not collected[current_level].has(id):
 		printerr("Collected id ", id, " does not exist in Global. Check collected count in level_paths.")
 	collected[current_level][id] = true

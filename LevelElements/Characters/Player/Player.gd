@@ -103,7 +103,7 @@ func _process(delta):
 		
 	# sliding move
 	var dist_to_target = (position/Global.grid_size - grid_position).length()
-	if is_sliding and dist_to_target < 0.1:
+	if is_sliding and dist_to_target < 0.1 and is_moving:
 		try_move(last_move, true)
 
 

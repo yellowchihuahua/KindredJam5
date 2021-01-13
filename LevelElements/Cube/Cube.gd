@@ -20,7 +20,7 @@ func _ready():
 func _physics_process(_delta):
 	
 	if direction != Vector2.ZERO and not is_pushed:
-		var move_delta = (grid_position - position/Global.grid_size).normalized()*5
+		var move_delta = (grid_position - position/Global.grid_size).normalized()*3
 		var settle = (grid_position - position/Global.grid_size).length() < 0.1
 		position += move_delta
 		var offset = Global.grid_size*direction

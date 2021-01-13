@@ -256,7 +256,7 @@ tracks/0/keys = {
 "values": [ -80.0 ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=12]
 resource_name = "FadeIn"
 tracks/0/type = "value"
 tracks/0/path = NodePath("BlizzardPlayer/BlizzardSFX:volume_db")
@@ -271,7 +271,7 @@ tracks/0/keys = {
 "values": [ -10.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=13]
 resource_name = "FadeOut"
 length = 1.3
 tracks/0/type = "value"
@@ -287,7 +287,7 @@ tracks/0/keys = {
 "values": [ 0.0, -4.0, -80.0 ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=14]
 resource_name = "Start"
 tracks/0/type = "value"
 tracks/0/path = NodePath("BlizzardPlayer/BlizzardSFX:volume_db")
@@ -302,8 +302,7 @@ tracks/0/keys = {
 "values": [ -80.0 ]
 }
 
-[sub_resource type="Animation" id=12]
-resource_name = "StartSlide"
+[sub_resource type="Animation" id=15]
 tracks/0/type = "method"
 tracks/0/path = NodePath("SlideSFX/SlideSFX")
 tracks/0/interp = 1
@@ -343,8 +342,7 @@ tracks/2/keys = {
 "values": [ 1.0 ]
 }
 
-[sub_resource type="Animation" id=13]
-resource_name = "StopSlide"
+[sub_resource type="Animation" id=16]
 length = 0.2
 step = 0.01
 tracks/0/type = "value"
@@ -387,7 +385,8 @@ tracks/2/keys = {
 }
 
 [node name="Player" type="KinematicBody2D"]
-z_index = 99
+z_index = 90
+z_as_relative = false
 collision_layer = 2
 script = ExtResource( 1 )
 
@@ -401,52 +400,52 @@ scale = Vector2( 0.5, 0.5 )
 z_index = 3
 
 [node name="Body" type="Sprite" parent="Penguin"]
-position = Vector2( 0, 3.14216 )
-scale = Vector2( 1.06284, 0.937157 )
+position = Vector2( 0, 2.64153 )
+scale = Vector2( 1.04403, 0.955974 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 3, 75, 87, 122 )
 
 [node name="FlipperLeft" type="Sprite" parent="Penguin"]
-position = Vector2( -37.7799, -27.3934 )
-rotation = -0.0274205
+position = Vector2( -40.045, -32.2966 )
+rotation = -0.076839
 z_index = 1
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 98, 63, 40, 71 )
 
 [node name="FlipperRight" type="Sprite" parent="Penguin"]
-position = Vector2( 37.7799, -35.7461 )
-rotation = 0.0274205
+position = Vector2( 40.045, -37.7557 )
+rotation = 0.076839
 z_index = -2
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 151, 117, 38, 72 )
 
 [node name="EyeLeft" type="Sprite" parent="Penguin"]
-position = Vector2( -5.54884, -28.3398 )
-scale = Vector2( 1.03142, 1.03142 )
+position = Vector2( -4.92041, -28.0842 )
+scale = Vector2( 1.08805, 1.08805 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 15, 5, 16, 15 )
 
 [node name="EyeRight" type="Sprite" parent="Penguin"]
-position = Vector2( 30.9912, -35.5534 )
-scale = Vector2( 1.03142, 1.03142 )
+position = Vector2( 30.9912, -34.6693 )
+scale = Vector2( 1.08805, 1.08805 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 15, 5, 16, 15 )
 
 [node name="BeakTop" type="Sprite" parent="Penguin"]
-position = Vector2( 34.9554, -21.6932 )
-rotation = -0.0274205
+position = Vector2( 34.9554, -20.8091 )
+rotation = -0.076839
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 14, 34, 33, 18 )
 
 [node name="BeakBottom" type="Sprite" parent="Penguin"]
-position = Vector2( 35.4687, -10.3379 )
-rotation = 0.0274205
+position = Vector2( 35.4687, -10.0823 )
+rotation = 0.076839
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 71, 36, 31, 11 )
@@ -515,9 +514,9 @@ autoplay = true
 
 [node name="BlizzardPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Start"
-anims/FadeIn = SubResource( 14 )
-anims/FadeOut = SubResource( 15 )
-anims/Start = SubResource( 16 )
+anims/FadeIn = SubResource( 12 )
+anims/FadeOut = SubResource( 13 )
+anims/Start = SubResource( 14 )
 
 [node name="BlizzardSFX" type="AudioStreamPlayer" parent="BlizzardPlayer"]
 stream = ExtResource( 12 )
@@ -531,8 +530,8 @@ stream = ExtResource( 7 )
 stream = ExtResource( 8 )
 
 [node name="SlideSFX" type="AnimationPlayer" parent="."]
-anims/StartSlide = SubResource( 12 )
-anims/StopSlide = SubResource( 13 )
+anims/StartSlide = SubResource( 15 )
+anims/StopSlide = SubResource( 16 )
 
 [node name="SlideSFX" type="AudioStreamPlayer" parent="SlideSFX"]
 stream = ExtResource( 9 )
