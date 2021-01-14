@@ -20,7 +20,7 @@ func _ready():
 	
 	
 	for i in [$DoorOpen, $DoorClosed]:
-		i.modulate = Global.interactable_colors[switches[0]]/2
+		i.modulate = Global.interactable_colors[switches[0]]
 		i.modulate.a = 1
 	
 func on_switch_set(num, enabled):

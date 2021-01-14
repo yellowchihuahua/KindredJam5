@@ -11,6 +11,7 @@ export var level_paths = [["Level_IntroExit", 0],
 						["Level_IntroBlocks", 0],
 						["Level_IntroBlocksFragile", 0],
 						["Level_IntroInteractable", 0],
+						["Level_DoorBlock", 0],
 						["Level_SlipNSlide", 0],
 						["Level_SlidingBoxes", 0]]
 

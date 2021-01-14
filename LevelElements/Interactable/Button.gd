@@ -11,7 +11,7 @@ func _ready():
 	emit_signal("set_switch", switch_num, false)
 	
 	for i in [$ButtonRing, $ButtonPressedSprite, $ButtonSprite]:
-		i.modulate = Global.interactable_colors[switch_num]/2
+		i.modulate = Global.interactable_colors[switch_num]/1.5
 		i.modulate.a = 1
 		
 	$ButtonPressedSprite.visible = false;
