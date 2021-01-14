@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Resources/Tiles/ground_tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://LevelElements/Characters/Player/Player.tscn" type="PackedScene" id=2]
@@ -7,11 +7,15 @@
 [ext_resource path="res://LevelElements/Tiles/WaterTiles.tscn" type="PackedScene" id=5]
 [ext_resource path="res://LevelElements/Cube/Cube.tscn" type="PackedScene" id=6]
 [ext_resource path="res://LevelElements/LevelManager.gd" type="Script" id=7]
+[ext_resource path="res://LevelElements/Tiles/WallTiles.tscn" type="PackedScene" id=8]
 
 [node name="LevelRoot" type="Node2D"]
 script = ExtResource( 7 )
 
 [node name="PlayingField" type="Node2D" parent="."]
+
+[node name="WallTiles" parent="PlayingField" instance=ExtResource( 8 )]
+tile_data = PoolIntArray( -1, 0, 0, -65536, 0, 1, -65535, 0, 1, -65534, 0, 1, -65533, 0, 1, -65532, 0, 1, -65531, 0, 1, -65530, 0, 1, -65529, 0, 1, -65528, 0, 1, -65527, 0, 1, -65526, 0, 1, -65525, 0, 1, -65524, 0, 1, -65523, 0, 0, 65535, 0, 65539, 13, 0, 65539, 131071, 0, 65539, 65549, 0, 65539, 196607, 0, 65539, 131085, 0, 65539, 262143, 0, 65539, 196621, 0, 65539, 327679, 0, 65539, 262157, 0, 65539, 393215, 0, 65539, 327693, 0, 65539, 458751, 0, 65539, 393229, 0, 65539, 524287, 0, 65539, 458765, 0, 65539, 589823, 0, 65539, 524301, 0, 65539, 655359, 0, 0, 589824, 0, 1, 589825, 0, 1, 589826, 0, 1, 589827, 0, 1, 589828, 0, 1, 589829, 0, 1, 589830, 0, 1, 589831, 0, 1, 589832, 0, 1, 589833, 0, 1, 589834, 0, 1, 589835, 0, 1, 589836, 0, 1, 589837, 0, 0 )
 
 [node name="TileMap" type="TileMap" parent="PlayingField"]
 tile_set = ExtResource( 1 )
