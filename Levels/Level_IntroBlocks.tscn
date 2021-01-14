@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Resources/Tiles/ground_tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://LevelElements/Characters/Player/Player.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://LevelElements/Cube/Cube.tscn" type="PackedScene" id=6]
 [ext_resource path="res://LevelElements/LevelManager.gd" type="Script" id=7]
 [ext_resource path="res://LevelElements/Tiles/WallTiles.tscn" type="PackedScene" id=8]
+[ext_resource path="res://LevelElements/SnowParticles.tscn" type="PackedScene" id=9]
 
 [node name="LevelRoot" type="Node2D"]
 script = ExtResource( 7 )
@@ -38,6 +39,9 @@ position = Vector2( 640, 350 )
 position = Vector2( 400, 210 )
 
 [node name="Warmth" type="Node2D" parent="PlayingField"]
+
+[node name="SnowParticles" parent="PlayingField" instance=ExtResource( 9 )]
+position = Vector2( 480, 280 )
 
 [node name="Hud" parent="." instance=ExtResource( 4 )]
 [connection signal="body_entered" from="PlayingField/Exit" to="." method="_on_Exit_body_entered"]

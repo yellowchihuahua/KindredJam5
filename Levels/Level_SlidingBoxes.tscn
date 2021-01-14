@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://LevelElements/Tiles/GroundTiles.tscn" type="PackedScene" id=1]
 [ext_resource path="res://LevelElements/Characters/Player/Player.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://LevelElements/Tiles/WaterTiles.tscn" type="PackedScene" id=6]
 [ext_resource path="res://LevelElements/LevelManager.gd" type="Script" id=7]
 [ext_resource path="res://LevelElements/Tiles/SlickTiles.tscn" type="PackedScene" id=8]
+[ext_resource path="res://LevelElements/SnowParticles.tscn" type="PackedScene" id=9]
 [ext_resource path="res://LevelElements/Warmth/CampFire.tscn" type="PackedScene" id=10]
 [ext_resource path="res://LevelElements/Cube/Cube.tscn" type="PackedScene" id=11]
 [ext_resource path="res://LevelElements/Interactable/Button.tscn" type="PackedScene" id=12]
@@ -79,6 +80,8 @@ not_mode = true
 [node name="Switch" parent="PlayingField/Interactables" instance=ExtResource( 14 )]
 position = Vector2( 880, 70 )
 switch_num = 1
+
+[node name="SnowParticles" parent="PlayingField" instance=ExtResource( 9 )]
 
 [node name="Hud" parent="." instance=ExtResource( 4 )]
 [connection signal="body_entered" from="PlayingField/Exit" to="." method="_on_Exit_body_entered"]

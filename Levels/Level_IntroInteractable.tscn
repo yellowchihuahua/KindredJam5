@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Resources/Tiles/ground_tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://LevelElements/Characters/Player/Player.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://LevelElements/Cube/Cube.tscn" type="PackedScene" id=9]
 [ext_resource path="res://LevelElements/Warmth/CampFire.tscn" type="PackedScene" id=10]
 [ext_resource path="res://LevelElements/Interactable/Door.tscn" type="PackedScene" id=11]
+[ext_resource path="res://LevelElements/SnowParticles.tscn" type="PackedScene" id=12]
 
 [node name="LevelRoot" type="Node2D"]
 script = ExtResource( 7 )
@@ -65,6 +66,8 @@ z_index = 95
 position = Vector2( 640, 280 )
 z_index = 95
 switches = PoolIntArray( 1 )
+
+[node name="SnowParticles" parent="PlayingField" instance=ExtResource( 12 )]
 
 [node name="Hud" parent="." instance=ExtResource( 4 )]
 [connection signal="body_entered" from="PlayingField/Exit" to="." method="_on_Exit_body_entered"]
