@@ -29,6 +29,7 @@ var heat_sources = 0
 onready var anim = $AnimationTree.get("parameters/playback")
 
 func _ready():
+	$AnimationTree.active = true
 	connect_signals()
 	
 	grid_position = position/Global.grid_size

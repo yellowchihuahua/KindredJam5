@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://LevelElements/Characters/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Resources/sfx/WaterSplash2.wav" type="AudioStream" id=2]
@@ -188,30 +188,287 @@ tracks/13/keys = {
 "update": 0,
 "values": [ Vector2( 34.9554, -26.0922 ), Vector2( 34.9554, -12.0922 ), Vector2( 34.9554, -26.0922 ), Vector2( 34.9554, -20.0922 ), Vector2( 34.9554, -26.0922 ) ]
 }
+tracks/14/type = "value"
+tracks/14/path = NodePath("Fire:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 0.466666, 0.999999 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 40.256, -39.8015 ), Vector2( 40.256, -42.8015 ), Vector2( 40.256, -39.801 ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("Fire:scale")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 0.466666, 0.999999 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
+}
 
-[sub_resource type="AnimationNodeAnimation" id=3]
-animation = "Idle"
+[sub_resource type="Animation" id=3]
+resource_name = "Walk"
+length = 0.266667
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/path = NodePath("Penguin/Body:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.0833333, 0.116667, 0.183333, 0.266667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 10.0, 10.0, -10.0, -10.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Penguin/Body:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05, 0.0833333, 0.116667, 0.183333, 0.266667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 4, 14 ), Vector2( 14, -22 ), Vector2( -6, -22 ), Vector2( -6, 10 ), Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Penguin/FlipperLeft:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.05, 0.0833333, 0.116667, 0.183333, 0.266667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -36.523, -30.5356 ), Vector2( -52.523, -24.5356 ), Vector2( -26.043, -58.2156 ), Vector2( -49.5363, -48.989 ), Vector2( -59.0297, -21.7623 ), Vector2( -36.523, -30.5356 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Penguin/FlipperLeft:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.05, 0.0833333, 0.116667, 0.183333, 0.266667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -15.0, 5.0, -23.0, -15.0, 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Penguin/Body:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.05, 0.0833333, 0.116667, 0.183333, 0.266667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.3, 0.7 ), Vector2( 0.8, 1.3 ), Vector2( 0.8, 1.3 ), Vector2( 1.3, 0.7 ), Vector2( 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Penguin/FlipperRight:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.05, 0.0833333, 0.116667, 0.183333, 0.266667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 36.523, -39.5167 ), Vector2( 64.523, -19.5167 ), Vector2( 52.523, -53.5167 ), Vector2( 30.523, -65.5167 ), Vector2( 38.523, -31.5167 ), Vector2( 36.523, -39.5167 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Penguin/FlipperRight:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.05, 0.0833333, 0.116667, 0.183333, 0.266667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 30.0, 10.0, -5.0, 10.0, 0.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Penguin/EyeLeft:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.05, 0.0833333, 0.116667, 0.183333, 0.266667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -4.92041, -33.3673 ), Vector2( 1.07959, -7.3673 ), Vector2( 23.3996, -64.6473 ), Vector2( -16.0404, -64.2206 ), Vector2( -14.4804, -6.79396 ), Vector2( -4.92041, -33.3673 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Penguin/EyeRight:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.05, 0.0833333, 0.116667, 0.183333, 0.266667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 30.9912, -39.9524 ), Vector2( 42.9912, -9.9524 ), Vector2( 45.4773, -66.1986 ), Vector2( 6.7512, -73.5524 ), Vector2( 22.8712, -24.7524 ), Vector2( 30.9912, -39.9524 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Penguin/BeakTop:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.05, 0.0833333, 0.116667, 0.183333, 0.266667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 34.9554, -26.0922 ), Vector2( 45.6221, -1.25887 ), Vector2( 52.9554, -54.0922 ), Vector2( 24.9554, -64.0922 ), Vector2( 32.9554, -12.0922 ), Vector2( 34.9554, -26.0922 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Penguin/BeakTop:rotation_degrees")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.05, 0.266667 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 15.0, 0.0 ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Penguin/BeakBottom:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.05, 0.0833333, 0.116667, 0.183333, 0.266667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 35.4687, -15.3654 ), Vector2( 45.4687, 10.6346 ), Vector2( 51.4687, -45.3654 ), Vector2( 25.4687, -59.3654 ), Vector2( 35.4687, -1.3654 ), Vector2( 35.4687, -15.3654 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Penguin/BeakBottom:rotation_degrees")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 0.05, 0.266667 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 10.0, 0.0 ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Penguin/FootLeft:rotation_degrees")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 0.05, 0.0833333, 0.116667, 0.183333, 0.266667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 10.0, -10.0, -10.0, 10.0, 0.0 ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("Penguin/FootRight:rotation_degrees")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 0.05, 0.0833333, 0.266667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -10.0, 30.0, 0.0 ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("Penguin/FootRight:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 0.05, 0.0833333, 0.116667, 0.183333, 0.266667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 31.1508, 53.5293 ), Vector2( 33.1508, 51.5293 ), Vector2( 30.5908, 58.0893 ), Vector2( 28.7775, 54.5693 ), Vector2( 29.9641, 52.0493 ), Vector2( 31.1508, 53.5293 ) ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("Penguin/FootLeft:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 0.05, 0.0833333, 0.116667, 0.183333, 0.266667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -17.0614, 57.1761 ), Vector2( -19.0614, 53.1761 ), Vector2( -15.0614, 53.1761 ), Vector2( -16.3947, 57.1761 ), Vector2( -21.7281, 54.1761 ), Vector2( -19.0614, 53.1761 ) ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("Fire:position")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0, 0.05, 0.0833333, 0.116667, 0.183333, 0.266667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 40.256, -41.6892 ), Vector2( 46.256, -43.6892 ), Vector2( 52.856, -57.6892 ), Vector2( 23.9893, -67.0226 ), Vector2( 32.1227, -32.3559 ), Vector2( 40.256, -41.6892 ) ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("Fire:scale")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0, 0.05, 0.266667 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.2, 1.2 ), Vector2( 1, 1 ) ]
+}
 
 [sub_resource type="AnimationNodeAnimation" id=4]
 animation = "Idle"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=5]
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "Walk"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=6]
 
-[sub_resource type="AnimationNodeStateMachine" id=7]
-states/Idle/node = SubResource( 3 )
+[sub_resource type="AnimationNodeStateMachineTransition" id=7]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id=8]
+states/Idle/node = SubResource( 4 )
 states/Idle/position = Vector2( 548, 140 )
-states/Walk/node = SubResource( 4 )
+states/Walk/node = SubResource( 5 )
 states/Walk/position = Vector2( 548, -25 )
-transitions = [ "Idle", "Walk", SubResource( 5 ), "Walk", "Idle", SubResource( 6 ) ]
+transitions = [ "Idle", "Walk", SubResource( 6 ), "Walk", "Idle", SubResource( 7 ) ]
 start_node = "Idle"
-graph_offset = Vector2( -52, 15 )
+graph_offset = Vector2( -52, -89.9114 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=8]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=9]
 
-[sub_resource type="Animation" id=9]
-resource_name = "FadeIn"
+[sub_resource type="Animation" id=10]
 tracks/0/type = "value"
 tracks/0/path = NodePath("FirePlayer/FirePlayer:volume_db")
 tracks/0/interp = 2
@@ -223,26 +480,24 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ -10.0, 0.0 ]
-}
-
-[sub_resource type="Animation" id=10]
-resource_name = "FadeOut"
-length = 1.3
-tracks/0/type = "value"
-tracks/0/path = NodePath("FirePlayer/FirePlayer:volume_db")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( -0.1, 0.7, 1.3 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ 0.0, -4.0, -80.0 ]
 }
 
 [sub_resource type="Animation" id=11]
-resource_name = "Start"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("FirePlayer/FirePlayer:volume_db")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( -0.1, 0.7, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -4.0, -80.0 ]
+}
+
+[sub_resource type="Animation" id=12]
 tracks/0/type = "value"
 tracks/0/path = NodePath("FirePlayer/FirePlayer:volume_db")
 tracks/0/interp = 1
@@ -256,8 +511,7 @@ tracks/0/keys = {
 "values": [ -80.0 ]
 }
 
-[sub_resource type="Animation" id=12]
-resource_name = "FadeIn"
+[sub_resource type="Animation" id=13]
 tracks/0/type = "value"
 tracks/0/path = NodePath("BlizzardPlayer/BlizzardSFX:volume_db")
 tracks/0/interp = 1
@@ -271,8 +525,7 @@ tracks/0/keys = {
 "values": [ -10.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=13]
-resource_name = "FadeOut"
+[sub_resource type="Animation" id=14]
 length = 1.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("BlizzardPlayer/BlizzardSFX:volume_db")
@@ -287,8 +540,7 @@ tracks/0/keys = {
 "values": [ 0.0, -4.0, -80.0 ]
 }
 
-[sub_resource type="Animation" id=14]
-resource_name = "Start"
+[sub_resource type="Animation" id=15]
 tracks/0/type = "value"
 tracks/0/path = NodePath("BlizzardPlayer/BlizzardSFX:volume_db")
 tracks/0/interp = 1
@@ -302,7 +554,7 @@ tracks/0/keys = {
 "values": [ -80.0 ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=16]
 tracks/0/type = "method"
 tracks/0/path = NodePath("SlideSFX/SlideSFX")
 tracks/0/interp = 1
@@ -342,7 +594,7 @@ tracks/2/keys = {
 "values": [ 1.0 ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=17]
 length = 0.2
 step = 0.01
 tracks/0/type = "value"
@@ -391,7 +643,7 @@ collision_layer = 2
 script = ExtResource( 1 )
 
 [node name="Fire" parent="." instance=ExtResource( 5 )]
-position = Vector2( 40.256, -39.8015 )
+position = Vector2( 40.256, -41.6892 )
 show_text = true
 
 [node name="Penguin" type="Sprite" parent="."]
@@ -400,58 +652,52 @@ scale = Vector2( 0.5, 0.5 )
 z_index = 3
 
 [node name="Body" type="Sprite" parent="Penguin"]
-position = Vector2( 0, 2.64153 )
-scale = Vector2( 1.04403, 0.955974 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 3, 75, 87, 122 )
 
 [node name="FlipperLeft" type="Sprite" parent="Penguin"]
-position = Vector2( -40.045, -32.2966 )
-rotation = -0.076839
+position = Vector2( -36.523, -30.5356 )
 z_index = 1
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 98, 63, 40, 71 )
 
 [node name="FlipperRight" type="Sprite" parent="Penguin"]
-position = Vector2( 40.045, -37.7557 )
-rotation = 0.076839
+position = Vector2( 36.523, -39.5167 )
 z_index = -2
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 151, 117, 38, 72 )
 
 [node name="EyeLeft" type="Sprite" parent="Penguin"]
-position = Vector2( -4.92041, -28.0842 )
-scale = Vector2( 1.08805, 1.08805 )
+position = Vector2( -4.92041, -33.3673 )
+scale = Vector2( 1.0805, 1.0805 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 15, 5, 16, 15 )
 
 [node name="EyeRight" type="Sprite" parent="Penguin"]
-position = Vector2( 30.9912, -34.6693 )
-scale = Vector2( 1.08805, 1.08805 )
+position = Vector2( 30.9912, -39.9524 )
+scale = Vector2( 1.0805, 1.0805 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 15, 5, 16, 15 )
 
 [node name="BeakTop" type="Sprite" parent="Penguin"]
-position = Vector2( 34.9554, -20.8091 )
-rotation = -0.076839
+position = Vector2( 34.9554, -26.0922 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 14, 34, 33, 18 )
 
 [node name="BeakBottom" type="Sprite" parent="Penguin"]
-position = Vector2( 35.4687, -10.0823 )
-rotation = 0.076839
+position = Vector2( 35.4687, -15.3654 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 71, 36, 31, 11 )
 
 [node name="FootLeft" type="Sprite" parent="Penguin"]
-position = Vector2( -17.0614, 59.1761 )
+position = Vector2( -17.0614, 57.1761 )
 z_index = -1
 texture = ExtResource( 4 )
 region_enabled = true
@@ -459,6 +705,7 @@ region_rect = Rect2( 118, 10, 33, 25 )
 
 [node name="FootRight" type="Sprite" parent="Penguin"]
 position = Vector2( 31.1508, 53.5293 )
+scale = Vector2( 1, 1 )
 z_index = -1
 texture = ExtResource( 4 )
 region_enabled = true
@@ -494,18 +741,18 @@ stream = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Idle = SubResource( 2 )
+anims/Walk = SubResource( 3 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 7 )
+tree_root = SubResource( 8 )
 anim_player = NodePath("../AnimationPlayer")
-active = true
-parameters/playback = SubResource( 8 )
+parameters/playback = SubResource( 9 )
 
 [node name="FirePlayer" type="AnimationPlayer" parent="."]
 autoplay = "Start"
-anims/FadeIn = SubResource( 9 )
-anims/FadeOut = SubResource( 10 )
-anims/Start = SubResource( 11 )
+anims/FadeIn = SubResource( 10 )
+anims/FadeOut = SubResource( 11 )
+anims/Start = SubResource( 12 )
 
 [node name="FirePlayer" type="AudioStreamPlayer" parent="FirePlayer"]
 stream = ExtResource( 6 )
@@ -514,9 +761,9 @@ autoplay = true
 
 [node name="BlizzardPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Start"
-anims/FadeIn = SubResource( 12 )
-anims/FadeOut = SubResource( 13 )
-anims/Start = SubResource( 14 )
+anims/FadeIn = SubResource( 13 )
+anims/FadeOut = SubResource( 14 )
+anims/Start = SubResource( 15 )
 
 [node name="BlizzardSFX" type="AudioStreamPlayer" parent="BlizzardPlayer"]
 stream = ExtResource( 12 )
@@ -530,8 +777,8 @@ stream = ExtResource( 7 )
 stream = ExtResource( 8 )
 
 [node name="SlideSFX" type="AnimationPlayer" parent="."]
-anims/StartSlide = SubResource( 15 )
-anims/StopSlide = SubResource( 16 )
+anims/StartSlide = SubResource( 16 )
+anims/StopSlide = SubResource( 17 )
 
 [node name="SlideSFX" type="AudioStreamPlayer" parent="SlideSFX"]
 stream = ExtResource( 9 )

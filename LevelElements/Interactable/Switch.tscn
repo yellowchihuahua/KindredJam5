@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://LevelElements/Interactable/Switch.gd" type="Script" id=1]
 [ext_resource path="res://Resources/sfx/Click2.wav" type="AudioStream" id=2]
+[ext_resource path="res://Resources/Objects/SwitchOn.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Objects/SwitchOff.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 28 )
@@ -35,6 +37,7 @@ shape = SubResource( 1 )
 anims/turn = SubResource( 2 )
 
 [node name="Node2D" type="Node2D" parent="."]
+visible = false
 position = Vector2( 40, 35 )
 
 [node name="ColorRect" type="ColorRect" parent="Node2D"]
@@ -48,3 +51,12 @@ __meta__ = {
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
+
+[node name="SwitchOff" type="Sprite" parent="."]
+position = Vector2( 39.5, 50 )
+texture = ExtResource( 4 )
+
+[node name="SwitchOn" type="Sprite" parent="."]
+visible = false
+position = Vector2( 39.5, 50 )
+texture = ExtResource( 3 )

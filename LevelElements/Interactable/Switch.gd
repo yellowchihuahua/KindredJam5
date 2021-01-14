@@ -7,7 +7,8 @@ var is_on = false
 export var switch_num = -1
 
 func _ready():
-	
+	$SwitchOff.visible = true
+	$SwitchOn.visible = false
 	
 	$Node2D.modulate = Global.interactable_colors[switch_num]/2
 	$Node2D.modulate.a = 1
@@ -20,9 +21,13 @@ func _ready():
 
 func interact():
 	if is_on:
-		$AnimationPlayer.play_backwards("turn")
+		$SwitchOff.visible = true
+		$SwitchOn.visible = false
+		#$AnimationPlayer.play_backwards("turn")
 	else:
-		$AnimationPlayer.play("turn")
+		$SwitchOff.visible = false
+		$SwitchOn.visible = true
+		#$AnimationPlayer.play("turn")
 		
 	is_on = not is_on
 	
