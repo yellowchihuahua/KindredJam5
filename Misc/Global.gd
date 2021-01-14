@@ -13,6 +13,8 @@ export var level_paths = [["Level_IntroExit", 0],
 						["Level_IntroInteractable", 0],
 						["Level_DoorBlock", 0],
 						["Level_SlipNSlide", 0],
+						["Level_ShortDoor", 0],
+						["Level_BoxDelivery", 0],
 						["Level_SlidingBoxes", 0]]
 
 var menu_path = "res://Levels/Menu.tscn"
