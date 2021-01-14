@@ -196,12 +196,10 @@ func _on_WarmthCollector_area_exited(_area):
 func _on_SlickDetector_body_entered(_body):
 	is_sliding = true
 	$SideDetect.water_stop = false
-	#$SlideSFX.play("StartSlide")
 	
 func _on_SlickDetector_body_exited(_body):
 	is_sliding = false
 	$SideDetect.water_stop = true
-	#$SlideSFX.play("StopSlide")
 
 func on_blizzard(val):
 	if val:
