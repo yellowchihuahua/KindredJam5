@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://LevelElements/MenuManager.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Font/MediumSizeFont.tres" type="DynamicFont" id=2]
@@ -6,12 +6,17 @@
 [ext_resource path="res://Resources/Font/SmallSizeFont.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Resources/Font/LargeSizeFont.tres" type="DynamicFont" id=5]
 [ext_resource path="res://Resources/Menu.png" type="Texture" id=6]
+[ext_resource path="res://Resources/snowparticle.png" type="Texture" id=7]
 
 [sub_resource type="InputEventAction" id=1]
 action = "ui_accept"
 
 [sub_resource type="ShortCut" id=2]
 shortcut = SubResource( 1 )
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0, 0.165992, 1 )
+colors = PoolColorArray( 0.717135, 0.88199, 0.983398, 0, 0.67148, 0.923003, 1, 1, 1, 1, 1, 0 )
 
 [node name="LevelRoot" type="Control"]
 anchor_right = 1.0
@@ -71,4 +76,25 @@ margin_left = 400.0
 margin_top = 210.0
 margin_right = 904.0
 margin_bottom = 511.0
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2( 512, 300 )
+amount = 50
+lifetime = 4.0
+texture = ExtResource( 7 )
+emission_shape = 2
+emission_rect_extents = Vector2( 600, 400 )
+gravity = Vector2( 0, 10 )
+initial_velocity = 50.0
+initial_velocity_random = 0.49
+angular_velocity = 40.0
+angular_velocity_random = 0.37
+orbit_velocity = -0.01
+angle = 214.5
+angle_random = 0.09
+scale_amount = 0.3
+scale_amount_random = 1.0
+color_ramp = SubResource( 3 )
+hue_variation = 1.0
+hue_variation_random = 0.05
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
