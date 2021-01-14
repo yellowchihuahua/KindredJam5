@@ -6,12 +6,13 @@ var level_path_root = "res://Levels/"
 var level_image_root = "res://Resources/LevelSelectImages/"
 
 # [path, # collectables
-export var level_paths = [["Level_IntroExit", 1],
+export var level_paths = [["Level_IntroExit", 0],
 						["Level_IntroFire", 0],
 						["Level_IntroBlocks", 0],
 						["Level_IntroBlocksFragile", 0],
 						["Level_IntroInteractable", 0],
-						["Level_SlidingBoxes", 1]]
+						["Level_SlipNSlide", 0],
+						["Level_SlidingBoxes", 0]]
 
 var menu_path = "res://Levels/Menu.tscn"
 var current_level = 0
