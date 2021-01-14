@@ -1,9 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://LevelElements/Warmth/Blizzard.gd" type="Script" id=1]
+[ext_resource path="res://Resources/snowparticle.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 520, 315 )
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.101215, 0.732794, 1 )
+colors = PoolColorArray( 0, 0.964844, 1, 0, 0.400722, 0.894658, 1, 1, 0.525872, 0.923951, 1, 0.531532, 0.66787, 0.957186, 1, 0 )
 
 [node name="Blizzard" type="Area2D"]
 z_index = 99
@@ -17,8 +22,10 @@ position = Vector2( 40, 35 )
 shape = SubResource( 1 )
 
 [node name="Particles2D" type="CPUParticles2D" parent="CollisionShape2D"]
-amount = 100
+amount = 20
 preprocess = 5.0
+speed_scale = 1.5
+texture = ExtResource( 2 )
 emission_shape = 2
 emission_rect_extents = Vector2( 35, 30 )
 spread = 180.0
@@ -27,8 +34,6 @@ initial_velocity = 32.26
 initial_velocity_random = 0.5
 angular_velocity = 30.0
 angular_velocity_random = 1.0
-scale_amount = 4.0
-scale_amount_random = 0.5
-color = Color( 0.423529, 0.862745, 1, 1 )
+color_ramp = SubResource( 2 )
 [connection signal="body_entered" from="." to="." method="_on_Blizzard_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_Blizzard_body_exited"]
