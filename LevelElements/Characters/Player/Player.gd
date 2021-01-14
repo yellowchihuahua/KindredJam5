@@ -157,10 +157,13 @@ func try_move(direction:Vector2, slide_move=false):
 		
 		
 func update_anim():
-	if is_moving:
+	if is_moving and not is_sliding:
 		anim.travel("Walk")
 	else:
 		anim.travel("Idle")
+		
+	if is_sliding and is_moving and $SlideSFX.current_animation != "StartSlide":
+		$SlideSFX.play("StartSlide")
 	
 	if last_move.x < 0:
 		$Penguin.scale.x = abs($Penguin.scale.x) * -1
@@ -193,12 +196,12 @@ func _on_WarmthCollector_area_exited(_area):
 func _on_SlickDetector_body_entered(_body):
 	is_sliding = true
 	$SideDetect.water_stop = false
-	$SlideSFX.play("StartSlide")
+	#$SlideSFX.play("StartSlide")
 	
 func _on_SlickDetector_body_exited(_body):
 	is_sliding = false
 	$SideDetect.water_stop = true
-	$SlideSFX.play("StopSlide")
+	#$SlideSFX.play("StopSlide")
 
 func on_blizzard(val):
 	if val:
