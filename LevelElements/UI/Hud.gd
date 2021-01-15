@@ -2,6 +2,7 @@ extends Control
 
 
 func _ready():
+	visible = false
 	Global.get_level_root().connect("out_of_warmth", self, "on_out_of_warmth")
 	Global.get_level_root().connect("level_finished", self, "on_level_finished")
 	

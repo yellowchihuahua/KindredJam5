@@ -5,7 +5,7 @@ export var show_text = false
 
 func _ready():
 	Global.get_level_root().connect("warmth_set", self, "set_fill")
-	$Label.visible = show_text
+	$Label.visible = false#show_text
 
 func set_fill(val:float):
 	var frac = fmod(val, 1.0)
