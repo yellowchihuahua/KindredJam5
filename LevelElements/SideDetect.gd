@@ -40,8 +40,10 @@ func can_move(direction, is_water_stop=self.water_stop):
 			c.interact()
 	
 	if is_wall:
+		#print("wall stop")
 		return []
 	if is_water and not is_sunken and is_water_stop:
+		#print("water stop")
 		return []
 	
 	if push_thing:
@@ -49,6 +51,7 @@ func can_move(direction, is_water_stop=self.water_stop):
 		if len(pushed_pushing) > 0:
 			pushing += pushed_pushing
 		else: # push_thing blocked
+			#print("push blocked")
 			return []
 	
 	return pushing

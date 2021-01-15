@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Level_SimpleDoor.PNG-3572bfe7e345d117c7194061edc582d8.stex"
+path="res://.import/Level_IceBreaker.PNG-15a9086ce53c550fa18ac07e7ecebfe1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/LevelSelectImages/Level_SimpleDoor.PNG"
-dest_files=[ "res://.import/Level_SimpleDoor.PNG-3572bfe7e345d117c7194061edc582d8.stex" ]
+source_file="res://Resources/LevelSelectImages/Level_IceBreaker.PNG"
+dest_files=[ "res://.import/Level_IceBreaker.PNG-15a9086ce53c550fa18ac07e7ecebfe1.stex" ]
 
 [params]
 
