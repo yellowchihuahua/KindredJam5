@@ -33,6 +33,7 @@ texture = ExtResource( 2 )
 [node name="Fire2" parent="." instance=ExtResource( 1 )]
 position = Vector2( 41.9401, 22.9207 )
 scale = Vector2( 1.2, 1.2 )
+z_index = 3
 
 [node name="Light2D" type="Light2D" parent="."]
 position = Vector2( 39.9947, 35.492 )
