@@ -10,8 +10,10 @@ func _ready():
 	$SwitchOff.visible = true
 	$SwitchOn.visible = false
 	
-	$Node2D.modulate = Global.interactable_colors[switch_num]/2
-	$Node2D.modulate.a = 1
+	$SwitchOff.modulate = Global.interactable_colors[switch_num]/2
+	$SwitchOff.modulate.a = 1
+	$SwitchOn.modulate = Global.interactable_colors[switch_num]/2
+	$SwitchOn.modulate.a = 1
 	
 	var _out = connect("set_switch", Global.get_level_root(), "on_switch_set")
 	emit_signal("set_switch", switch_num, is_on)
