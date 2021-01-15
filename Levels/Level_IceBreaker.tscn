@@ -90,5 +90,4 @@ position = Vector2( 720, 140 )
 position = Vector2( 400, 280 )
 
 [node name="Hud" parent="." instance=ExtResource( 9 )]
-visible = false
 [connection signal="body_entered" from="PlayingField/Exit" to="." method="_on_Exit_body_entered"]
