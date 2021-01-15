@@ -93,7 +93,7 @@ func try_drown():
 		$WaterSplash.play()
 		
 	update_anim()
-	
+
 func _process(delta):
 	get_input()
 	move_finish_time += delta
