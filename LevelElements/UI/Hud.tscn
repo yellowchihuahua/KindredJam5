@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://LevelElements/UI/Hud.gd" type="Script" id=1]
 [ext_resource path="res://LevelElements/UI/WarmthBar.gd" type="Script" id=2]
@@ -30,6 +30,12 @@ action = "ui_accept"
 
 [sub_resource type="ShortCut" id=8]
 shortcut = SubResource( 7 )
+
+[sub_resource type="InputEventAction" id=9]
+action = "ui_accept"
+
+[sub_resource type="ShortCut" id=10]
+shortcut = SubResource( 9 )
 
 [node name="Node2D" type="Node2D"]
 z_index = 4096
@@ -114,6 +120,7 @@ margin_right = 561.0
 margin_bottom = 337.0
 rect_min_size = Vector2( 70, 70 )
 custom_fonts/font = ExtResource( 4 )
+shortcut = SubResource( 8 )
 text = "restart"
 
 [node name="LevelFinished" type="Control" parent="Hud"]
@@ -137,7 +144,7 @@ margin_right = 579.0
 margin_bottom = 337.0
 rect_min_size = Vector2( 70, 70 )
 custom_fonts/font = ExtResource( 4 )
-shortcut = SubResource( 8 )
+shortcut = SubResource( 10 )
 text = "next level"
 
 [node name="SnowParticles" parent="." instance=ExtResource( 6 )]
