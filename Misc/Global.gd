@@ -19,6 +19,7 @@ export var level_paths = [["Level_IntroExit", 0],
 						["Level_SlidingBoxes", 0]]
 
 var menu_path = "res://Levels/Menu.tscn"
+var credits_path = "res://Levels/Credits.tscn"
 var current_level = 0
 
 # collision layer bits
@@ -75,7 +76,7 @@ func get_level_image(num):
 func load_next_level():
 	current_level += 1
 	if current_level >= len(level_paths):
-		var _out = get_tree().change_scene(menu_path)
+		var _out = get_tree().change_scene(credits_path)
 	else:
 		var _out = get_tree().change_scene(get_level_path(current_level))
 
