@@ -25,11 +25,9 @@ func interact():
 	if is_on:
 		$SwitchOff.visible = true
 		$SwitchOn.visible = false
-		#$AnimationPlayer.play_backwards("turn")
 	else:
 		$SwitchOff.visible = false
 		$SwitchOn.visible = true
-		#$AnimationPlayer.play("turn")
 		
 	is_on = not is_on
 	
