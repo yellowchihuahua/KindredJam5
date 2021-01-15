@@ -659,8 +659,8 @@ collision_layer = 2
 script = ExtResource( 1 )
 
 [node name="Fire" parent="." instance=ExtResource( 5 )]
-position = Vector2( 40.256, -42.7628 )
-scale = Vector2( 1.09871, 1.09871 )
+position = Vector2( 40.256, -42.2831 )
+scale = Vector2( 1.08272, 1.08272 )
 z_index = 99
 z_as_relative = false
 show_text = true
@@ -671,52 +671,52 @@ scale = Vector2( 0.5, 0.5 )
 z_index = 3
 
 [node name="Body" type="Sprite" parent="Penguin"]
-position = Vector2( 0, 0.258113 )
-scale = Vector2( 1.00516, 0.994838 )
+position = Vector2( 0, 3.45568 )
+scale = Vector2( 1.06911, 0.930886 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 3, 75, 87, 122 )
 
 [node name="FlipperLeft" type="Sprite" parent="Penguin"]
-position = Vector2( -36.6262, -30.2775 )
-rotation = -0.00225246
+position = Vector2( -37.9053, -27.0799 )
+rotation = -0.0301565
 z_index = 1
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 98, 63, 40, 71 )
 
 [node name="FlipperRight" type="Sprite" parent="Penguin"]
-position = Vector2( 36.6262, -39.207 )
-rotation = 0.00225246
+position = Vector2( 37.9053, -35.3699 )
+rotation = 0.0301565
 z_index = -2
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 151, 117, 38, 72 )
 
 [node name="EyeLeft" type="Sprite" parent="Penguin"]
-position = Vector2( -4.97203, -32.9543 )
-scale = Vector2( 1.00258, 1.00258 )
+position = Vector2( -5.61155, -27.8382 )
+scale = Vector2( 1.03456, 1.03456 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 15, 5, 16, 15 )
 
 [node name="EyeRight" type="Sprite" parent="Penguin"]
-position = Vector2( 30.9912, -39.591 )
-scale = Vector2( 1.00258, 1.00258 )
+position = Vector2( 30.9912, -35.1144 )
+scale = Vector2( 1.03456, 1.03456 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 15, 5, 16, 15 )
 
 [node name="BeakTop" type="Sprite" parent="Penguin"]
-position = Vector2( 34.9554, -25.7308 )
-rotation = -0.00225246
+position = Vector2( 34.9554, -21.2542 )
+rotation = -0.0301565
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 14, 34, 33, 18 )
 
 [node name="BeakBottom" type="Sprite" parent="Penguin"]
-position = Vector2( 35.4687, -14.9524 )
-rotation = 0.00225246
+position = Vector2( 35.4687, -9.83631 )
+rotation = 0.0301565
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 71, 36, 31, 11 )

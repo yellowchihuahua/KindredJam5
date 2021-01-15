@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://LevelElements/SnowParticles.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Resources/Font/LargeSizeFont.tres" type="DynamicFont" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://Resources/Font/SmallSizeFont.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Resources/Menu.png" type="Texture" id=5]
 [ext_resource path="res://MenuElements/Credits.gd" type="Script" id=6]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Wave"
 
 [node name="LevelRoot" type="Control"]
 anchor_right = 1.0
@@ -86,8 +89,13 @@ margin_right = 60.0
 margin_bottom = 90.0
 rect_min_size = Vector2( 150, 70 )
 custom_fonts/font = ExtResource( 3 )
+shortcut_in_tooltip = false
 text = "menu"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="PenguinWave" type="AnimationPlayer" parent="."]
+autoplay = "Wave"
+anims/Wave = SubResource( 1 )
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
