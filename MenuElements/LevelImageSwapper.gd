@@ -26,14 +26,17 @@ func show_level(num):
 	if new_level < 0:
 		new_level += len(Global.level_paths)
 	
-	level_shown = new_level
 	
-	$CollectedCount.text = "collected " + str(Global.get_collected_count(level_shown)) + "/" + str(Global.get_collected_total(level_shown))
-	$LevelNumber.text = "level " + str(level_shown + 1)
+	
+	$CollectedCount.text = "collected " + str(Global.get_collected_count(new_level)) + "/" + str(Global.get_collected_total(new_level))
+	$LevelNumber.text = "level " + str(new_level + 1)
 	
 	var img_path = Global.get_level_image(new_level)
 	if ResourceLoader.exists(img_path):
-		swap_image(load(Global.get_level_image(new_level)), 1 if level_shown < num else -1)
+		var direction = 1 if level_shown < new_level else -1
+		swap_image(load(Global.get_level_image(new_level)), direction)
+		
+	level_shown = new_level
 	
 
 func _on_RightButton_pressed():
